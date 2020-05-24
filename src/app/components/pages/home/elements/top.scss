@@ -1,0 +1,144 @@
+.main-top {
+    position: relative;
+    width: 100%;
+    height: 95vh;
+
+    &:after {
+        position: absolute;
+        display: block;
+        content: "";
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 135px;
+
+        background-color: #fff;
+        clip-path: polygon(100% 0%, -10% 101%, 100% 101%);
+    }
+
+    &--bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        background-image: url("../images/home-top.jpg");
+
+        &:before {
+            position: absolute;
+            content: "";
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: -1;
+
+            background: linear-gradient(130deg, rgba(32, 27, 138, 1) 0%, rgba(111, 137, 230, 1) 100%);
+            opacity: 0.6;
+        }
+    }
+
+    &--title {
+        position: relative;
+        align-self: center;
+        padding-left: 14.5%;
+
+        & > span {
+            width: 100%;
+            font-family: "Roboto-Medium", sans-serif;
+            font-size: 32px;
+            letter-spacing: 0.03em;
+            line-height: 1.5em;
+            color: white;
+            white-space: nowrap;
+
+            &:last-child {
+                font-family: "Roboto-Redular", sans-serif;
+                font-size: 16px;
+                margin: 16px 0 0;
+                color: #dcdcdc;
+            }
+        }
+
+        & > hr {
+            margin: 12px 0 0;
+            border: 0;
+            width: 54%;
+            height: 1px;
+            background-color: #fff;
+        }
+    }
+
+    .scroll-next {
+        position: absolute;
+        bottom: 135px;
+        width: 100%;
+
+        &--container {
+            position: relative;
+            width: 35px;
+            height: 35px;
+            margin: 0 auto;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+
+            svg {
+                width: 31px;
+                height: 31px;
+                color: white;
+
+                transition: all 0.3s ease;
+            }
+
+            &:before,
+            &:after {
+                position: absolute;
+                content: "";
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                border-radius: 50%;
+
+                transition: opacity 0.3s ease;
+
+                animation-name: scroll-next-anim;
+                animation-timing-function: ease-out;
+                animation-duration: 3s;
+                animation-iteration-count: infinite;
+            }
+
+            &:before {
+                border: 1px dotted white;
+                animation-delay: 0;
+            }
+
+            &:after {
+                border: 1px dotted white;
+                animation-delay: 0.75s;
+            }
+
+            &:hover > svg {
+                color: #dcdcdc;
+                transform: scale(1.1);
+                filter: blur(0.5px);
+            }
+        }
+    }
+}
+
+@keyframes scroll-next-anim {
+    0% {
+        transform: scale(0.5) rotateZ(0deg);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5) rotateZ(360deg);
+        opacity: 0;
+    }
+}

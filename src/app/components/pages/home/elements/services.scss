@@ -1,0 +1,44 @@
+.container.service {
+    background: linear-gradient(
+        25deg,
+        $mainColorDark 0%,
+        $mainColorDark 25%,
+        $mainColorMiddle 100%
+    );
+
+    .title > h2 { color: white; }
+    .title > span { color: #f1f1f1; }
+
+    & > .content > ul {
+        justify-content: space-around;
+    }
+
+    & > .content > ul {
+        text-align: center;
+
+        & > li {
+            padding: 22px 15px;
+        }
+
+        & > li > svg {
+            width: 45px;
+            height: 45px;
+            color: white;
+            margin: 0 0 7px;
+        }
+
+        & > li > .context > h3 {
+            font-size: 18px;
+            letter-spacing: .03em;
+            color: white;
+            margin: 0 0 6px;
+        }
+
+        & > li > .context > p {
+            font-size: 16px;
+            letter-spacing: .03em;
+            color: #f1f1f1;
+        }
+    }
+
+}

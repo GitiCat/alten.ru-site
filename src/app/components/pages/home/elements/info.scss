@@ -1,0 +1,74 @@
+.container.info {
+    .number-list {
+        li {
+            overflow: hidden;
+            align-items: center;
+            margin-bottom: 42px;
+
+            span:first-child {
+                position: relative;
+                font-family: 'Roboto-Light';
+                font-size: 42px;
+                letter-spacing: .03em;
+                color: $titleColor;
+                margin-right: 36px;
+
+                &:after {
+                    position: absolute;
+                    content: '';
+                    left: -13px;
+                    bottom: 2px;
+                    width: 45px;
+                    height: 45px;
+
+                    border-radius: 50%;
+                    border-right-width: 2px;
+                    border-right-style: dotted;
+                    border-color: $mainColorDark;
+
+                    transform: rotateZ(45deg);
+                }
+            }
+
+            span:last-child {
+                font-size: 16px;
+                color: $textColor;
+                letter-spacing: .03em;
+                line-height: 1.5em;
+                padding-top: 3px;
+            }
+        }
+    }
+
+    .block:last-child {
+        padding: 0 14.5%;
+    }
+
+    .title {
+        margin-bottom: 42px;
+
+        h2 {
+            font-size: 46px;
+            letter-spacing: .03em;   
+            color: $titleColor;
+            margin: 0 0 6px;
+        }
+
+        span {
+            font-size: 16px;
+            letter-spacing: .03em;
+            color: $textColor;
+        }
+    }
+
+    .descriptor {
+        margin-bottom: 42px;
+        p {
+            font-size: 16px;
+            letter-spacing: .03em;
+            line-height: 1.5em;
+            color: $textColor;
+            margin: 0 0 6px;
+        }
+    }
+}
