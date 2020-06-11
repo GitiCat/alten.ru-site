@@ -74,6 +74,14 @@ footer .footer-block .company {
     display: flex;
 }
 
+.products .element .context {
+    display: -webkit-inline-box;
+    display: -moz-inline-box;
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+}
+
 /*
     Set flex flow : column nowrap
 */
@@ -81,6 +89,7 @@ footer .footer-block .company {
 .main-top .main-top--title,
 .info .number-list,
 .service,
+.products .element .context,
 footer,
 footer .footer-block,
 footer .footer-block .company {
@@ -171,7 +180,8 @@ footer .footer-container .container,
     }
 }
 
-@import "../../app/components/pages/home/elements/top.scss";
-@import "../../app/components/pages/home/elements/info.scss";
-@import "../../app/components/pages/home/elements/services.scss";
+@import "../../app/components/pages/home/elements/top/top.scss";
+@import "../../app/components/pages/home/elements/info/info.scss";
+@import "../../app/components/pages/home/elements/services/services.scss";
+@import "../../app/components/pages/home/elements/product/element.scss";
 @import "../../app/components/blocks/footer/footer.scss";

@@ -1,7 +1,8 @@
 import React from 'react';
-import Top from './elements/top';
-import Info from './elements/info';
-import Services from './elements/services';
+import Top from './elements/top/top';
+import Info from './elements/info/info';
+import Services from './elements/services/services';
+import Products from './elements/product/index';
 
 const HomeComponent : React.FunctionComponent<any> = props => {
     return (
@@ -9,6 +10,7 @@ const HomeComponent : React.FunctionComponent<any> = props => {
             <Top/>
             <Info/>
             <Services/>
+            <Products/>
         </div>
     )
 }

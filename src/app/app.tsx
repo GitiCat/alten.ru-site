@@ -19,7 +19,7 @@ const App : React.FunctionComponent<any> = props => {
             <Router history={history}>
                 <Switch>
                     <Route exact path='/home' component={HomeComponent}/>
-                    <Redirect from='/' to='/home'/>
+                    <Redirect from='/' to='/home'/>/
                 </Switch>
                 <FooterBlock/>
             </Router>
