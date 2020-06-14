@@ -4,7 +4,8 @@
   "description": "This official site the company AO NPK ALTEN",
   "main": "index.js",
   "scripts": {
-    "web:dev": "webpack-dev-server --progress"
+    "web:dev": "webpack-dev-server --progress",
+    "tslint:scan": "tslint --project tsconfig.json --config tslint.yaml --force"
   },
   "author": {
     "name": "Zhuravlev Ivan",
