@@ -4,10 +4,10 @@ import { NavLink } from 'react-router-dom'
 class FooterBlock extends React.PureComponent<{}, any> {
 
     componentDidMount() {
-        var currentYear: number = new Date().getFullYear();
+        const currentYear: number = new Date().getFullYear();
         document.getElementById('copy-date').innerText = String(currentYear);
     }
-    
+
     render() {
         return (
             <footer className="footer" id="footer">

@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "web:dev": "webpack-dev-server --progress",
-    "tslint:scan": "tslint --project tsconfig.json --config tslint.yaml --force"
+    "tslint:scan": "tslint --project tsconfig.json --config tslint.yaml --force",
+    "tslint:fix": "tslint --project tsconfig.json --config tslint.yaml --fix"
   },
   "author": {
     "name": "Zhuravlev Ivan",
@@ -31,6 +32,7 @@
     "@types/react-router-dom": "^5.1.5",
     "babel-loader": "^8.1.0",
     "css-loader": "^3.5.3",
+    "csstype": "^2.6.10",
     "fibers": "^5.0.0",
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.3.0",

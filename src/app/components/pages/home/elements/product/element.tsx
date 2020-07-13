@@ -24,9 +24,6 @@ const ProductBlock: React.FunctionComponent<ProductBlockTypes> = (props) => {
                 <span>{props.title}</span>
                 <Link to={props.url}>Перейти</Link>
             </div>
-            <div className="hover-bl">
-                
-            </div>
         </div>
     );
 };

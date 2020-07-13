@@ -63,6 +63,9 @@ ul li {
 .info .number-list,
 .info .number-list li,
 .service .content ul,
+.licences .content,
+.licences .content .context,
+.licences .content .context .logos,
 footer,
 footer .footer-container,
 footer .footer-block,
@@ -90,6 +93,8 @@ footer .footer-block .company {
 .info .number-list,
 .service,
 .products .element .context,
+.licences,
+.licences .content .context .logos,
 footer,
 footer .footer-block,
 footer .footer-block .company {
@@ -152,6 +157,11 @@ footer .footer-container .container,
             letter-spacing: .03em;
             color: $textColor;
         }
+
+        &.white {
+            h2 { color: white; }
+            span { color: #f1f1f1; }
+        }
     }
 }
 
@@ -171,12 +181,11 @@ footer .footer-container .container,
     text-transform: uppercase;
     color: white;
 
-    transition: box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), background-color 0.3s ease, transform .3s ease;
+    transition: box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), background-color 0.3s ease;
 
     &:hover {
         background-color: $mainColorDark;
         box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-        transform: perspective(10px) translateZ(.1px);
     }
 }
 
@@ -184,4 +193,5 @@ footer .footer-container .container,
 @import "../../app/components/pages/home/elements/info/info.scss";
 @import "../../app/components/pages/home/elements/services/services.scss";
 @import "../../app/components/pages/home/elements/product/element.scss";
+@import "../../app/components/pages/home/elements/licences/licences.scss";
 @import "../../app/components/blocks/footer/footer.scss";

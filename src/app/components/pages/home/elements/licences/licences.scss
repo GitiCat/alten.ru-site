@@ -1,0 +1,38 @@
+.container.licences {
+    background: linear-gradient(
+        25deg,
+        $mainColorDark 0%,
+        $mainColorDark 25%,
+        $mainColorMiddle 100%
+    );
+
+    .gerb-bg {
+        position: absolute;
+    }
+
+    .block:last-child {
+        flex: 2 0;
+    }
+
+    .context > .logos > .logo {
+        width: 105px;
+        height: 105px;
+        margin-bottom: 16px;
+        margin-right: 42px;
+
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .context > .text {
+        p {
+            font-size: 16px;
+            color: white;
+            letter-spacing: 0.03em;
+            line-height: 1.5em;
+
+            margin-bottom: 42px;
+        }
+    }
+}
