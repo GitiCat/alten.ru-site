@@ -63,19 +63,19 @@ const LicencesElement: React.FunctionComponent = () => {
                     <div className="licences-images">
                         <div
                             className="licence-image image-1"
-                            style={getStyle(licenceUrl(""))}
+                            style={getStyle(licenceUrl("lic_1.png"))}
                         ></div>
                         <div
                             className="licence-image image-2"
-                            style={getStyle(licenceUrl(""))}
+                            style={getStyle(licenceUrl("lic_2.png"))}
                         ></div>
                         <div
                             className="licence-image image-3"
-                            style={getStyle(licenceUrl(""))}
+                            style={getStyle(licenceUrl("lic_3.png"))}
                         ></div>
                         <div
                             className="licence-image image-4"
-                            style={getStyle(licenceUrl(""))}
+                            style={getStyle(licenceUrl("lic_4.png"))}
                         ></div>
                     </div>
                 </div>
