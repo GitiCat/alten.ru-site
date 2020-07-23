@@ -66,6 +66,7 @@ ul li {
 .licences .content,
 .licences .content .context,
 .licences .content .context .logos,
+.news .content,
 footer,
 footer .footer-container,
 footer .footer-block,
@@ -77,7 +78,8 @@ footer .footer-block .company {
     display: flex;
 }
 
-.products .element .context {
+.products .element .context,
+.h-list {
     display: -webkit-inline-box;
     display: -moz-inline-box;
     display: -webkit-inline-flex;
@@ -92,9 +94,11 @@ footer .footer-block .company {
 .main-top .main-top--title,
 .info .number-list,
 .service,
+.news,
 .products .element .context,
 .licences,
 .licences .content .context .logos,
+.news .content,
 footer,
 footer .footer-block,
 footer .footer-block .company {
@@ -139,6 +143,7 @@ footer .footer-container .container,
 
 .container {
     position: relative;
+    overflow: hidden;
 
     .block, .title {
         z-index: 1;
@@ -195,9 +200,34 @@ footer .footer-container .container,
     }
 }
 
+.list-item-link-1 {
+    display: block;
+    width: auto;
+    float: left;
+    padding: 5px 15px;
+    margin-bottom: 7px;
+
+    border: 0;
+    border-radius: 15px;
+    background-color: $mainColorMiddle;
+
+    font-family: "Roboto-Regular", sans-serif;
+    font-size: 12px;
+    letter-spacing: .03em;
+    color: rgba($color: #fff, $alpha: .9);
+
+    transition: all .3s ease;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $mainColorLight;
+    }
+}
+
 @import "../../app/components/pages/home/elements/top/top.scss";
 @import "../../app/components/pages/home/elements/info/info.scss";
 @import "../../app/components/pages/home/elements/services/services.scss";
 @import "../../app/components/pages/home/elements/product/element.scss";
 @import "../../app/components/pages/home/elements/licences/licences.scss";
+@import "../../app/components/pages/home/elements/news/news.scss";
 @import "../../app/components/blocks/footer/footer.scss";

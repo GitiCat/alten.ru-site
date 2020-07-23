@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin'),
       WebpackBundleAnalyzer = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const serverHost = 'localhost',
-      serverPort = 8000;
+      serverPort = 8080;
 
 const bundleAnalyzerHost = 'localhost',
       bundleAnalyzerPort = 3000;
@@ -75,6 +75,19 @@ module.exports = {
         host: serverHost,
         port: serverPort,
         historyApiFallback: true,
-        contentBase: path.join(__dirname, 'src', 'public')
+        contentBase: path.join(__dirname, 'src', 'public'),
+
+        proxy: {
+            '/api_v0/': {
+                target: 'http://localhost:8000',
+                secure: false,
+                changeOrigin: true
+            },
+            '/media/': {
+                target: 'http://localhost:8000',
+                secure: false,
+                changeOrigin: true
+            }
+        }
     }
 }

@@ -1,0 +1,81 @@
+.news .h-list {
+    &--item {
+        position: relative;
+        margin: 0 8px;
+        margin-top: 42px;
+
+        width: 24.8%;
+        min-width: 290px;
+        height: 355px;
+
+        align-self: flex-start;
+        overflow: hidden;
+
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+        .image {
+            position: absolute;
+            top: 0;
+            bottom: 32%;
+            right: 0;
+            left: 0;
+            
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+
+            &:before {
+                position: absolute;
+                content: "";
+                top: 0;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                background-color: rgba($color: $mainColorMiddle, $alpha: .3);
+            }
+        }
+
+        .context {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 150px;
+            padding: 10px 15px;
+            padding-top: 25px;
+
+            background-color: #fff;
+            border-top-left-radius: 25px;
+            border-top-right-radius: 25px;
+
+            .i-title {
+                margin: 0 0 12px;
+
+                h2 {
+                    font-size: 16px;
+                    letter-spacing: .03em;
+                    color: $titleColor;
+                    margin: 0 0 6px;
+                }
+            }
+
+            .text > p {
+                display: none;
+                margin: 0 0 12px;
+
+                font-size: 14px;
+                letter-spacing: .03em;
+                color: #4f4f4f;
+
+                &:first-child {
+                    display: -webkit-box;
+                    -webkit-line-clamp: 3;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                }
+            }
+        }
+    }
+}
+
+@import "./items/items.scss";
