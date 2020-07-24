@@ -1,0 +1,15 @@
+.container.feedback {
+    padding-left: 0;
+    
+    .block:first-child {
+        flex: 2 0;
+    }
+    
+    .block:last-child {
+        flex: 1 0;
+        padding-left: 4.5%;
+    }
+}
+
+@import './map/map.scss';
+@import './form/form.scss';

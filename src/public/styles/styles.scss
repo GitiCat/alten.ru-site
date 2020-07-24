@@ -52,6 +52,13 @@ ul li {
     list-style-type: none;
 }
 
+input:hover,
+input:focus,
+textarea:hover,
+textarea:focus {
+    outline: none;
+}
+
 /*
     Set display flex
 */
@@ -230,4 +237,5 @@ footer .footer-container .container,
 @import "../../app/components/pages/home/elements/product/element.scss";
 @import "../../app/components/pages/home/elements/licences/licences.scss";
 @import "../../app/components/pages/home/elements/news/news.scss";
+@import "../../app/components/pages/home/elements/feedback/feedback.scss";
 @import "../../app/components/blocks/footer/footer.scss";

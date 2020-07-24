@@ -1,0 +1,73 @@
+.container.feedback form {
+    & > div {
+        position: relative;
+        display: block;
+        width: 100%;
+        float: left;
+        margin: 0 0 16px;
+
+        label > input,
+        label > textarea {
+            display: block;
+        }
+
+        .label {
+            position: relative;
+            font-size: 14px;
+        }
+
+        label > input,
+        label > textarea {
+            margin-top: 4px;
+            width: 100%;
+        }
+
+        label > input {
+            padding: 7px 15px;
+
+            border: 0;
+            border-bottom: 1px solid rgba($color: #000000, $alpha: .4);
+
+            font-family: "Roboto-Regular", sans-serif;
+            font-size: 16px;
+            letter-spacing: .03em;
+            color: #4f4f4f;
+
+            & + .selector {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 0;
+                height: 1px;
+                background-color: $mainColorDark;
+
+                transition: all .3s ease;
+            }
+        }
+
+        label > input:focus + .selector,
+        label > input.notnull + .selector {
+            width: 100%;
+        }
+
+        label > textarea {
+            resize: none;
+            height: 225px;
+            padding: 10px 15px;
+            margin-top: 12px;
+
+            border: 1px solid rgba($color: #000000, $alpha: .4);
+
+            font-family: "Roboto-Regular", sans-serif;
+            font-size: 16px;
+            letter-spacing: .03em;
+            color: #4f4f4f
+        }
+    }
+
+    button[type='submit'] {
+        float: left;
+        clear: both;
+        cursor: pointer;
+    }
+}
