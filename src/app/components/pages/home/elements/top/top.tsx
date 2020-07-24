@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import ArrowDown from '@material-ui/icons/KeyboardArrowDown';
+import Menu from '../../../../blocks/menu/menu';
 
 const TopElement: React.FunctionComponent<any> = () => {
 
@@ -27,6 +28,7 @@ const TopElement: React.FunctionComponent<any> = () => {
                     <ArrowDown />
                 </div>
             </div>
+            <Menu/>
         </div>
     )
 }
