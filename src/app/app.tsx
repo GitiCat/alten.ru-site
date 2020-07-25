@@ -6,6 +6,7 @@ import {
     Redirect
 } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
+import SideMenu from './components/blocks/sideMenu/sideMenu';
 
 const history = createBrowserHistory();
 
@@ -17,6 +18,7 @@ const App : React.FunctionComponent<any> = props => {
     return (
         <React.Fragment>
             <Router history={history}>
+                <SideMenu/>
                 <Switch>
                     <Route exact path='/home' component={HomeComponent}/>
                     <Redirect from='/' to='/home'/>/
