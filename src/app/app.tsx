@@ -6,19 +6,18 @@ import {
     Redirect
 } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
-import SideMenu from './components/blocks/sideMenu/sideMenu';
+import SideMenuPanel from './components/blocks/sideMenu/panel';
 
 const history = createBrowserHistory();
 
 const HomeComponent : React.FunctionComponent = lazy(() => import('./components/pages/home/index'));
-
 const FooterBlock : React.ExoticComponent = lazy(() => import('./components/blocks/footer/footer'));
 
 const App : React.FunctionComponent<any> = props => {
     return (
         <React.Fragment>
             <Router history={history}>
-                <SideMenu/>
+                <SideMenuPanel/>
                 <Switch>
                     <Route exact path='/home' component={HomeComponent}/>
                     <Redirect from='/' to='/home'/>/

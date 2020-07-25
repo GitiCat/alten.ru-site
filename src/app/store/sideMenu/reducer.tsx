@@ -1,7 +1,8 @@
 import {
     SidemenuState,
     SidemenuActionTypes,
-    UPDATE_SIDEMENU_STATE
+    SET_SIDEMENU_ACTIVE_STATE,
+    SET_SIDEMENU_DEACTIVE_STATE
 } from './types'
 
 const initialState: SidemenuState = {
@@ -11,11 +12,19 @@ const initialState: SidemenuState = {
 export const sidemenuReducer = (state = initialState, action: SidemenuActionTypes)
     : SidemenuState => {
     switch(action.type) {
-        case UPDATE_SIDEMENU_STATE: {
+        case SET_SIDEMENU_ACTIVE_STATE: {
             return {
                 ...state,
-                ...action.payload
+                isActive: true
             }
         }
+        case SET_SIDEMENU_DEACTIVE_STATE: {
+            return {
+                ...state,
+                isActive: false
+            }
+        }
+        default:
+            return state
     }
 }

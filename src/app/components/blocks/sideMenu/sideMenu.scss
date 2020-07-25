@@ -44,5 +44,25 @@
 }
 
 .side-menu {
+    position: fixed;
+    display: block;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: auto;
+    padding-top: 5%;
+    padding-left: 2%;
+    z-index: 9999;
 
+    background-color: #fff;
+
+    &--items {
+        & > div {
+            margin: 0 0 12px;
+        }
+
+        .link-icon {
+            align-items: center;
+        }
+    }
 }

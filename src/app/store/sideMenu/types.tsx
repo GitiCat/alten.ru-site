@@ -1,12 +1,20 @@
+import { Action } from "redux";
+
 export interface SidemenuState {
     isActive: boolean
 }
 
-export const UPDATE_SIDEMENU_STATE = 'UPDATE_SIDEMENU_STATE';
+export const SET_SIDEMENU_ACTIVE_STATE = 'SET_SIDEMENU_ACTIVE_STATE';
+export const SET_SIDEMENU_DEACTIVE_STATE = 'SET_SIDEMENU_DEACTIVE_STATE';
 
-interface UpdateSidemenuState {
-    type: typeof UPDATE_SIDEMENU_STATE
+interface SetSidemenuActiveState extends Action {
+    type: typeof SET_SIDEMENU_ACTIVE_STATE
     payload: SidemenuState
 }
 
-export type SidemenuActionTypes = UpdateSidemenuState
+interface SetSidemenuDeactiveState extends Action {
+    type: typeof SET_SIDEMENU_DEACTIVE_STATE
+    payload: SidemenuState
+}
+
+export type SidemenuActionTypes = SetSidemenuActiveState | SetSidemenuDeactiveState
