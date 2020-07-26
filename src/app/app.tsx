@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import SideMenuPanel from './components/blocks/sideMenu/panel';
+import { MemodBlackoutBlock } from './components/blocks/blackout/blackout';
 
 const history = createBrowserHistory();
 
@@ -17,6 +18,7 @@ const App : React.FunctionComponent<any> = props => {
     return (
         <React.Fragment>
             <Router history={history}>
+                <MemodBlackoutBlock/>
                 <SideMenuPanel/>
                 <Switch>
                     <Route exact path='/home' component={HomeComponent}/>

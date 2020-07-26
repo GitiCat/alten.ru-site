@@ -43,6 +43,10 @@ body {
     font-family: "Roboto-Regular", sans-serif;
 }
 
+body.disable-scroll {
+    overflow: hidden;
+}
+
 a {
     text-transform: none;
     text-decoration: none;
@@ -172,14 +176,14 @@ footer .footer-container .container,
         }
 
         span {
-            font-size: 16px;
+            font-size: 14px;
             letter-spacing: .03em;
             color: $textColor;
         }
 
         &.white {
             h2 { color: white; }
-            span { color: #f1f1f1; }
+            span { color: #f1f1f1; opacity: .8; }
         }
     }
 }
@@ -188,15 +192,15 @@ footer .footer-container .container,
     display: block;
     width: auto;
     float: left;
-    padding: 10px 20px;
+    padding: 8px 16px;
 
     border: 0;
     border-radius: 20px;
     background-color: $mainColorMiddle;
 
     font-family: "Roboto-Light", sans-serif;
-    font-size: 14px;
-    letter-spacing: 0.03em;
+    font-size: 12px;
+    letter-spacing: .03em;
     text-transform: uppercase;
     color: white;
 
@@ -239,6 +243,7 @@ footer .footer-container .container,
 @import "../../app/components/pages/home/elements/licences/licences.scss";
 @import "../../app/components/pages/home/elements/news/news.scss";
 @import "../../app/components/pages/home/elements/feedback/feedback.scss";
-@import "../../app/components/blocks/menu/menu.scss";
+@import "../../app/components/blocks/blackout/blackout.scss";
 @import "../../app/components/blocks/sideMenu/sideMenu.scss";
+@import "../../app/components/blocks/menu/menu.scss";
 @import "../../app/components/blocks/footer/footer.scss";
