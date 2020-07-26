@@ -1,0 +1,17 @@
+.blackout {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0;
+
+    background-color: #191919;
+    transition: all .3s ease;
+
+    &.show {
+        z-index: 9990;
+        opacity: .9;
+    }
+}
