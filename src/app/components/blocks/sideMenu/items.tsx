@@ -12,21 +12,21 @@ const SideMenuItems: React.FunctionComponent = () => {
     return (
         <div className="side-menu--items">
             <div className="link-icon">
-                <Home/>
                 <NavLinkItem to='/home'>Главная</NavLinkItem>
+                <Home/>
             </div>
             <div className="link-icon">
-                <History/>
                 <NavLinkItem to='/history'>История</NavLinkItem>
+                <History/>
             </div>
             <div className="link-icon">
-                <Activity/>
                 <NavLinkItem to='/activity'>Производство</NavLinkItem>
+                <Activity/>
             </div>
             <div className="category">
                 <div className="link-icon">
-                    <Products/>
                     <NavLinkItem to='/products'>Продукция</NavLinkItem>
+                    <Products/>
                 </div>
                 <div className="sub">
                     <NavLinkItem to='/products/rechargeable-batteries'>Аккумуляторные батареи</NavLinkItem>
@@ -36,19 +36,20 @@ const SideMenuItems: React.FunctionComponent = () => {
             </div>
             <div className="category">
                 <div className="link-icon">
-                    <Company/>
                     <NavLinkItem to='/company'>Предприятие</NavLinkItem>
+                    <Company/>
                 </div>
                 <div className="sub">
                     <NavLinkItem to='/company/leadership'>Руководство</NavLinkItem>
                     <NavLinkItem to='/company/publications'>Публикации</NavLinkItem>
                     <NavLinkItem to='/company/licences'>Лицензии</NavLinkItem>
+                    <NavLinkItem to='/company/documents'>Документы</NavLinkItem>
                     <NavLinkItem to='/company/gallery'>Галерея</NavLinkItem>
                 </div>
             </div>
             <div className="link-icon">
-                <News/>
                 <NavLinkItem to='/news'>Новости</NavLinkItem>
+                <News/>
             </div>
         </div>
     )

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Dispatch } from 'redux';
 import { useSelector, useDispatch } from 'react-redux';
 import cn from 'classnames'
@@ -10,31 +10,80 @@ import {
 
 import SideMenu from './menu';
 import SideMenuItems from './items';
+import { BlackoutState } from '../blackout/blackout';
 
-const toggleHandle = (
-    isActive: boolean, 
-    dispatch: Dispatch,) => {
-        if(!isActive)
-            dispatch({
-                type: SET_SIDEMENU_ACTIVE_STATE
-            })
-        else
-            dispatch({
-                type: SET_SIDEMENU_DEACTIVE_STATE
-            })
+const changeTogglePosition = (isActive: boolean) => {
+    var container: HTMLElement = document.querySelector('.toggle-container'),
+        toggle: SVGAElement = document.querySelector('.toggle'),
+        sidemenu: HTMLElement = document.querySelector('.side-menu');
+
+    if(isActive) {
+        var display = window.innerWidth;
+        var cw = sidemenu.offsetWidth;
+        var tw = toggle.clientWidth;
+
+        var moveOn = (cw + 1 - (tw / 2)) / display * 100;
+
+        container.style.setProperty('--left-pos', `${moveOn}%`);
+    }
+    else {
+        container.style.setProperty('--left-pos', `3%`);
+    }
+}
+
+const changeSidemenuState = ( isActive: boolean, dispatch: Dispatch) => {
+    if(!isActive) {
+        dispatch({
+            type: SET_SIDEMENU_ACTIVE_STATE
+        })
+        changeTogglePosition(true);
+        BlackoutState(true);
+    }
+    else {
+        dispatch({
+            type: SET_SIDEMENU_DEACTIVE_STATE
+        })
+        changeTogglePosition(false)
+        BlackoutState(false);
+    }
+}
+
+const toggleHandle = (isActive: boolean, dispatch: Dispatch) => {
+    changeSidemenuState(isActive, dispatch);
 }
 
 const SidePanel: React.FunctionComponent = () => {
+    const store: any            = useSelector(store => store);
+    const dispatch: Dispatch    = useDispatch()
 
-    const store: any = useSelector(store => store);
-    const dispatch: Dispatch = useDispatch()
-
-    var toggleClasses: string = cn({
+    var isActive: boolean       = store?.sidemenu?.isActive;
+    var toggleClasses: string   = cn({
         'toggle': true,
         'active': store?.sidemenu?.isActive
     })
 
-    var isActive: boolean = store?.sidemenu?.isActive;
+    useEffect(() => {
+        document.onmouseup = (event: MouseEvent) => {
+            if(isActive) {
+                var element: HTMLElement    = document.querySelector('.side-menu');
+                var items: HTMLElement      = document.querySelector('.side-menu--items');
+                var toggle: HTMLElement     = document.querySelector('.toggle');
+                var target                  = event.target;
+                
+                target !== element
+                    ? target !== toggle
+                        ? target !== items
+                            ? changeSidemenuState(isActive, dispatch)
+                            : false
+                        : false
+                    : false
+            }
+        }
+
+        window.onresize = () => {
+            changeTogglePosition(isActive);
+        }
+    })
 
     return (
         <React.Fragment>

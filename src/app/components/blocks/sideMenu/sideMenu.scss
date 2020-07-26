@@ -1,8 +1,14 @@
 .toggle-container {
+    --top-pos: 5.5%;
+    --left-pos: 3%;
+    
     position: fixed;
-    top: 5.5%;
-    left: 3%;
+    top: var(--top-pos);
+    left: var(--left-pos);
     z-index: 9999;
+
+    transition: all .3s ease;
+
     
     .toggle {
         cursor: pointer;
@@ -15,6 +21,8 @@
 
         border-radius: 50%;
         padding: 3.5px;
+
+        background-color: $mainColorDark;
 
         .line {
             fill:none;
@@ -72,18 +80,38 @@
             align-items: center;
             margin: 0 0 12px;
 
-            svg {
-                width: 26px;
-                height: 26px;
-                margin-right: 18px;
+            svg, a {
+                transition: all .3s ease;
+            }
 
-                color: $mainColorDark;
+            svg {
+                order: 0;
+                width: 24px;
+                height: 24px;
+                margin-right: 18px;
+                opacity: .8;
+                color: $mainColorMiddle;
             }
 
             a {
-                font-size: 16px;
+                order: 1;
+                font-size: 14px;
                 letter-spacing: .03em;
+                line-height: 1.4;
                 color: $titleColor;
+                opacity: .8;
+
+                &.current + svg,
+                &:hover + svg {
+                    color: $mainColorDark;
+                }
+
+                &.current,
+                &.current + svg,
+                &:hover,
+                &:hover + svg {
+                    opacity: 1; 
+                }
             }
         }
 
@@ -93,13 +121,31 @@
 
         .sub {
             a {
+                color: var(--color);
                 position: relative;
                 display: block;
-                font-size: 16px;
+                font-size: 12px;
                 letter-spacing: .03em;
+                line-height: 1.4;
                 color: #4f4f4f;
                 padding: 5px 0;
                 padding-left: 32px;
+                opacity: .8;
+
+                &, &:before {
+                    transition: all .3s ease;
+                }
+
+                &.current,
+                &:hover {
+                    opacity: 1;
+
+                    &:before {
+                        width: 2px;
+                        opacity: 1;
+                        background-color: $mainColorDark;
+                    }
+                }
 
                 &:before {
                     position: absolute;
@@ -107,8 +153,9 @@
                     left: 12px;
                     top: 0;
                     bottom: 0;
-                    width: 2px;
+                    width: 1px;
                     background-color: rgba($color: #000000, $alpha: .3);
+                    opacity: .8;
                 }
             }
         }
