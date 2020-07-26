@@ -37,7 +37,7 @@ const SideMenuItems: React.FunctionComponent = () => {
             <div className="category">
                 <div className="link-icon">
                     <Company/>
-                    <NavLinkItem to='/company' className='dropdown'></NavLinkItem>
+                    <NavLinkItem to='/company'>Предприятие</NavLinkItem>
                 </div>
                 <div className="sub">
                     <NavLinkItem to='/company/leadership'>Руководство</NavLinkItem>
