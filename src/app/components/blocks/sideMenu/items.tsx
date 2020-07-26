@@ -40,7 +40,7 @@ const SideMenuItems: React.FunctionComponent = () => {
                     <Company/>
                 </div>
                 <div className="sub">
-                    <NavLinkItem to='/company/leadership'>Руководство</NavLinkItem>
+                    <NavLinkItem to='/company/leaderships'>Руководство</NavLinkItem>
                     <NavLinkItem to='/company/publications'>Публикации</NavLinkItem>
                     <NavLinkItem to='/company/licences'>Лицензии</NavLinkItem>
                     <NavLinkItem to='/company/documents'>Документы</NavLinkItem>

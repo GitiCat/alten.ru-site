@@ -20,7 +20,7 @@ const YandexMapBlock: React.FunctionComponent = () => {
             lang: "ru_RU",
             mode: "release"
         }}>
-            <Map 
+            <Map
                 defaultState={{ center: [55.724984, 38.206782], zoom: 10 }}
                 width='100%'
                 height='100%'>
