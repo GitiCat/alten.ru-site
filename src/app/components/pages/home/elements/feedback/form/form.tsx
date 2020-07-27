@@ -1,8 +1,8 @@
 import React from 'react';
 
 const onChangeEvent = (event: React.ChangeEvent<HTMLInputElement>) => {
-    var element = event.target;
-    var isNotNull = element.value != '' ? true : false;
+    const element = event.target;
+    const isNotNull = element.value != '' ? true : false;
 
     if(isNotNull) element.classList.add('notnull')
     else element.classList.remove('notnull')

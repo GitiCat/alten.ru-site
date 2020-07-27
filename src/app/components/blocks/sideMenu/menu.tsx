@@ -7,11 +7,11 @@ type SideMenuTypes = {
 
 const SideMenu: React.FunctionComponent<SideMenuTypes> = (props) => {
 
-    var sidemenuClasses: string = cn({
+    const sidemenuClasses: string = cn({
         'side-menu': true,
         'show': props.isShow
     })
-    
+
     return (
         <div className={sidemenuClasses}>
             {props.children}

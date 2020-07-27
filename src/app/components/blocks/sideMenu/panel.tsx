@@ -13,16 +13,16 @@ import SideMenuItems from './items';
 import { BlackoutState } from '../blackout/blackout';
 
 const changeTogglePosition = (isActive: boolean) => {
-    var container: HTMLElement = document.querySelector('.toggle-container'),
+    const container: HTMLElement = document.querySelector('.toggle-container'),
         toggle: SVGAElement = document.querySelector('.toggle'),
         sidemenu: HTMLElement = document.querySelector('.side-menu');
 
     if(isActive) {
-        var display = window.innerWidth;
-        var cw = sidemenu.offsetWidth;
-        var tw = toggle.clientWidth;
+        const display = window.innerWidth;
+        const cw = sidemenu.offsetWidth;
+        const tw = toggle.clientWidth;
 
-        var moveOn = (cw + 1 - (tw / 2)) / display * 100;
+        const moveOn = (cw + 1 - (tw / 2)) / display * 100;
 
         container.style.setProperty('--left-pos', `${moveOn}%`);
     }
@@ -56,8 +56,8 @@ const SidePanel: React.FunctionComponent = () => {
     const store: any            = useSelector(store => store);
     const dispatch: Dispatch    = useDispatch()
 
-    var isActive: boolean       = store?.sidemenu?.isActive;
-    var toggleClasses: string   = cn({
+    const isActive: boolean       = store?.sidemenu?.isActive;
+    const toggleClasses: string   = cn({
         'toggle': true,
         'active': store?.sidemenu?.isActive
     })
@@ -65,11 +65,11 @@ const SidePanel: React.FunctionComponent = () => {
     useEffect(() => {
         document.onmouseup = (event: MouseEvent) => {
             if(isActive) {
-                var element: HTMLElement    = document.querySelector('.side-menu');
-                var items: HTMLElement      = document.querySelector('.side-menu--items');
-                var toggle: HTMLElement     = document.querySelector('.toggle');
-                var target                  = event.target;
-                
+                const element: HTMLElement    = document.querySelector('.side-menu');
+                const items: HTMLElement      = document.querySelector('.side-menu--items');
+                const toggle: HTMLElement     = document.querySelector('.toggle');
+                const target                  = event.target;
+
                 target !== element
                     ? target !== toggle
                         ? target !== items

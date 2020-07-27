@@ -29,18 +29,18 @@ const NewsElement: React.FunctionComponent<NewsStateTypes> = ( {data = null, rea
 
         getAsyncApiData();
     }, [])
-    
+
     return (
         <div className="container news">
             <div className="title">
                 <h2>Новости</h2>
-                <span>Свежие новости космической отрасли и деятельности предприятия</span> 
+                <span>Свежие новости космической отрасли и деятельности предприятия</span>
             </div>
             <div className="content">
                 <Link to='/news' className="light-link-1" style={{alignSelf: 'flex-start'}}>Показать все новости</Link>
 
                 <div className="h-list">
-                    {isReady && 
+                    {isReady &&
                         apiData.slice(0, 4).map((item, index) => {
                             return <NewsItem key={index}
                                 id = {item['id']}

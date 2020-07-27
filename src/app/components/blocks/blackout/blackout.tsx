@@ -9,8 +9,8 @@ const BlackoutBlock: React.FunctionComponent = () => {
 const MemodBlackoutBlock = React.memo(BlackoutBlock);
 
 const BlackoutState = (showing: boolean) => {
-    var block: HTMLElement = document.querySelector('.blackout');
-    var classes = block.classList;
+    const block: HTMLElement = document.querySelector('.blackout');
+    const classes = block.classList;
 
     if(showing) {
         classes.add('show');
@@ -23,8 +23,8 @@ const BlackoutState = (showing: boolean) => {
 }
 
 const BodyScrollState = (isDisable: boolean) => {
-    var body = document.querySelector('body');
-    var classes = body.classList;
+    const body = document.querySelector('body');
+    const classes = body.classList;
 
     if(isDisable)
         classes.add('disable-scroll');
