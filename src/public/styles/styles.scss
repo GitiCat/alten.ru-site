@@ -142,9 +142,10 @@ footer .footer-container .container,
 
 .root {
     position: relative;
+    min-height: 100%;
 
     & > .content {
-        flex: 0 0 auto;
+        flex: 1 0 auto;
         height: 100%;
     }
 }
@@ -184,6 +185,68 @@ footer .footer-container .container,
         &.white {
             h2 { color: white; }
             span { color: #f1f1f1; opacity: .8; }
+        }
+    }
+}
+
+.article {
+    padding: 86px 14.5%;
+    padding-top: 43px;
+
+    .text {
+        
+        p {
+            font-size: 14px;
+            color: #4f4f4f;
+            line-height: 1.4;
+            text-indent: 1.5em;
+            letter-spacing: .03em;
+
+            margin: 0 0 6px;
+            transition: all .3s ease;
+
+            &:hover {
+                color: $titleColor;
+            }
+        }
+
+        ul {
+            margin: 0 0 12px;
+
+            li {
+                position: relative;
+                font-size: 14px;
+                color: #4f4f4f;
+                line-height: 1.4;
+                padding-left: 3em;
+                letter-spacing: .03em;
+
+                margin: 0 0 6px;
+                transition: all .3s ease;
+
+                &:hover {
+                    color: $titleColor;
+                    
+                    &:before {
+                        width: 5px;
+                    }
+                }
+                
+                &:before {
+                    position: absolute;
+                    content: "";
+                    top: 0;
+                    left: 1.7em;
+                    bottom: 0;
+                }
+
+                &:before {
+                    width: 2px;
+                    background-color: $mainColorMiddle;
+
+                    transition: all .3s ease;
+                }
+            }
         }
     }
 }
@@ -243,6 +306,7 @@ footer .footer-container .container,
 @import "../../app/components/pages/home/elements/licences/licences.scss";
 @import "../../app/components/pages/home/elements/news/news.scss";
 @import "../../app/components/pages/home/elements/feedback/feedback.scss";
+@import "../../app/components/blocks/header/header.scss";
 @import "../../app/components/blocks/blackout/blackout.scss";
 @import "../../app/components/blocks/sideMenu/sideMenu.scss";
 @import "../../app/components/blocks/menu/menu.scss";
