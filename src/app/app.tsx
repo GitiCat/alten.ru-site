@@ -2,8 +2,7 @@ import React, { lazy } from 'react';
 import {
     Router,
     Route,
-    Switch,
-    Redirect
+    Switch
 } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import SideMenuPanel from './components/blocks/sideMenu/panel';
@@ -23,6 +22,7 @@ const LicencesComponent: React.FunctionComponent        = lazy(() => import('./c
 const DocumentsComponent: React.FunctionComponent       = lazy(() => import('./components/pages/documents/index'));
 const GalleryComponent: React.FunctionComponent         = lazy(() => import('./components/pages/gallery/index'));
 const NewsComponent: React.FunctionComponent            = lazy(() => import('./components/pages/news/index'));
+const NewsSelectedConponent: React.FunctionComponent    = lazy(() => import('./components/pages/news/selected'));
 const FooterBlock : React.ExoticComponent               = lazy(() => import('./components/blocks/footer/footer'));
 
 const App : React.FunctionComponent = () => {
@@ -32,7 +32,7 @@ const App : React.FunctionComponent = () => {
                 <MemodBlackoutBlock/>
                 <SideMenuPanel/>
                 <Switch>
-                    <Route exact path='/home' component={HomeComponent}/>
+                    <Route exact path='/' component={HomeComponent}/>
                     <Route path='/history' component={HistoryComponent}/>
                     <Route path='/activity' component={ActivityComponent}/>
                     <Route exact path='/products' component={ProductsComponent}/>
@@ -45,8 +45,8 @@ const App : React.FunctionComponent = () => {
                     <Route path='/company/licences' component={LicencesComponent}/>
                     <Route path='/company/documents' component={DocumentsComponent}/>
                     <Route path='/company/gallery' component={GalleryComponent}/>
-                    <Route path='/news' component={NewsComponent}/>
-                    <Redirect from='/' to='/home'/>/
+                    <Route exact path='/news' component={NewsComponent}/>
+                    <Route exact path='/news/:news_id' component={NewsSelectedConponent}/>
                 </Switch>
                 <FooterBlock/>
             </Router>

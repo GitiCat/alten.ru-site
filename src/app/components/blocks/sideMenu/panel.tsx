@@ -105,4 +105,4 @@ const SidePanel: React.FunctionComponent = () => {
     )
 }
 
-export default SidePanel;
+export default React.memo(SidePanel);

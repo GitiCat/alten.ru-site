@@ -1,0 +1,173 @@
+.news-item {
+    margin: 0 0 118px;
+    max-width: 75%;
+
+    img {
+        margin-right: 42px;
+    }
+
+    .context {
+        .title {
+            position: relative;
+            margin: 0 0 26px;
+            
+            h2 {
+                font-size: 26px;
+                letter-spacing: .03em;
+                line-height: 1.4;
+                color: $titleColor;
+            }
+
+            &:after {
+                position: absolute;
+                content: "";
+                left: 0;
+                bottom: -15%;
+                width: 25%;
+                height: 1px;
+                background: linear-gradient(to right, 
+                    #003fb2 0%, 
+                    #3b69e5 35%, 
+                    #7a96ff 50%,
+                    transparent 100%);
+            }
+        }
+
+        .descriptor {
+            position: relative;
+            height: 100%;
+
+            &.pre {
+                .text p {
+                    text-indent: 0;
+                    display: none;
+
+                    &:first-child {
+                        display: -webkit-box;
+                        -webkit-line-clamp: 3;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                    }
+                }
+
+                a {
+                    position: absolute;
+                    bottom: 5px;
+                    left: 0;
+                }
+                
+                .date {
+                    bottom: 4px;
+                    right: 0;
+                }
+            }
+            
+            .date {
+                position: absolute;
+
+                span {
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0 12px;
+                    padding: 2px 7px;
+                    border-radius: 15px;
+                    font-size: 12px;
+                    letter-spacing: .03em;
+                    line-height: 0;
+                    color: #fff;
+                    
+                    svg {
+                        width: 20px;
+                        height: 20px;
+                        margin-right: 5px;
+                    }
+
+                    &:first-child {
+                        background-color: $mainColorLight;
+                    }
+
+                    &.new {
+                        background-color: #de4848;
+                        
+                        svg { color: #ffa7a7; }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.news-item-selected {
+    max-width: 85%;
+    padding: 15px 20px;
+    
+    img {
+        margin-bottom: 28px;
+    }
+
+    .title {
+        margin-bottom: 16px;
+
+        h2 {
+            font-size: 26px;
+            letter-spacing: .03em;
+            line-height: 1.4;
+            color: $titleColor;
+            margin: 0 0 6px;
+        }
+
+        span {
+            font-size: 18px;
+            letter-spacing: .03em;
+            line-height: 1.4;
+            color: #4f4f4f;
+            margin: 0 0 6px;
+        }
+    }
+
+    .text {
+        margin-bottom: 42px;
+    }
+
+    .links {
+        a {
+            font-size: 12px;
+            align-items: center;
+            justify-content: center;
+            margin: 0 5px;
+        }
+    }
+    
+    .date {
+        position: relative;
+
+        span {
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            margin-bottom: 42px;
+            padding: 2px 7px;
+            border-radius: 15px;
+            font-size: 16px;
+            letter-spacing: .03em;
+            line-height: 0;
+            color: #fff;
+            
+            svg {
+                width: 26px;
+                height: 26px;
+                margin-right: 5px;
+            }
+
+            &:first-child {
+                background-color: $mainColorLight;
+            }
+
+            &.new {
+                background-color: #de4848;
+                
+                svg { color: #ffa7a7; }
+            }
+        }
+    }
+}

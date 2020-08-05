@@ -1,31 +1,25 @@
-import React, { useEffect, useReducer, useState } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import { getAsyncData } from '../../../utils/async-get-data';
 import { asyncDataReducer, initialState } from '../../../utils/async-data-states/reducer'
 import { ERROR, FETCHED } from '../../../utils/async-data-states/types'
 import Header from '../../blocks/header/header';
 import LeadershipsItem from './items';
 
-type LeadershipsTypes = {
-    article_id?: number
-}
-
-const LeadershipsComponent: React.FunctionComponent<LeadershipsTypes> = ({ article_id = null }) => {
+const LeadershipsComponent: React.FunctionComponent = () => {
     const [state, dispatch] = useReducer(asyncDataReducer, initialState)
-    const [articleId, setArticleId] = useState(article_id)
-    
+
     useEffect(() => {
         getAsyncData({ 
                 api_v: 0, 
                 url: 'articles', 
                 params: {
-                    'category': 'leaderships',
-                    'id': articleId
+                    'category': 'leaderships'
                 }
             })
             .then(result => dispatch({ type: FETCHED, payload: { data: result } }))
             .catch(error => dispatch({ type: ERROR, payload: { errorString: error } }))
     }, [])
-    
+
     return (
         <div className="content">
             {!state.loading &&

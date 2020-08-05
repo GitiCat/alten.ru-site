@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "web:dev": "webpack-dev-server --progress",
+    "build": "webpack --mode production",
     "tslint:scan": "tslint --project tsconfig.json --config tslint.yaml --force",
     "tslint:fix": "tslint --project tsconfig.json --config tslint.yaml --fix"
   },

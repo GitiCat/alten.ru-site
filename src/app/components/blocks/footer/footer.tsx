@@ -29,7 +29,7 @@ class FooterBlock extends React.PureComponent<{}, any> {
                     <div className="footer-block">
                         <span>Карта сайта</span>
                         <hr/>
-                        <NavLink className='f-nav-link' activeClassName='active' to='/home'>Главная</NavLink>
+                        <NavLink className='f-nav-link' activeClassName='active' to='/'>Главная</NavLink>
                         <NavLink className='f-nav-link' activeClassName='active' to='/history'>История</NavLink>
                         <NavLink className='f-nav-link' activeClassName='active' to='/licences'>Лицензии</NavLink>
                         <NavLink className='f-nav-link' activeClassName='active' to='/activity'>Деятельность</NavLink>

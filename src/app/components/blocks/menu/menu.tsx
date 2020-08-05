@@ -5,7 +5,7 @@ const Menu: React.FunctionComponent = () => {
     return (
         <div className="menu-block">
             <div className="nav-list">
-                <NavLinkItem to='/home'>Главная</NavLinkItem>
+                <NavLinkItem to='/'>Главная</NavLinkItem>
                 <NavLinkItem to='/history'>История</NavLinkItem>
                 <NavLinkItem to='/activity'>Деятельность</NavLinkItem>
                 <NavLinkItem to='/products' className='dropdown'>

@@ -12,7 +12,7 @@ const SideMenuItems: React.FunctionComponent = () => {
     return (
         <div className="side-menu--items">
             <div className="link-icon">
-                <NavLinkItem to='/home'>Главная</NavLinkItem>
+                <NavLinkItem to='/'>Главная</NavLinkItem>
                 <Home/>
             </div>
             <div className="link-icon">

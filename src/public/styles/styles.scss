@@ -67,6 +67,7 @@ textarea:focus {
     Set display flex
 */
 .root,
+.flex,
 .main-top,
 .main-top .main-top--title,
 .scroll-next--container,
@@ -79,6 +80,10 @@ textarea:focus {
 .licences .content .context .logos,
 .news .content,
 .side-menu .side-menu--items .link-icon,
+.article .list .item,
+.expand,
+.expand .circle,
+.wrapper .files > .file,
 footer,
 footer .footer-container,
 footer .footer-block,
@@ -103,6 +108,7 @@ footer .footer-block .company {
     Set flex flow : column nowrap
 */
 .root,
+.flex-col,
 .main-top .main-top--title,
 .info .number-list,
 .service,
@@ -146,7 +152,7 @@ footer .footer-container .container,
 
     & > .content {
         flex: 1 0 auto;
-        height: 100%;
+        min-height: 100vh;
     }
 }
 
@@ -193,6 +199,12 @@ footer .footer-container .container,
     padding: 86px 14.5%;
     padding-top: 43px;
 
+    .list {
+        .item {
+            margin-bottom: 118px;
+        }
+    }
+
     .text {
         
         p {
@@ -210,8 +222,29 @@ footer .footer-container .container,
             }
         }
 
+        img {
+            margin: 10px;
+            transition: all .3s ease;
+
+            &.left {
+                float: left;
+                clear: both;
+            }
+
+            &.right {
+                float: right;
+                clear: both;
+            }
+
+            &:hover {
+                &.left { box-shadow: 6px 7px 16px 0px rgba(0, 0, 0, 0.6); }
+                &.right { box-shadow: -6px 7px 16px 0px rgba(0, 0, 0, 0.6); }
+                transform: perspective(3px) translateZ(0.1px)
+            }
+        }
+
         ul {
-            margin: 0 0 12px;
+            margin: 0 0 16px;
 
             li {
                 position: relative;
@@ -226,10 +259,6 @@ footer .footer-container .container,
 
                 &:hover {
                     color: $titleColor;
-                    
-                    &:before {
-                        width: 5px;
-                    }
                 }
                 
                 &:before {
@@ -306,6 +335,10 @@ footer .footer-container .container,
 @import "../../app/components/pages/home/elements/licences/licences.scss";
 @import "../../app/components/pages/home/elements/news/news.scss";
 @import "../../app/components/pages/home/elements/feedback/feedback.scss";
+@import "../../app/components/pages/leaderships/leaderships.scss";
+@import "../../app/components/pages/documents/documents.scss";
+@import "../../app/components/pages/licences/licences.scss";
+@import "../../app/components/pages/news/news.scss";
 @import "../../app/components/blocks/header/header.scss";
 @import "../../app/components/blocks/blackout/blackout.scss";
 @import "../../app/components/blocks/sideMenu/sideMenu.scss";
