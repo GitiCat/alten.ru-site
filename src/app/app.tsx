@@ -32,7 +32,7 @@ const App : React.FunctionComponent = () => {
                 <MemodBlackoutBlock/>
                 <SideMenuPanel/>
                 <Switch>
-                    <Route exact path='/' component={HomeComponent}/>
+                    <Route path='/' exact component={HomeComponent}/>
                     <Route path='/history' component={HistoryComponent}/>
                     <Route path='/activity' component={ActivityComponent}/>
                     <Route exact path='/products' component={ProductsComponent}/>

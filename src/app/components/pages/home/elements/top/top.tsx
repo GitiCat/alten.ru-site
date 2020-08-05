@@ -28,7 +28,6 @@ const TopElement: React.FunctionComponent<any> = () => {
                     <ArrowDown />
                 </div>
             </div>
-            <Menu/>
         </div>
     )
 }

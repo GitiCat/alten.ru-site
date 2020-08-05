@@ -7,7 +7,7 @@ const NavLinkItem = (props: NavLinkProps) => {
         'nav-item': true,
         [props.className]: props.className != undefined
     });
-    return <NavLink activeClassName='current' className={itemClasses} to={props.to}>{props.children}</NavLink>
+    return <NavLink exact activeClassName='current' className={itemClasses} to={props.to}>{props.children}</NavLink>
 }
 
 export default NavLinkItem;

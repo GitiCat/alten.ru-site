@@ -1,5 +1,6 @@
 import React from 'react';
 import NavLinkItem from '../navLinkItem';
+import { withRouter } from 'react-router-dom';
 
 const Menu: React.FunctionComponent = () => {
     return (
@@ -31,4 +32,4 @@ const Menu: React.FunctionComponent = () => {
     )
 }
 
-export default Menu;
+export default withRouter(Menu);

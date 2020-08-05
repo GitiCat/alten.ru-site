@@ -8,10 +8,10 @@
             lang = 'ru_RU',
             load = '',
             onload = 'yandex_maps.onloadHandle'
+        
+        const script = document.createElement('script')
 
         setTimeout(() => {
-            const script = document.createElement('script')
-    
             script.async = true
             script.src = `https://api-maps.yandex.ru/2.1?apikey=${apikey}&mode=${mode}&load=${load}&lang=${lang}&onload=${onload}`
     
@@ -29,6 +29,11 @@
                 controls: [],
                 zoom: 15.5
             })
+
+            ymaps.destroy = () => {
+                document.body.removeChild(script)
+                map.destroy()
+            }
 
             ymaps.modules.require(['control.RoutePanel'], (RoutePanel) => {
                 ymaps.RoutePanel = RoutePanel
@@ -54,7 +59,6 @@
                 })
 
                 map.controls.add(routeControl)
-
             })
         })
     }
