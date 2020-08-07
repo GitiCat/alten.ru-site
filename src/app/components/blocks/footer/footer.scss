@@ -2,7 +2,7 @@ footer {
     flex: 0 0 auto;
     padding: 74px 14.5%;
     padding-bottom: 0;
-    background-color: #fbfbfb;
+    background-color: #212121;
 
     .footer-block {
         margin: 0 4%;
@@ -12,7 +12,7 @@ footer {
 
             font-family: 'Roboto-Medium', sans-serif;
             font-size: 16px;
-            color: $titleColor;
+            color: #e8e8e8;
             letter-spacing: .03em;
         }
 
@@ -43,7 +43,7 @@ footer {
         &:nth-child(4) {
             & > div {
                 margin: 0 0 6px;
-                color: $titleColor;
+                color: #e8e8e8;
                 letter-spacing: .03em;
             }
         }
@@ -52,7 +52,7 @@ footer {
             font-family: 'Roboto-Light', sans-serif;
             font-size: 14px;
             line-height: 1.4;
-            color: $textColor;
+            color: #c3c3c3;
             letter-spacing: .03em;
             margin: 0 0 6px;
 
@@ -75,7 +75,7 @@ footer {
                 font-size: 32px;
                 letter-spacing: .03em;
                 line-height: 1.4;
-                color: $titleColor;
+                color: #e8e8e8;
             }
 
             & > span {
@@ -83,7 +83,7 @@ footer {
                 font-size: 14px;
                 letter-spacing: .03em;
                 line-height: 1.4;
-                color: $textColor;
+                color: #c3c3c3;
             }
         }
     }

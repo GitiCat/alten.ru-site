@@ -1,5 +1,6 @@
 .container.feedback {
     padding-left: 0;
+    padding-bottom: 0;
     
     .block:first-child {
         flex: 2 0;
@@ -8,6 +9,8 @@
     .block:last-child {
         flex: 1 0;
         padding-left: 4.5%;
+        padding-top: 4.5%;
+        padding-bottom: 4.5%;
     }
 }
 

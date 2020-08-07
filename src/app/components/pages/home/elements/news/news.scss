@@ -13,6 +13,18 @@
 
         box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 
+        transition: all .3s ease;
+        
+        &:hover {
+            .image {
+                transform: scale(1.1);
+
+                &:before {
+                    background-color: rgba($color: $mainColorMiddle, $alpha: 0);
+                }
+            }
+        }
+
         .image {
             position: absolute;
             top: 0;
@@ -24,6 +36,12 @@
             background-size: cover;
             background-repeat: no-repeat;
 
+            -webkit-backface-visibility: hidden;
+            -moz-backface-visibility: hidden;
+            backface-visibility: hidden;
+
+            transition: transform .3s ease;
+
             &:before {
                 position: absolute;
                 content: "";
@@ -32,6 +50,8 @@
                 right: 0;
                 left: 0;
                 background-color: rgba($color: $mainColorMiddle, $alpha: .3);
+                
+                transition: all .3s ease;
             }
         }
 
