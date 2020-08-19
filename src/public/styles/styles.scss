@@ -157,40 +157,46 @@ footer .footer-container .container,
 }
 
 .container {
-    padding: 86px 14.5%;
+    padding: 116px 14.5%;
 }
 
 .container {
     position: relative;
     overflow: hidden;
 
-    .block, .title {
+    .block,
+    .title {
         z-index: 1;
     }
-    
+
     .block {
         flex: 1 0;
     }
 
     .title {
-        margin: 0 0 42px;
+        margin: 0 0 72px;
 
         h2 {
-            font-size: 42px;
-            letter-spacing: .03em;
+            font-size: 52px;
+            letter-spacing: 0.03em;
             color: $titleColor;
             margin: 0 0 6px;
         }
 
         span {
-            font-size: 14px;
-            letter-spacing: .03em;
+            font-size: 16px;
+            letter-spacing: 0.03em;
             color: $textColor;
         }
 
         &.white {
-            h2 { color: white; }
-            span { color: #f1f1f1; opacity: .8; }
+            h2 {
+                color: white;
+            }
+            span {
+                color: #f1f1f1;
+                opacity: 0.8;
+            }
         }
     }
 }
@@ -206,16 +212,15 @@ footer .footer-container .container,
     }
 
     .text {
-        
         p {
             font-size: 14px;
             color: #4f4f4f;
             line-height: 1.4;
             text-indent: 1.5em;
-            letter-spacing: .03em;
+            letter-spacing: 0.03em;
 
             margin: 0 0 6px;
-            transition: all .3s ease;
+            transition: all 0.3s ease;
 
             &:hover {
                 color: $titleColor;
@@ -224,7 +229,7 @@ footer .footer-container .container,
 
         img {
             margin: 10px;
-            transition: all .3s ease;
+            transition: all 0.3s ease;
 
             &.left {
                 float: left;
@@ -237,9 +242,13 @@ footer .footer-container .container,
             }
 
             &:hover {
-                &.left { box-shadow: 6px 7px 16px 0px rgba(0, 0, 0, 0.6); }
-                &.right { box-shadow: -6px 7px 16px 0px rgba(0, 0, 0, 0.6); }
-                transform: perspective(3px) translateZ(0.1px)
+                &.left {
+                    box-shadow: 6px 7px 16px 0px rgba(0, 0, 0, 0.6);
+                }
+                &.right {
+                    box-shadow: -6px 7px 16px 0px rgba(0, 0, 0, 0.6);
+                }
+                transform: perspective(3px) translateZ(0.1px);
             }
         }
 
@@ -252,15 +261,15 @@ footer .footer-container .container,
                 color: #4f4f4f;
                 line-height: 1.4;
                 padding-left: 3em;
-                letter-spacing: .03em;
+                letter-spacing: 0.03em;
 
                 margin: 0 0 6px;
-                transition: all .3s ease;
+                transition: all 0.3s ease;
 
                 &:hover {
                     color: $titleColor;
                 }
-                
+
                 &:before {
                     position: absolute;
                     content: "";
@@ -273,7 +282,7 @@ footer .footer-container .container,
                     width: 2px;
                     background-color: $mainColorMiddle;
 
-                    transition: all .3s ease;
+                    transition: all 0.3s ease;
                 }
             }
         }
@@ -284,15 +293,15 @@ footer .footer-container .container,
     display: block;
     width: auto;
     float: left;
-    padding: 8px 16px;
+    padding: 0.6rem 1.25rem;
 
     border: 0;
-    border-radius: 20px;
+    border-radius: 5px;
     background-color: $mainColorMiddle;
 
-    font-family: "Roboto-Light", sans-serif;
-    font-size: 12px;
-    letter-spacing: .03em;
+    font-family: "Roboto-Medium", sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.03em;
     text-transform: uppercase;
     color: white;
 
@@ -300,7 +309,7 @@ footer .footer-container .container,
 
     &:hover {
         background-color: $mainColorDark;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
     }
 }
 
@@ -317,15 +326,28 @@ footer .footer-container .container,
 
     font-family: "Roboto-Regular", sans-serif;
     font-size: 12px;
-    letter-spacing: .03em;
-    color: rgba($color: #fff, $alpha: .9);
+    letter-spacing: 0.03em;
+    color: rgba($color: #fff, $alpha: 0.9);
 
-    transition: all .3s ease;
+    transition: all 0.3s ease;
 
     &:hover {
         cursor: pointer;
         background-color: $mainColorLight;
     }
+}
+
+$bg-color: white;
+$dot-color: rgb(84, 58, 156);
+
+$dot-size: 2px;
+$dot-space: 22px;
+
+.dots-1 {
+    background: linear-gradient(90deg, $bg-color ($dot-space - $dot-size), transparent 1%) center,
+        linear-gradient($bg-color ($dot-space - $dot-size), transparent 1%) center, $dot-color;
+    background-size: $dot-space $dot-space;
+    z-index: -1;
 }
 
 @import "../../app/components/pages/home/elements/top/top.scss";
