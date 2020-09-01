@@ -26,7 +26,7 @@ const ProductElement: React.FunctionComponent = () => {
                 />
             </div>
             <div className="block">
-                <div className="title">
+                <div className="big-title">
                     <h2>Продукция</h2>
                     <span>Категории продукции, выпускаемой на предприятии</span>
                 </div>

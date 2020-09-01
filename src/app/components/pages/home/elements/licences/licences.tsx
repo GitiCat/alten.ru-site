@@ -23,7 +23,7 @@ const LicencesElement: React.FunctionComponent = () => {
     return (
         <div className="container licences">
             <div className="gerb-bg"></div>
-            <div className="title white">
+            <div className="big-title light">
                 <h2>Лицензии</h2>
                 <span>Документы, подтверждающие нашу деятельность</span>
             </div>

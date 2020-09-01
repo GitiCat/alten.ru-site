@@ -109,40 +109,6 @@
         }
     }
 
-    & .content .title {
-        position: relative;
-        margin: 0 0 26px;
-
-        &:after {
-            position: absolute;
-            content: "";
-            left: 0;
-            bottom: -15%;
-            width: 25%;
-            height: 1px;
-
-            background: linear-gradient(to right, #003fb2 0%, #3b69e5 35%, #7a96ff 50%, transparent 100%);
-        }
-
-        h2 {
-            font-size: 26px;
-            letter-spacing: .03em;
-            line-height: 1.4;
-            color: $titleColor;
-
-            margin: 0 0 6px;
-        }
-
-        span {
-            font-size: 16px;
-            letter-spacing: .03em;
-            line-height: 1.4;
-            color: #4f4f4f;
-
-            margin: 0 0 6px;
-        }
-    }
-
     & .content .text {
         max-width: 75%;
         margin: 0 0 26px;

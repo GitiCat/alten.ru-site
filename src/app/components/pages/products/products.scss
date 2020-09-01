@@ -1,0 +1,109 @@
+.products-category-block {
+    margin: 0 0 42px;
+
+    .middle-title > span p {
+        font-size: 16px;
+        letter-spacing: .03em;
+        line-height: 1.4;
+        color: $textColor;
+    }
+
+    .products-list-item {
+        position: relative;
+        margin: 5px !important;
+        flex: 1 0;
+        max-width: 300px;
+        min-width: 300px;
+        height: 300px;
+        box-shadow: 0 3px 6px rgba($color: #000000, $alpha: .16), 0 3px 6px rgba($color: #000000, $alpha: .22);
+    
+        transition: all .3s ease !important;
+        overflow: hidden;
+    
+        &:hover {
+            box-shadow: 0 14px 28px rgba($color: #000000, $alpha: .26), 0 10px 10px rgba($color: #000000, $alpha: .22);
+            transform: perspective(10px) translateZ(.1px);
+            z-index: 2;
+
+            .block-title h3 {
+                transform: scale(1.05) translateX(10px);
+            }
+
+            .block-title svg rect {
+                fill: rgba($color: $mainColorMiddle, $alpha: .15);
+                stroke-dashoffset: 20px;
+                opacity: 1;
+            }
+
+            .block-title svg path {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    
+        .block-title {
+            position: relative;
+            justify-content: space-between;
+            align-items: center;
+            bottom: 0;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            margin: 0 !important;
+            padding: 25px 15px;
+
+            box-shadow: 0 3px 6px rgba($color: #000000, $alpha: 1);
+    
+            h3 { 
+                position: relative;
+                margin: 0 !important;
+                line-height: 1.4;
+                transition: transform .3s ease;
+            }
+
+            svg {
+                position: relative;
+                fill: none;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                justify-content: center;
+                align-items: center;
+
+                rect {
+                    stroke: $mainColorMiddle;
+                    stroke-width: 3px;
+                    width: 40px;
+                    height: 40px;
+                    stroke-dasharray: 150px 135px;
+                    stroke-dashoffset: 160;
+                    opacity: 0;
+
+                    transition: stroke-dashoffset .5s ease, fill .5s ease, opacity .65s ease;
+                }
+
+                path {
+                    stroke: $mainColorMiddle;
+                    stroke-width: 2px;
+                    transform: translateX(-100%);
+                    opacity: 0;
+
+                    transition: transform .4s ease-in-out, opacity .5s ease;
+
+                    &#path2 {
+                        transition-delay: .15s;
+                    }
+                }
+            }
+        }
+
+        .img {
+            position: relative;
+            display: block;
+            background-position: center bottom;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}

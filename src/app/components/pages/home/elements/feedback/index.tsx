@@ -9,7 +9,7 @@ const FeedbackElement: React.FunctionComponent = () => {
                 <YandexMapBlock/>
             </div>
             <div className="block">
-                <div className="title">
+                <div className="big-title">
                     <h2>Обратная связь</h2>
                     <span>Есть вопросы? Свяжитесь с нами!</span>
                 </div>

@@ -79,12 +79,12 @@ module.exports = {
 
         proxy: {
             '/api_v0/': {
-                target: 'http://localhost:8000',
+                target: 'http://192.168.0.173:8000',
                 secure: false,
                 changeOrigin: true
             },
             '/media/': {
-                target: 'http://localhost:8000',
+                target: 'http://192.168.0.173:8000',
                 secure: false,
                 changeOrigin: true
             }

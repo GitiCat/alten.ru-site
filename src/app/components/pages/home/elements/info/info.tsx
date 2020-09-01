@@ -29,7 +29,7 @@ const InfoElement: React.FunctionComponent<any> = () => {
                 </ul>
             </div>
             <div className="block">
-                <div className="title">
+                <div className="big-title">
                     <h2>Кто мы?</h2>
                     <span>Коротко о том, что Вам нужно знать</span>
                 </div>

@@ -81,6 +81,10 @@ textarea:focus {
 .news .content,
 .side-menu .side-menu--items .link-icon,
 .article .list .item,
+.products-list-item,
+.products-list-item .block-title svg,
+.product-display,
+.product-display > .preview-list > .preview-list-item > label,
 .expand,
 .expand .circle,
 .wrapper .files > .file,
@@ -88,11 +92,11 @@ footer,
 footer .footer-container,
 footer .footer-block,
 footer .footer-block .company {
-    display: -webkit-box;
-    display: -moz-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
+    display: -webkit-box !important;
+    display: -moz-box !important;
+    display: -webkit-flex !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
 }
 
 .products .element .context,
@@ -102,6 +106,10 @@ footer .footer-block .company {
     display: -webkit-inline-flex;
     display: -ms-inline-flexbox;
     display: inline-flex;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
 }
 
 /*
@@ -117,6 +125,7 @@ footer .footer-block .company {
 .licences,
 .licences .content .context .logos,
 .news .content,
+.products-list-item,
 footer,
 footer .footer-block,
 footer .footer-block .company {
@@ -289,6 +298,111 @@ footer .footer-container .container,
     }
 }
 
+.block-title {
+    display: block;
+    margin: 0 0 12px;
+    z-index: 1;
+
+    & > h3 { color: $titleColor; }
+    & > span { color: $textColor; }
+
+    &.light {
+        & > h3 { color: #fff; }
+        & > span { color: #e8e8e8; }
+    }
+
+    & > h3, & > span {
+        letter-spacing: .03em;
+        line-height: 1.4;
+    }
+
+    & > h3 {
+        font-family: 'Roboto-Medium', sans-serif;
+        font-size: 16px;
+        margin: 0 0 7px
+    }
+
+    & > span {
+        font-family: inherit;
+        font-size: 14px;
+    }
+}
+
+.big-title {
+    display: block;
+    margin: 0 0 42px;
+    z-index: 1;
+
+    & > h2 { color: $titleColor }
+    & > span { color: $textColor }
+
+    &.light {
+        & > h2 { color: #fff }
+        & > span { color: #e8e8e8}
+    }
+
+    & > h2, & > span {
+        letter-spacing: .03em;
+        line-height: 1.4;
+    }
+
+    & > h2 {
+        font-family: 'Roboto-Medium', sans-serif;
+        font-size: 48px;
+        margin: 0 0 12px;
+    }
+
+    & > span {
+        font-family: inherit;
+        font-size: 16px;
+    }
+}
+
+.middle-title {
+    position: relative;
+    display: block;
+    max-width: 75%;
+    margin: 0 0 22px;
+    z-index: 1;
+
+    & > h3 { color: $titleColor; }
+    & > span { color: $textColor; }
+
+    &.hr {
+        &:after {
+            position: absolute;
+            content: "";
+            left: 0;
+            bottom: -10px;
+            width: 35%;
+            height: 1px;
+
+            background: linear-gradient(to right, #003fb2 0%, #3b69e5 35%, #7a96ff 50%, transparent 100%);
+        }
+    }
+
+    &.light {
+        & > h3 { color: #fff; }
+        & > span { color: #e8e8e8; }
+    }
+
+    & > h3, & > span {
+        letter-spacing: .03em;
+        line-height: 1.4;
+    }
+
+    & > h3 {
+        font-family: 'Roboto-Medium', sans-serif;
+        font-size: 32px;
+        margin: 0 0 7px;
+    }
+
+    & > span {
+        font-family: inherit;
+        font-size: 16px;
+    }
+}
+
 .light-link-1 {
     display: block;
     width: auto;
@@ -337,17 +451,17 @@ footer .footer-container .container,
     }
 }
 
-$bg-color: white;
-$dot-color: rgb(84, 58, 156);
-
-$dot-size: 2px;
-$dot-space: 22px;
-
-.dots-1 {
-    background: linear-gradient(90deg, $bg-color ($dot-space - $dot-size), transparent 1%) center,
-        linear-gradient($bg-color ($dot-space - $dot-size), transparent 1%) center, $dot-color;
-    background-size: $dot-space $dot-space;
-    z-index: -1;
+.no-image {
+    position: relative;
+    display: block;
+    background-image: url('/images/no-photo.png');
+    background-repeat: no-repeat;
+    background-position: center !important;
+    background-size: contain !important;
+    width: 100%;
+    height: 100%;
+    transform: scale(.75) !important;
+    opacity: .35;
 }
 
 @import "../../app/components/pages/home/elements/top/top.scss";
@@ -361,6 +475,9 @@ $dot-space: 22px;
 @import "../../app/components/pages/documents/documents.scss";
 @import "../../app/components/pages/licences/licences.scss";
 @import "../../app/components/pages/news/news.scss";
+@import "../../app/components/pages/products/products.scss";
+@import "../../app/components/pages/products-selected/product-selected.scss";
+@import "../../app/components/blocks/entry-content/entry-content.scss";
 @import "../../app/components/blocks/header/header.scss";
 @import "../../app/components/blocks/blackout/blackout.scss";
 @import "../../app/components/blocks/sideMenu/sideMenu.scss";

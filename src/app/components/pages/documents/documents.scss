@@ -6,36 +6,6 @@
         display: block;
         margin-bottom: 72px;
 
-        & > .title {
-            position: relative;
-            display: block;
-            margin: 0 0 42px;
-
-            h2 {
-                font-size: 26px;
-                letter-spacing: .03em;
-                line-height: 1.4;
-                color: $titleColor;
-            }
-
-            span {
-                font-size: 16px;
-                letter-spacing: .03em;
-                line-height: 1.4;
-                color: #4f4f4f
-            }
-
-            &:after {
-                position: absolute;
-                content: "";
-                left: 0;
-                bottom: -15%;
-                width: 25%;
-                height: 1px;
-                background: linear-gradient(to right, #003fb2 0%, #3b69e5 35%, #7a96ff 50%, transparent 100%);
-            }
-        }
-
         & > .wrapper-list-item {
             position: relative;
             display: block;

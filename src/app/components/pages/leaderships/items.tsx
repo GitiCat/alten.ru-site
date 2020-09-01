@@ -59,8 +59,8 @@ const LeadershipsItem: React.FunctionComponent<LeadershipsItemTypes> = (props) =
                 </picture>
             </div>
             <div className="content">
-                <div className="title">
-                    <h2>{props.title}</h2>
+                <div className="middle-title">
+                    <h3>{props.title}</h3>
                     <span>{props.subtitle}</span>
                 </div>
                 <div className="text" dangerouslySetInnerHTML={{__html: props.text}}/>

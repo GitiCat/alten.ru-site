@@ -1,6 +1,5 @@
 import React, { useEffect, useReducer } from 'react'
 import Header from '../../blocks/header/header'
-import cn from 'classnames'
 import { getAsyncData } from '../../../utils/async-get-data'
 import { asyncDataReducer ,initialState } from '../../../utils/async-data-states/reducer'
 import { FETCHED, ERROR } from '../../../utils/async-data-states/types'
@@ -27,21 +26,12 @@ const ProductsComponent: React.FunctionComponent = () => {
                     <div className="article">
                         {
                             state.data.map((item: {}, index: number) => {
-                                var is_revers: boolean = false
-
-                                if(index % 2) is_revers = true
-                                
-                                var classes = cn({
-                                    'title': true,
-                                    'revers': is_revers
-                                })
-
                                 return (
                                     <CategoryProductBlock key={index}
+                                        id={item['id']}
                                         title={item['title']}
                                         descriptor={item['descriptor']}
                                         items={item['items']}
-                                        titleClasses={classes}
                                     />
                                 )
                             })

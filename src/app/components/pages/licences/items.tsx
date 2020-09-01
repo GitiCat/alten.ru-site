@@ -20,8 +20,8 @@ const LicencesItem: React.FunctionComponent<LicenceseItemTypes> = (props) => {
                 </picture>
             </div>
             <div className="content">
-                <div className="title">
-                    <h2>{props.title}</h2>
+                <div className="middle-title hr">
+                    <h3>{props.title}</h3>
                     <span>{props.subtitle}</span>
                 </div>
                 <div className='text nohide' dangerouslySetInnerHTML={{__html: props.text}}/>

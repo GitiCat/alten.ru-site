@@ -1,0 +1,57 @@
+.product-display > .preview-list {
+    
+    & > .preview-list-item {
+        width: 215px;
+        height: 115px;
+        margin: 0 0 12px;
+        box-shadow: 0 3px 6px rgba($color: #000000, $alpha: .25), 0 6px 9px rgba($color: #000000, $alpha: .45);
+        
+        & > input[type='radio'] {
+            display: none;
+        }
+
+        & > label {
+            position: relative;
+            display: block;
+            width: inherit;
+            height: inherit;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+
+            &:before {
+                position: absolute;
+                content: '';
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, $mainColorDark 0%, $mainColorDark 35%, $mainColorMiddle 75%, $mainColorMiddle 100%);
+                opacity: .7;
+                z-index: 0;
+            }
+
+            .block-title {
+                position: relative;
+                display: block;
+                margin: 0;
+                margin-right: 75px;
+                margin-block: 25px;
+                line-height: 0;
+            }
+
+            & > .img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center 60%;
+                z-index: -1;
+            }
+        }
+    }
+}

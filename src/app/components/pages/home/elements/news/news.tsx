@@ -32,7 +32,7 @@ const NewsElement: React.FunctionComponent<NewsStateTypes> = ( {data = null, rea
 
     return (
         <div className="container news">
-            <div className="title">
+            <div className="big-title">
                 <h2>Новости</h2>
                 <span>Свежие новости космической отрасли и деятельности предприятия</span>
             </div>

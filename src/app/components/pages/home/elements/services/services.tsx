@@ -9,7 +9,7 @@ import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
 const ServicesElement: React.FunctionComponent<any> = () => {
     return (
         <div className="container service">
-            <div className="title white">
+            <div className="big-title light">
                 <h2>Услуги</h2>
                 <span>Предприятие предоставляет все необходимые услуги нашим клиентам по выпускаемой продукции</span>
             </div>
