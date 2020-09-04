@@ -1,43 +1,43 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 type ProductBlockTypes = {
     title: string,
     image: string,
-    url: string
+    url: string,
+    params: string
 };
 
 const imageUrl = (imageName: string) => {
     return `/images/${imageName}`;
 };
 
-const redirect = (url: string) => {
-    
-}
-
-const onMouseEnterHandle = (e: React.MouseEvent<HTMLDivElement>) => {
-    document.querySelectorAll('.container.products .element').forEach((item: HTMLDivElement) => {
+const onMouseEnterHandle = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    document.querySelectorAll('.container.products .element').forEach((item: HTMLAnchorElement) => {
         if(item != e.currentTarget)
             item.classList.add('opacity')
     })
 }
 
-const onMouseLeaveHandle = (e: React.MouseEvent<HTMLDivElement>) => {
-    document.querySelectorAll('.container.products .element').forEach((item: HTMLDivElement) => {
+const onMouseLeaveHandle = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    document.querySelectorAll('.container.products .element').forEach((item: HTMLAnchorElement) => {
         item.classList.remove('opacity')
     })
 }
 
 const ProductBlock: React.FunctionComponent<ProductBlockTypes> = (props) => {
     return (
-        <div className="element" 
+        <Link to={{
+            pathname: props.url,
+            search: props.params
+        }} className="element" 
             onMouseEnter={onMouseEnterHandle}
-            onMouseLeave={onMouseLeaveHandle}
-            onClick={(e) => redirect(props.url)}>
+            onMouseLeave={onMouseLeaveHandle}>
             <div className="bg" style={{ backgroundImage: `url(${imageUrl(props.image)})` }}></div>
             <div className="title">
                 <span>{props.title}</span>
             </div>
-        </div>
+        </Link>
     );
 };
 

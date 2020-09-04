@@ -12,17 +12,20 @@ const ProductElement: React.FunctionComponent = () => {
                         title="Первичные источники тока"
                         image="300.jpg"
                         url="/products/primary-current-sources"
+                        params="?category=3&product=0"
                     />
                     <ProductBlock
                         title="Литий-ионные аккумуляторы"
                         image="lion.jpg"
                         url="/products/rechargeable-batteries"
+                        params="?category=2&product=0"
                     />
                 </div>
                 <ProductBlock
                     title="Зарядно/разрядные устройства"
                     image="zru.jpg"
                     url="/products/zru"
+                    params="?category=1&product=0"
                 />
             </div>
             <div className="block">

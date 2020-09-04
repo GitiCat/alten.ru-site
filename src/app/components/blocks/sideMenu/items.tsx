@@ -29,9 +29,18 @@ const SideMenuItems: React.FunctionComponent = () => {
                     <Products/>
                 </div>
                 <div className="sub">
-                    <NavLinkItem to='/products/rechargeable-batteries'>Литий-йонные аккмуляторы</NavLinkItem>
-                    <NavLinkItem to='/products/primary-current-sources'>Первичные источники тока</NavLinkItem>
-                    <NavLinkItem to='/products/zru'>Зарядно - разрядные устройства</NavLinkItem>
+                    <NavLinkItem to={{
+                        pathname: '/products/primary-current-sources',
+                        search: '?category=3&product=0'
+                    }}>Первичные источники тока</NavLinkItem>
+                    <NavLinkItem to={{
+                        pathname: '/products/rechargeable-batteries',
+                        search: '?category=2&product=0'
+                    }}>Литий-йонные аккмуляторы</NavLinkItem>
+                    <NavLinkItem to={{
+                        pathname: '/products/zru',
+                        search: '?category=1&product=0'
+                    }}>Зарядно - разрядные устройства</NavLinkItem>
                 </div>
             </div>
             <div className="category">

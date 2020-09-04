@@ -1,13 +1,49 @@
 .product-display > .preview-list {
+    padding: 0 7px;
+    margin-right: 5%;
+    height: 75vh;
+    min-width: 235px;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar-track {
+        background-color: rgba(0, 0, 0, 0.12);
+    }
+    
+    &::-webkit-scrollbar {
+        width: 3px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        border-radius: 15px;
+        background-color: $titleColor;
+    }
     
     & > .preview-list-item {
         width: 215px;
         height: 115px;
         margin: 0 0 12px;
-        box-shadow: 0 3px 6px rgba($color: #000000, $alpha: .25), 0 6px 9px rgba($color: #000000, $alpha: .45);
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.22);
+        transition: box-shadow .3s ease, transform .3s ease;
+
+        &:hover {
+            box-shadow: 0 0 0 rgba($color: #000000, $alpha: .0), 0 0 0 rgba($color: #000000, $alpha: .0);;
+            transform: translateX(-5px) translateY(-2px);
+        }
         
         & > input[type='radio'] {
             display: none;
+        }
+
+        & > input[type='radio']:checked {
+            + label:before {
+                background: $mainColorDark !important;
+                opacity: .8;
+            }
+            
+            + label .block-title {
+                margin: 0;
+                transform: scale(1.2);
+            }
         }
 
         & > label {
@@ -29,6 +65,8 @@
                 background: linear-gradient(90deg, $mainColorDark 0%, $mainColorDark 35%, $mainColorMiddle 75%, $mainColorMiddle 100%);
                 opacity: .7;
                 z-index: 0;
+
+                transition: opacity .3s ease;
             }
 
             .block-title {
@@ -36,8 +74,10 @@
                 display: block;
                 margin: 0;
                 margin-right: 75px;
-                margin-block: 25px;
+                margin-bottom: 25px;
                 line-height: 0;
+
+                transition: margin .3s ease, transform .4s ease;
             }
 
             & > .img {
@@ -52,6 +92,85 @@
                 background-position: center 60%;
                 z-index: -1;
             }
+        }
+    }
+}
+
+.product-display > .display {
+    width: 100%;
+
+    & > .content {
+        & > .descriptor {
+            flex: 2 0;
+            margin-right: 16px;
+
+            & > .text {
+                margin: 0 0 22px;
+
+                p {
+                    text-indent: 0;
+                }
+            }
+        }
+
+        .features {
+            position: relative;
+            display: block;
+            margin: 0 0 22px;
+            box-shadow: 0 1px 3px 0 rgba(0,0,0,.12), 0 1px 2px 0 rgba(0,0,0,.24);
+
+            table {
+                width: 100%;
+                max-width: 100%;
+                background-color: #fff;
+
+                & > thead,
+                & > tbody {
+                    & > tr > td {
+                        text-align: left;
+                        padding: 1.2rem;
+                        vertical-align: top;
+                        border-top: 0;
+                    }
+                }
+
+                & > thead > tr > td {
+                    font-size: 14px;
+                    color: $titleColor;
+                    line-height: 1.4;
+                    letter-spacing: .03em;
+                    vertical-align: bottom;
+                    border-bottom: 1px solid rgba(0,0,0,.12);
+                }
+
+                & > tbody > tr > td,
+                & > tbody > tr > td > ol,
+                & > tbody > tr > td > ul {
+                    font-family: 'Roboto-Light', sans-serif;
+                    font-size: 14px;
+                    color: $titleColor;
+                    line-height: 1.4;
+                    letter-spacing: .03em;
+                }
+
+                & > tbody > tr > td > ol,
+                & > tbody > tr > td > ul {
+                    margin-left: 15px;
+                }
+
+                & > tbody > tr > td:first-child {
+                    width: 65%;
+                }
+            }
+        }
+
+        & > picture {
+            flex: 1 0;
+        }
+
+        .no-image {
+            width: auto !important;
+            background-image: none;
         }
     }
 }

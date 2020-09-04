@@ -1,8 +1,21 @@
-import React, { ReactText } from 'react'
+import React, { ReactText, ReactComponentElement } from 'react'
 import cn from 'classnames'
 
-type ProductSelectedPreviewListTypes = {
-    items: [string, ReactText]
+interface ProductSelectedPreviewListTypes {
+    items: [string, ReactText],
+    changeState: Function,
+    history
+}
+
+const inputChangeHandle = (func: Function, index: number, history) => {    
+    let params: Array<string> = [];
+    window.location.search.substr(0).split('&').forEach(p => params.push(p.replace('?', '')));
+
+    let product = params[1];
+    product = product.replace(product.substr(product.indexOf('=') + 1, product.length), index.toString());
+    
+    history.push({ search: `?${params[0]}&${product}` })
+    func(index);
 }
 
 const ProductSelectedPreviewList
@@ -12,7 +25,6 @@ const ProductSelectedPreviewList
             {
                 props.items.map((item: {}, index: number) => {
                     const image = item['main_image']
-                    console.log(item);
                     
                     const imgClasses = cn({
                         'img': true,
@@ -21,7 +33,8 @@ const ProductSelectedPreviewList
                     
                     return (
                         <div key={index} className="preview-list-item">
-                            <input type="radio" name="product-preview-list-item" id={`preview-list-item-${index}`}/>
+                            <input type="radio" name="product-preview-list-item" id={`preview-list-item-${index}`}
+                            onChange={e => inputChangeHandle(props.changeState, index, props.history)}/>
                             <label htmlFor={`preview-list-item-${index}`}>
                                 <div className="block-title light">
                                     <h3>{item['title']}</h3>

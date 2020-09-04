@@ -7,7 +7,6 @@ import {
 import { createBrowserHistory } from 'history';
 import SideMenuPanel from './components/blocks/sideMenu/panel';
 import { MemodBlackoutBlock } from './components/blocks/blackout/blackout';
-import { ProductProvider, ProductContextDefaultValues } from './context/product-context'
 
 const history = createBrowserHistory();
 
@@ -36,12 +35,10 @@ const App : React.FunctionComponent = () => {
                     <Route path='/' exact component={HomeComponent}/>
                     <Route path='/history' component={HistoryComponent}/>
                     <Route path='/activity' component={ActivityComponent}/>
-                    <ProductProvider value={ProductContextDefaultValues}>
-                        <Route exact path='/products' component={ProductsComponent}/>
-                        <Route path='/products/rechargeable-batteries' component={ProductsSelected}/>
-                        <Route path='/products/primary-current-sources' component={ProductsSelected}/>
-                        <Route path='/products/zru' component={ProductsSelected}/>
-                    </ProductProvider>
+                    <Route exact path='/products' component={ProductsComponent}/>
+                    <Route path='/products/rechargeable-batteries' component={ProductsSelected}/>
+                    <Route path='/products/primary-current-sources' component={ProductsSelected}/>
+                    <Route path='/products/zru' component={ProductsSelected}/>
                     <Route exact path='/company' component={CompanyComponent}/>
                     <Route path='/company/leaderships' component={LeadershipsComponent}/>
                     <Route path='/company/publications' component={PublicationsComponent}/>
