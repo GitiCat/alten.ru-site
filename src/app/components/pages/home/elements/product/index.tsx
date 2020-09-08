@@ -5,8 +5,8 @@ import ProductBlock from "./element";
 
 const ProductElement: React.FunctionComponent = () => {
     return (
-        <div className="container products">
-            <div className="block">
+        <section className="container section-product flex">
+            <div className="flex-block-1">
                 <div className="flex row">
                     <ProductBlock
                         title="Первичные источники тока"
@@ -28,22 +28,22 @@ const ProductElement: React.FunctionComponent = () => {
                     params="?category=1&product=0"
                 />
             </div>
-            <div className="block">
-                <div className="big-title">
+            <div className="flex-block-1">
+                <header>
                     <h2>Продукция</h2>
-                    <span>Категории продукции, выпускаемой на предприятии</span>
-                </div>
-                <div className="descriptor">
+                    <p>Категории продукции, выпускаемой на предприятии</p>
+                </header>
+                <article className="descriptor">
                     <p>
                         АО «НПК «АЛЬТЭН» располагает необходимым научным и 
                         практическим опытом в области разработки, производства и 
                         эксплуатации современных первичных и вторичных химических источников тока и 
                         электрохимических энергоустановок.
                     </p>
-                </div>
-                <Link className="light-link-1" to='/products'>Показать</Link>
+                </article>
+                <Link className="_contained dark" to='/products'>Перейти</Link>
             </div>
-        </div>
+        </section>
     );
 };
 

@@ -1,76 +1,46 @@
-.container.info {
-    .number-list {
-        li {
-            overflow: hidden;
-            align-items: center;
-            margin-bottom: 42px;
+.number-list {
+    li {
+        overflow: hidden;
+        align-items: center;
+        margin-bottom: 36px;
 
-            span:first-child {
-                position: relative;
-                font-family: 'Roboto-Light';
-                font-size: 42px;
-                letter-spacing: .03em;
-                color: $titleColor;
-                margin-right: 36px;
-
-                &:after {
-                    position: absolute;
-                    content: '';
-                    left: -13px;
-                    bottom: 2px;
-                    width: 45px;
-                    height: 45px;
-
-                    border-radius: 50%;
-                    border-right-width: 2px;
-                    border-right-style: dotted;
-                    border-color: $mainColorDark;
-
-                    transform: rotateZ(45deg);
-                }
-            }
-
-            span:last-child {
-                font-size: 14px;
-                color: $textColor;
-                letter-spacing: .03em;
-                line-height: 1.3em;
-                padding-top: 3px;
-            }
-        }
-    }
-
-    .block:last-child {
-        padding: 0 14.5%;
-    }
-
-    .title {
-        margin-bottom: 42px;
-
-        h2 {
-            font-size: 42px;
-            letter-spacing: .03em;
-            line-height: 1.4;
+        span:first-child {
+            position: relative;
+            font-family: 'Roboto-Light', sans-serif;
+            font-size: 36px;
             color: $titleColor;
-            margin: 0 0 6px;
+            margin-right: 36px;
+
+            &:after {
+                position: absolute;
+                content: '';
+                left: -12px;
+                bottom: 3px;
+                width: 45px;
+                height: 45px;
+
+                border-radius: 50%;
+                border-right-width: 2px;
+                border-right-style: dotted;
+                border-color: $mainColorDark;
+
+                transform: rotateZ(36deg);
+            }
         }
 
-        span {
-            font-size: 14px;
-            letter-spacing: .03em;
-            line-height: 1.4;
+        span:last-child {
+            font-family: inherit;
+            font-size: 1rem;
+            line-height: inherit;
+            letter-spacing: 0;
+            text-decoration: none;
+            text-transform: none;
             color: $textColor;
+            padding-top: 7px;
         }
     }
+}
 
-    .descriptor {
-        margin-bottom: 42px;
-        p {
-            font-size: 14px;
-            letter-spacing: .03em;
-            line-height: 1.5em;
-            color: $textColor;
-            margin: 0 0 6px;
-        }
-    }
+.block:last-child {
+    padding: 0 14.5%;
 }

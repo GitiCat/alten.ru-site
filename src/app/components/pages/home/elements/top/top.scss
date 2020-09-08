@@ -44,21 +44,11 @@
         align-self: center;
         padding-left: 14.5%;
 
-        & > span {
-            width: 100%;
-            font-family: "Roboto-Medium", sans-serif;
-            font-size: 32px;
-            letter-spacing: 0.03em;
-            line-height: 1.5em;
-            color: white;
-            white-space: nowrap;
-
-            &:last-child {
-                font-family: "Roboto-Redular", sans-serif;
-                font-size: 16px;
-                margin: 16px 0 0;
-                color: #dcdcdc;
-            }
+        & > h4 {
+            font-family: "Roboto-Redular", sans-serif;
+            font-size: 16px;
+            margin: 16px 0 0;
+            color: #dcdcdc;
         }
 
         & > hr {

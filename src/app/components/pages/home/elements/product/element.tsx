@@ -13,14 +13,14 @@ const imageUrl = (imageName: string) => {
 };
 
 const onMouseEnterHandle = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    document.querySelectorAll('.container.products .element').forEach((item: HTMLAnchorElement) => {
+    document.querySelectorAll('.section-product .element').forEach((item: HTMLAnchorElement) => {
         if(item != e.currentTarget)
             item.classList.add('opacity')
     })
 }
 
 const onMouseLeaveHandle = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    document.querySelectorAll('.container.products .element').forEach((item: HTMLAnchorElement) => {
+    document.querySelectorAll('.section-product .element').forEach((item: HTMLAnchorElement) => {
         item.classList.remove('opacity')
     })
 }

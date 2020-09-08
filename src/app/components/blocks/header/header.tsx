@@ -13,12 +13,12 @@ const HeaderBlock: React.FunctionComponent<HeaderTypes> = (props) => {
                 <div className="image" style={{backgroundImage: `url(${props.image_url})`}}/>
             }
             <div className="container">
-                <div className="title">
-                    <h2>{props.title}</h2>
+                <header className="title">
+                    <h1>{props.title}</h1>
                     {props.subtitle != undefined &&
-                        <span>{props.subtitle}</span>
+                        <p>{props.subtitle}</p>
                     }
-                </div>
+                </header>
             </div>
         </header>
     )

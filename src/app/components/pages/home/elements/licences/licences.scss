@@ -20,8 +20,8 @@
         opacity: .3;
     }
 
-    .block:last-child {
-        flex: 2 0;
+    header, .content {
+        z-index: 1;
     }
 
     .context > .logos > .logo {
@@ -37,12 +37,8 @@
 
     .context > .text {
         p {
-            font-size: 14px;
-            color: white;
-            letter-spacing: .03em;
-            line-height: 1.4em;
-
-            margin-bottom: 42px;
+            color: #fafafa;
+            margin-bottom: 22px;
         }
     }
 

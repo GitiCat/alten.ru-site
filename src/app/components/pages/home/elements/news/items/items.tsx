@@ -16,14 +16,14 @@ const NewsItem: React.FunctionComponent<NewsItemTypes> = (props) => {
             <div className="image" style={{ backgroundImage: 'url(' + props.mainImage + ')' }}></div>
             <div className="context">
                 <div className="date">{props.createdAt}</div>
-                <div className="i-title">
-                    <h2>{props.title}</h2>
+                <header className="card-header">
+                    <h4>{props.title}</h4>
                     {props.subtitle != null &&
                         <span>{props.subtitle}</span>
                     }
-                </div>
-                <div className="text" dangerouslySetInnerHTML = {{__html: props.text}}></div>
-                <Link to={`/news/${props.id}`} className='list-item-link-1'>Перейти</Link>
+                </header>
+                <div className="text card-descriptor" dangerouslySetInnerHTML = {{__html: props.text}}></div>
+                <Link to={`/news/${props.id}`} className='_action'>Показать</Link>
             </div>
         </div>
     )

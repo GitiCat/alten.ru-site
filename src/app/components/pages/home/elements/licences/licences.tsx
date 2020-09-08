@@ -21,16 +21,16 @@ const LicencesElement: React.FunctionComponent = () => {
     const licenceUrl = getImageUrl("/images/licences");
 
     return (
-        <div className="container licences">
+        <section className="container licences flex flex-dir-col">
             <div className="gerb-bg"></div>
-            <div className="big-title light">
+            <header className="light">
                 <h2>Лицензии</h2>
-                <span>Документы, подтверждающие нашу деятельность</span>
-            </div>
-            <div className="content">
-                <div className="block">
-                    <div className="context">
-                        <div className="logos">
+                <p>Документы, подтверждающие нашу деятельность</p>
+            </header>
+            <div className="content flex">
+                <div className="flex-block-1">
+                    <div className="context flex">
+                        <div className="logos flex flex-dir-col">
                             <div
                                 className="logo"
                                 style={getStyle(logoUrl("ross_logo.png"))}
@@ -52,14 +52,14 @@ const LicencesElement: React.FunctionComponent = () => {
                             </p>
                             <Link
                                 to="/company/licences"
-                                className="light-link-1"
+                                className="_outlined light"
                             >
                                 Перейти
                             </Link>
                         </div>
                     </div>
                 </div>
-                <div className="block">
+                <div className="flex-block-2">
                     <div className="licences-images">
                         <div
                             className="licence-image image-1"
@@ -80,7 +80,7 @@ const LicencesElement: React.FunctionComponent = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 

@@ -31,30 +31,29 @@ const NewsElement: React.FunctionComponent<NewsStateTypes> = ( {data = null, rea
     }, [])
 
     return (
-        <div className="container news">
-            <div className="big-title">
+        <section className="container news">
+            <header>
                 <h2>Новости</h2>
-                <span>Свежие новости космической отрасли и деятельности предприятия</span>
-            </div>
-            <div className="content">
-                <Link to='/news' className="light-link-1" style={{alignSelf: 'flex-start'}}>Показать все новости</Link>
-
-                <div className="h-list">
+                <p>Свежие новости космической отрасли и деятельности предприятия</p>
+            </header>
+            <div className="content flex flex-dir-col">
+                <Link to='/news' className="_contained dark" style={{alignSelf: 'flex-start'}}>Показать все новости</Link>
+                <div className="h-list flex">
                     {isReady &&
                         apiData.slice(0, 4).map((item, index) => {
                             return <NewsItem key={index}
-                                id = {item['id']}
-                                title = {item['name']}
-                                subtitle = {item['subtitle']}
-                                text = {item['text']}
-                                mainImage = {item['main_image']}
-                                createdAt = {item['create_at']}
+                            id = {item['id']}
+                            title = {item['name']}
+                            subtitle = {item['subtitle']}
+                            text = {item['text']}
+                            mainImage = {item['main_image']}
+                            createdAt = {item['create_at']}
                             />
                         })
                     }
                 </div>
             </div>
-        </div>
+        </section>
     )
 }
 

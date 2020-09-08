@@ -11,20 +11,20 @@ import News from '@material-ui/icons/AnnouncementRounded'
 const SideMenuItems: React.FunctionComponent = () => {
     return (
         <div className="side-menu--items">
-            <div className="link-icon">
+            <div className="link-icon flex">
                 <NavLinkItem to='/'>Главная</NavLinkItem>
                 <Home/>
             </div>
-            <div className="link-icon">
+            <div className="link-icon flex">
                 <NavLinkItem to='/history'>История</NavLinkItem>
                 <History/>
             </div>
-            <div className="link-icon">
+            <div className="link-icon flex">
                 <NavLinkItem to='/activity'>Производство</NavLinkItem>
                 <Activity/>
             </div>
             <div className="category">
-                <div className="link-icon">
+                <div className="link-icon flex">
                     <NavLinkItem to='/products'>Продукция</NavLinkItem>
                     <Products/>
                 </div>
@@ -44,7 +44,7 @@ const SideMenuItems: React.FunctionComponent = () => {
                 </div>
             </div>
             <div className="category">
-                <div className="link-icon">
+                <div className="link-icon flex">
                     <NavLinkItem to='/company'>Предприятие</NavLinkItem>
                     <Company/>
                 </div>
@@ -56,7 +56,7 @@ const SideMenuItems: React.FunctionComponent = () => {
                     <NavLinkItem to='/company/gallery'>Галерея</NavLinkItem>
                 </div>
             </div>
-            <div className="link-icon">
+            <div className="link-icon flex">
                 <NavLinkItem to='/news'>Новости</NavLinkItem>
                 <News/>
             </div>

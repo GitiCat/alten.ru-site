@@ -6,53 +6,65 @@ import CallSplitOutlinedIcon from '@material-ui/icons/CallSplitOutlined';
 import AvTimerOutlinedIcon from '@material-ui/icons/AvTimerOutlined';
 import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
 
+const styles = {
+    container: {
+        background: "linear-gradient(25deg, #003fb2 0%, #003fb2 25%, #3b69e5 100%)"
+    } as React.CSSProperties,
+    list: {
+        textAlign: "center"
+    } as React.CSSProperties,
+    noMargin: {
+        margin: "0"
+    } as React.CSSProperties
+}
+
 const ServicesElement: React.FunctionComponent<any> = () => {
     return (
-        <div className="container service">
-            <div className="big-title light">
+        <section className="container" style={styles.container}>
+            <header className="light">
                 <h2>Услуги</h2>
-                <span>Предприятие предоставляет все необходимые услуги нашим клиентам по выпускаемой продукции</span>
-            </div>
+                <p>Предприятие предоставляет все необходимые услуги нашим клиентам по выпускаемой продукции</p>
+            </header>
             <div className="content">
-                <ul>
+                <ul className="inline-flex flex-space-around service-list" style={styles.list}>
                     <li>
                         <HelpOutlineOutlinedIcon />
-                        <div className="context">
-                            <h3>Поддержка</h3>
+                        <header className="light" style={styles.noMargin}>
+                            <h4>Поддержка</h4>
                             <p>Ответим на любые Ваши вопросы в короткие сроки</p>
-                        </div>
+                        </header>
                     </li>
                     <li>
                         <AssignmentOutlinedIcon />
-                        <div className="context">
-                            <h3>Задача</h3>
+                        <header className="light" style={styles.noMargin}>
+                            <h4>Задача</h4>
                             <p>Найдем решение для поставленных задач</p>
-                        </div>
+                        </header>
                     </li>
                     <li>
                         <CallSplitOutlinedIcon />
-                        <div className="context">
-                            <h3>Разработка</h3>
+                        <header className="light" style={styles.noMargin}>
+                            <h4>Разработка</h4>
                             <p>Разработаем источники по Вашему заказу</p>
-                        </div>
+                        </header>
                     </li>
                     <li>
                         <AvTimerOutlinedIcon />
-                        <div className="context">
-                            <h3>Испытания</h3>
+                        <header className="light" style={styles.noMargin}>
+                            <h4>Испытания</h4>
                             <p>Полное испытание источника перед его выпуском</p>
-                        </div>
+                        </header>
                     </li>
                     <li>
                         <SettingsOutlinedIcon />
-                        <div className="context">
-                            <h3>Техпомощь</h3>
+                        <header className="light" style={styles.noMargin}>
+                            <h4>Техпомощь</h4>
                             <p>Долгосрочное обслуживание выпущеной продукции</p>
-                        </div>
+                        </header>
                     </li>
                 </ul>
             </div>
-        </div>
+        </section>
     )
 }
 

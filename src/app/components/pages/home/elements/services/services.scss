@@ -1,44 +1,28 @@
-.container.service {
-    background: linear-gradient(
-        25deg,
-        $mainColorDark 0%,
-        $mainColorDark 25%,
-        $mainColorMiddle 100%
-    );
-
-    & > .content > ul {
-        justify-content: space-around;
+.service-list {
+    & > li {
+        padding: 22px 15px;
     }
 
-    & > .content > ul {
-        text-align: center;
-
-        & > li {
-            padding: 22px 15px;
-        }
-
-        & > li > svg {
-            width: 48px;
-            height: 48px;
-            color: white;
-            margin: 0 0 17px;
-        }
-
-        & > li > .context > h3 {
-            font-size: 18px;
-            letter-spacing: .03em;
-            line-height: 1.4;
-            color: white;
-            margin: 0 0 6px;
-        }
-
-        & > li > .context > p {
-            font-size: 16px;
-            line-height: 1.4;
-            letter-spacing: .03em;
-            color: #f1f1f1;
-            opacity: .8;
-        }
+    & > li > svg {
+        width: 48px;
+        height: 48px;
+        color: white;
+        margin: 0 0 17px;
     }
 
+    & > li > .context > h3 {
+        font-size: 18px;
+        letter-spacing: .03em;
+        line-height: 1.4;
+        color: white;
+        margin: 0 0 6px;
+    }
+
+    & > li > .context > p {
+        font-size: 16px;
+        line-height: 1.4;
+        letter-spacing: .03em;
+        color: #f1f1f1;
+        opacity: .8;
+    }
 }

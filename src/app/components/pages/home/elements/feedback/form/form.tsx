@@ -38,7 +38,7 @@ const FeedbackFormBlock: React.FunctionComponent = () => {
                     <textarea name="text" required></textarea>
                 </label>
             </div>
-            <button type="submit" className='light-link-1'>Отправить</button>
+            <button type="submit" className='_contained dark'>Отправить</button>
         </form>
     )
 }
