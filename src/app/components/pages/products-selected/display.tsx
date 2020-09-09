@@ -20,10 +20,10 @@ const ProductSelectedDisplay: React.FunctionComponent<ProductSelectedDisplayType
     
     return (
         <div className="display">
-            <div className="middle-title">
-                <h3>{props.title}</h3>
-            </div>
-            <div className="content">
+            <header className="middle-title">
+                <h2>{props.title}</h2>
+            </header>
+            <article className="content flex">
                 <div className="descriptor">
                     <div className="text" dangerouslySetInnerHTML={{__html: props.descriptor}}/>
                     <div className="features" dangerouslySetInnerHTML={{__html: props.features}}/>
@@ -31,7 +31,7 @@ const ProductSelectedDisplay: React.FunctionComponent<ProductSelectedDisplayType
                 <picture className={imageClasses}>
                     <img src={image} width={imageWidth} height={imageHeight}/>
                 </picture>
-            </div>
+            </article>
         </div>
     )
 }

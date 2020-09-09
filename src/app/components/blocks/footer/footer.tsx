@@ -11,14 +11,14 @@ class FooterBlock extends React.PureComponent<{}, any> {
     render() {
         return (
             <footer className="footer" id="footer">
-                <div className="footer-container">
+                <div className="footer-container flex">
                     <div className="footer-block">
                         <div className="company">
                             <h3>АО НПК АЛЬТЭН</h3>
                             <span>Акционерное общество «Научно-производственный комплекс «Альтэрнативная энергетика»</span>
                         </div>
                     </div>
-                    <div className="footer-block">
+                    <div className="footer-block flex flex-dir-col">
                         <span>Предприятие</span>
                         <hr/>
                         <NavLink className='f-nav-link' activeClassName='active' to='/company/leadership'>Руководство</NavLink>
@@ -26,7 +26,7 @@ class FooterBlock extends React.PureComponent<{}, any> {
                         <NavLink className='f-nav-link' activeClassName='active' to='/company/licences'>Лицензии</NavLink>
                         <NavLink className='f-nav-link' activeClassName='active' to='/company/gallery'>Галерея</NavLink>
                     </div>
-                    <div className="footer-block">
+                    <div className="footer-block flex flex-dir-col">
                         <span>Карта сайта</span>
                         <hr/>
                         <NavLink className='f-nav-link' activeClassName='active' to='/'>Главная</NavLink>
@@ -37,7 +37,7 @@ class FooterBlock extends React.PureComponent<{}, any> {
                         <NavLink className='f-nav-link' activeClassName='active' to='/documents'>Документы</NavLink>
                         <NavLink className='f-nav-link' activeClassName='active' to='/news'>Новости</NavLink>
                     </div>
-                    <div className="footer-block">
+                    <div className="footer-block flex flex-dir-col">
                         <span>Контакты</span>
                         <hr/>
                         <div>Телефон: <a className='f-nav-link' href="tel:84999951789">+7 (499) 995-17-89</a></div>

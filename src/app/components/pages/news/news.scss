@@ -1,35 +1,24 @@
 .news-item {
-    margin: 0 0 118px;
     max-width: 75%;
-
-    img {
-        margin-right: 42px;
-    }
 
     .context {
         .title {
             position: relative;
             margin: 0 0 26px;
-            
-            h2 {
-                font-size: 26px;
-                letter-spacing: .03em;
-                line-height: 1.4;
-                color: $titleColor;
-            }
 
             &:after {
                 position: absolute;
                 content: "";
                 left: 0;
-                bottom: -15%;
+                bottom: -8px;
                 width: 25%;
                 height: 1px;
                 background: linear-gradient(to right, 
                     #003fb2 0%, 
                     #3b69e5 35%, 
                     #7a96ff 50%,
-                    transparent 100%);
+                    transparent 100%
+                );
             }
         }
 
@@ -103,26 +92,6 @@
     
     img {
         margin-bottom: 28px;
-    }
-
-    .title {
-        margin-bottom: 16px;
-
-        h2 {
-            font-size: 26px;
-            letter-spacing: .03em;
-            line-height: 1.4;
-            color: $titleColor;
-            margin: 0 0 6px;
-        }
-
-        span {
-            font-size: 18px;
-            letter-spacing: .03em;
-            line-height: 1.4;
-            color: #4f4f4f;
-            margin: 0 0 6px;
-        }
     }
 
     .text {

@@ -17,20 +17,20 @@ type NewsItemTypes = {
 
 const NewsItem: React.FunctionComponent<NewsItemTypes> = (props) => {
     return (
-        <div className="news-item flex">
-            <picture>
-                <img src={props.img.url} alt="" width='270' height='200' />
+        <section className="news-item flex item-section">
+            <picture className="profile left">
+                <img src={props.img.url} alt="" width='300' height='230' />
             </picture>
-            <div className="context flex flex-col">
-                <div className="title">
-                    <h2>{props.title}</h2>
+            <div className="context flex flex-dir-col">
+                <header className="title">
+                    <h4>{props.title}</h4>
                     {props.subtitle !== null &&
-                        <span>{props.subtitle}</span>
+                        <p>{props.subtitle}</p>
                     }
-                </div>
+                </header>
                 <div className="descriptor pre">
                     <div className="text" dangerouslySetInnerHTML={{ __html: props.text }} />
-                    <Link to={`/news/${props.id}`} className='light-link-1 '>Перейти</Link>
+                    <Link to={`/news/${props.id}`} className='_contained dark'>Перейти</Link>
                     <div className="date flex">
                         <span className='flex'>
                             <ScheduleIcon />
@@ -45,7 +45,7 @@ const NewsItem: React.FunctionComponent<NewsItemTypes> = (props) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     )
 }
 

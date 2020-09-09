@@ -12,20 +12,21 @@ type LicenceseItemTypes = {
 
 const LicencesItem: React.FunctionComponent<LicenceseItemTypes> = (props) => {
     return (
-        <div className="item">
-            <div className="profile">
+        <div className="item licences-item flex">
+            <div className="profile left">
                 <picture>
                     <img src={props.image.url} alt={props.image.descriptor}
                         width='300px' height='450px'/>
                 </picture>
             </div>
-            <div className="content">
-                <div className="middle-title hr">
-                    <h3>{props.title}</h3>
-                    <span>{props.subtitle}</span>
-                </div>
+            <article className="content">
+                <header>
+                    <h2>{props.title}</h2>
+                    <p>{props.subtitle}</p>
+                    <hr/>
+                </header>
                 <div className='text nohide' dangerouslySetInnerHTML={{__html: props.text}}/>
-            </div>
+            </article>
         </div>
     )
 }

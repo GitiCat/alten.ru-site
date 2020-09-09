@@ -23,7 +23,7 @@ const ProductsComponent: React.FunctionComponent = () => {
             {!state.loading &&
                 <React.Fragment>
                     <Header title='Продукция' subtitle='Категории и продукция нашего предприятия'/>
-                    <div className="article">
+                    <article className="text">
                         {
                             state.data.map((item: {}, index: number) => {
                                 return (
@@ -36,7 +36,7 @@ const ProductsComponent: React.FunctionComponent = () => {
                                 )
                             })
                         }
-                    </div>
+                    </article>
                 </React.Fragment>
             }
         </div>

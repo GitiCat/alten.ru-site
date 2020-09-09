@@ -1,12 +1,5 @@
 .products-category-block {
-    margin: 0 0 42px;
-
-    .middle-title > span p {
-        font-size: 16px;
-        letter-spacing: .03em;
-        line-height: 1.4;
-        color: $textColor;
-    }
+    margin: 0 0 48px;
 
     .products-list-item {
         position: relative;
@@ -42,23 +35,29 @@
         }
     
         .block-title {
-            position: relative;
+            position: absolute;
             justify-content: space-between;
             align-items: center;
             bottom: 0;
             left: 0;
-            bottom: 0;
             width: 100%;
             margin: 0 !important;
             padding: 25px 15px;
+            background-color: #fff;
 
             box-shadow: 0 3px 6px rgba($color: #000000, $alpha: 1);
     
             h3 { 
                 position: relative;
                 margin: 0 !important;
-                line-height: 1.4;
                 transition: transform .3s ease;
+                font-family: inherit;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                font-size: 1.25rem;
+                letter-spacing: normal;
+                line-height: 1.4;
+                color: $titleColor;
             }
 
             svg {
@@ -104,6 +103,7 @@
             background-size: cover;
             width: 100%;
             height: 100%;
+            transform: translateY(-50px);
         }
     }
 }

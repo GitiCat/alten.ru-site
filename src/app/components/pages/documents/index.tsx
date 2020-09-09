@@ -22,7 +22,7 @@ const DocumentsComponent: React.FunctionComponent = () => {
             {!state.loading && 
                 <React.Fragment>
                     <Header title='Документы' subtitle='Общедоступные документы предприятия'/>
-                    <div className="article">
+                    <article className="article container">
                         <div className="wrapper">
                             {
                                 state.data.map((item: {}, index: number) => {
@@ -36,7 +36,7 @@ const DocumentsComponent: React.FunctionComponent = () => {
                                 })
                             }
                         </div>
-                    </div>
+                    </article>
                 </React.Fragment>
             }
         </div>

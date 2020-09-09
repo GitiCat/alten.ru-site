@@ -1,8 +1,7 @@
-import React, { MouseEvent } from 'react';
-import cn from 'classnames';
-import { setItemTransition, setItemHeight} from './transition-height-hepler'
-
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import React, { useState, DOMElement } from 'react';
+import parse, { DomElement } from 'html-react-parser'
+import cn from 'classnames'
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 
 type LeadershipsItemTypes = {
     id: number,
@@ -15,62 +14,44 @@ type LeadershipsItemTypes = {
     }
 }
 
-const expandItem = (begin: string, el: HTMLElement, isExpand: boolean, expandText: string, defaultHeight: number) => {
-    if(isExpand) el.classList.add('expanded')
-    else el.classList.remove('expanded')
-    
-    setItemTransition(begin, el, 'content .text', 'p', .07)
-    setItemHeight(el, 'expanded', 'content .text p', defaultHeight)
-    el.querySelector('.expand .content').innerHTML = expandText
-}
-
 const LeadershipsItem: React.FunctionComponent<LeadershipsItemTypes> = (props) => {
-    const defaultHeight: number = 333;
+    const [show, setShowState] = useState(false)
+    const expandClasses = cn({
+        'flex expand': true,
+        'expanded': show
+    })
 
-    const expandHandle = (e: React.MouseEvent<HTMLDivElement>) => {
-        const root: HTMLElement = e.currentTarget.parentElement.parentElement;
-        const expandedElements: NodeListOf<HTMLElement>  = document.querySelectorAll('.expanded')
-
-        if(expandedElements.length !== 0) {
-            Array.from(expandedElements).forEach(element => {
-                if(element == root)
-                    return;
-                
-                element.classList.remove('expanded')
-                setItemHeight(element, 'expanded', 'content .text p', defaultHeight)
-                element.querySelector('.expand .content').innerHTML = 'Развернуть'
-            })
-        }
-
-        if(!root.classList.contains('expanded')) {
-            expandItem('start', root, true, 'Свернуть', defaultHeight)
-        }
-        else {
-            expandItem('end', root, false, 'Развернуть', defaultHeight)
-        }
-    }
+    var descriptorElements: Array<JSX.Element> = parse(props.text) as Array<JSX.Element>
 
     return (
-        <div className='item' style={{height: defaultHeight}}>
+        <div className='item leadership-item flex'>
             <div className="profile">
-                <picture>
+                <picture className="profile left">
                     <img src={props.image.url} alt={props.image.descriptor}
-                        width='250px' height='325'/>
+                        width='250px' height='325' />
                 </picture>
             </div>
             <div className="content">
-                <div className="middle-title">
-                    <h3>{props.title}</h3>
-                    <span>{props.subtitle}</span>
-                </div>
-                <div className="text" dangerouslySetInnerHTML={{__html: props.text}}/>
-            </div>
-            <div className="abs">
-                <div className="expand" onClick={expandHandle}>
+                <header>
+                    <h2>{props.title}</h2>
+                    <p>{props.subtitle}</p>
+                    <hr/>
+                </header>
+                <article className="descriptor">
+                    {descriptorElements[0]}
+                    {
+                        descriptorElements.map((item, index) => {
+                            return index != 0 && item
+                        })
+                    }
+                </article>
+                <div className={expandClasses} onClick={() => setShowState(!show)}>
                     <div className="circle">
-                        <ExpandMoreIcon/>
+                        <ExpandMoreIcon />
                     </div>
-                    <div className="content">Развернуть</div>
+                    <div className="content">
+                        {show ? 'Свернуть' : 'Развернуть'}
+                    </div>
                 </div>
             </div>
         </div>

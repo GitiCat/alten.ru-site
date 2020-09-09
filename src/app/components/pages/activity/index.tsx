@@ -1,4 +1,5 @@
 import React, { useReducer, useEffect } from 'react';
+import parse from 'html-react-parser';
 import { getAsyncData } from '../../../utils/async-get-data';
 import { asyncDataReducer, initialState } from '../../../utils/async-data-states/reducer'
 import { ERROR, FETCHED } from '../../../utils/async-data-states/types'
@@ -24,17 +25,15 @@ const ActivityComponent: React.FunctionComponent = () => {
             {!state.loading && 
                 <React.Fragment>
                     <Header title={state.data['category']['title']} subtitle={state.data['category']['descriptor']}/>
-                    <div className="article">
-                        <div className="text">
-                            {
-                                state.data  ['data'].map((item: {}, index: number) => {
-                                    return (
-                                        <div key={index} className="base" dangerouslySetInnerHTML={{__html: item['text']}}/>
-                                    )
-                                })
-                            }
-                        </div>
-                    </div>
+                    <article className="text">
+                        {
+                            state.data["data"].map((item: Array<String>) => {
+                                return (
+                                    parse(item["text"])
+                                )
+                            })
+                        }
+                    </article>
                 </React.Fragment>
             }
         </div>

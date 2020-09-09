@@ -24,7 +24,7 @@ const NewsComponent: React.FunctionComponent = () => {
             {!state.loading &&
                 <React.Fragment>
                     <Header title='Новости' subtitle='Новости космической отрасли и деятельности предприятия'/>
-                    <div className="article">
+                    <article className="article container">
                         <div className="list">
                             {
                                 state.data.map((item: {}, index: number) => {
@@ -44,7 +44,7 @@ const NewsComponent: React.FunctionComponent = () => {
                                 })
                             }
                         </div>
-                    </div>
+                    </article>
                 </React.Fragment>
             }
         </div>

@@ -23,20 +23,26 @@ const DocumentsWrapperItem: React.FunctionComponent<DocumentsWrapperItemTypes>
         'type': true,
         [`${fileType}`]: true
     })
+
+    const styles = {
+        header: {
+            marginBottom: '12px'
+        } as React.CSSProperties
+    }
     
     return (
         <div className="wrapper-list-item">
-            <div className="title">
-                <h2>{props.title}</h2>
+            <header style={styles.header}>
+                <h4>{props.title}</h4>
                 {props.subtitle !== null &&
                     <span>{props.subtitle}</span>
                 }
-            </div>
+            </header>
             <div className="content">
-                <div className="text" dangerouslySetInnerHTML={{__html: props.text}}/>
+                <article className="descriptor" dangerouslySetInnerHTML={{__html: props.text}}/>
                 <div className="files">
                     <span>Файлы для скачивания</span>
-                    <a className="file" href={props.file.url} download>
+                    <a className="file flex" href={props.file.url} download>
                         <div className={fileTypeClasses}/>
                         <span>{props.file.name}</span>
                     </a>

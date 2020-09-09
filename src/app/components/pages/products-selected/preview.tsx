@@ -35,7 +35,7 @@ const ProductSelectedPreviewList
                         <div key={index} className="preview-list-item">
                             <input type="radio" name="product-preview-list-item" id={`preview-list-item-${index}`}
                             onChange={e => inputChangeHandle(props.changeState, index, props.history)}/>
-                            <label htmlFor={`preview-list-item-${index}`}>
+                            <label className="flex" htmlFor={`preview-list-item-${index}`}>
                                 <div className="block-title light">
                                     <h3>{item['title']}</h3>
                                 </div>

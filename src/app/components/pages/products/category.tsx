@@ -1,4 +1,5 @@
 import React from 'react';
+import parse from 'html-react-parser'
 import CategoryProductItem from './item'
 
 type CategoryProductBlockTypes = {
@@ -9,12 +10,20 @@ type CategoryProductBlockTypes = {
 }
 
 const CategoryProductBlock: React.FunctionComponent<CategoryProductBlockTypes> = (props) => {
+    const styles = {
+        header: {
+            maxWidth: '75%'
+        } as React.CSSProperties
+    }
+    
     return (
         <div className="products-category-block">
-            <div className="middle-title">
-                <h3>{props.title}</h3>
-                <span dangerouslySetInnerHTML={{__html: props.descriptor}}></span>
-            </div>
+            <header style={styles.header}>
+                <h2>{props.title}</h2>
+                {props.descriptor != null &&
+                    parse(props.descriptor)
+                }
+            </header>
             <div className="list flex flex-wrap">
                 {props.items.length !== 0 ?
                     props.items.map((item: {}, index: number) => {

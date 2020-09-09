@@ -55,8 +55,8 @@ const ProductsSelected: React.FunctionComponent<RouteComponentProps> = ({ locati
             {!state.loading &&
                 <React.Fragment>
                     <Header title='Продукция' subtitle='Продукция нашего предприятия' />
-                    <div className="article">
-                        <div className="product-display">
+                    <section className="container">
+                        <div className="product-display flex">
                             <ProductPreviewList items={state.data} changeState={setCurrentId} history={history}/>
                             <ProductDisplay 
                                 title={currentItem['title']}
@@ -66,7 +66,7 @@ const ProductsSelected: React.FunctionComponent<RouteComponentProps> = ({ locati
                                 files={currentItem['file']}
                             />
                         </div>
-                    </div>
+                    </section>
                 </React.Fragment>
             }
         </div>

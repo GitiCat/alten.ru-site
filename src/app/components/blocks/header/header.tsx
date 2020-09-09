@@ -7,8 +7,12 @@ type HeaderTypes = {
 }
 
 const HeaderBlock: React.FunctionComponent<HeaderTypes> = (props) => {
+    const style: React.CSSProperties = {
+        marginBottom: '0'
+    }
+    
     return (
-        <header className='header' id='header'>
+        <header className='header' id='header' style={style}>
             { props.image_url != undefined &&
                 <div className="image" style={{backgroundImage: `url(${props.image_url})`}}/>
             }

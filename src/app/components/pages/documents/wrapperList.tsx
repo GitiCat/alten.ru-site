@@ -9,11 +9,11 @@ type DocumentWrapperListTypes = {
 
 const DocumentsWrapperList: React.FunctionComponent<DocumentWrapperListTypes> = (props) => {
     return (
-        <div className="wrapper-list">
-            <div className="middle-title hr">
-                <h3>{props.title}</h3>
+        <section className="wrapper-list">
+            <header>
+                <h2>{props.title}</h2>
                 <span>{props.descriptor}</span>
-            </div>
+            </header>
             {
                 Array.from(props.items).map((item, index) => {
                     return (
@@ -29,7 +29,7 @@ const DocumentsWrapperList: React.FunctionComponent<DocumentWrapperListTypes> = 
                     )
                 })
             }
-        </div>
+        </section>
     )
 }
 

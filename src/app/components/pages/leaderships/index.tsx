@@ -25,7 +25,7 @@ const LeadershipsComponent: React.FunctionComponent = () => {
             {!state.loading &&
                 <React.Fragment>
                     <Header title={state.data['category']['title']} subtitle={state.data['category']['descriptor']}/>
-                    <div className="article">
+                    <article className="container">
                         <div className="list">
                             {
                                 state.data['data'].map((item: {}, index: number) => {
@@ -40,7 +40,7 @@ const LeadershipsComponent: React.FunctionComponent = () => {
                                 })
                             }
                         </div>
-                    </div>
+                    </article>
                 </React.Fragment>
             }
         </div>

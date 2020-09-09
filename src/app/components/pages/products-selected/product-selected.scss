@@ -1,5 +1,5 @@
 .product-display > .preview-list {
-    padding: 0 7px;
+    padding: 1.5% 7px;
     margin-right: 5%;
     height: 75vh;
     min-width: 235px;
@@ -48,7 +48,6 @@
 
         & > label {
             position: relative;
-            display: block;
             width: inherit;
             height: inherit;
             justify-content: center;
@@ -78,6 +77,16 @@
                 line-height: 0;
 
                 transition: margin .3s ease, transform .4s ease;
+
+                h3 {
+                    font-family: inherit;
+                    -webkit-font-smoothing: antialiased;
+                    -moz-osx-font-smoothing: grayscale;
+                    font-size: 1rem;
+                    line-height: inherit;
+                    letter-spacing: inherit;
+                    color: #fff;
+                }
             }
 
             & > .img {
@@ -91,6 +100,10 @@
                 background-size: cover;
                 background-position: center 60%;
                 z-index: -1;
+                
+                &.no-image {
+                    transform: scale(0.55) !important;
+                }
             }
         }
     }
@@ -108,6 +121,16 @@
                 margin: 0 0 22px;
 
                 p {
+                    font-family: inherit;
+                    -webkit-font-smoothing: antialiased;
+                    -moz-osx-font-smoothing: grayscale;
+                    font-size: 1rem !important;
+                    line-height: 1.5;
+                    letter-spacing: normal;
+                    text-decoration: inherit;
+                    text-transform: inherit;
+                    color: $textColor;
+                    margin: 0 0 7px;
                     text-indent: 0;
                 }
             }
@@ -128,14 +151,14 @@
                 & > tbody {
                     & > tr > td {
                         text-align: left;
-                        padding: 1.2rem;
+                        padding: 1.2rem !important;
                         vertical-align: top;
                         border-top: 0;
                     }
                 }
 
                 & > thead > tr > td {
-                    font-size: 14px;
+                    font-size: 14px !important;
                     color: $titleColor;
                     line-height: 1.4;
                     letter-spacing: .03em;
@@ -147,7 +170,7 @@
                 & > tbody > tr > td > ol,
                 & > tbody > tr > td > ul {
                     font-family: 'Roboto-Light', sans-serif;
-                    font-size: 14px;
+                    font-size: 14px !important;
                     color: $titleColor;
                     line-height: 1.4;
                     letter-spacing: .03em;
@@ -155,7 +178,7 @@
 
                 & > tbody > tr > td > ol,
                 & > tbody > tr > td > ul {
-                    margin-left: 15px;
+                    margin-left: 15px !important;
                 }
 
                 & > tbody > tr > td:first-child {

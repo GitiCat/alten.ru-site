@@ -9,7 +9,6 @@ import { FETCHED, ERROR } from '../../../utils/async-data-states/types'
 
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import WhatshotIcon from '@material-ui/icons/Whatshot';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 
 const NewsSelectedComponent: React.FunctionComponent<RouteComponentProps> = ({ match }) => {
     const [state, dispatch] = useReducer(asyncDataReducer, initialState)
@@ -43,7 +42,7 @@ const NewsSelectedComponent: React.FunctionComponent<RouteComponentProps> = ({ m
             {!state.loading &&
                 <React.Fragment>
                     <Header title='Новости' subtitle='Новости космической отрасли и деятельности предприятия' />
-                    <div className="article">
+                    <article className="article container">
                         <div className="news-item-selected">
                             <div className="date flex">
                                 <span className='flex'>
@@ -57,26 +56,26 @@ const NewsSelectedComponent: React.FunctionComponent<RouteComponentProps> = ({ m
                                 </span>
                                 }
                             </div>
-                            <picture>
+                            <picture >
                                 <img src={item['main_image']} alt=""/>
                             </picture>
-                            <div className="title">
+                            <header className="title">
                                 <h2>{item['title']}</h2>
                                 {item['subtitle'] !== null &&
-                                    <span>{item['subtitle']}</span>
+                                    <p>{item['subtitle']}</p>
                                 }
-                            </div>
-                            <div className="text" dangerouslySetInnerHTML={{ __html: item['text'] }} />
+                            </header>
+                            <article className="descriptor" dangerouslySetInnerHTML={{ __html: item['text'] }} />
                             <div className="links">
-                                <a href='/news' className="light-link-1">
+                                <a href='/news' className="_contained dark">
                                     Вернуться
                                 </a>
-                                <a href={item['original_url']} className="light-link-1">
+                                <a href={item['original_url']} className="_contained dark">
                                     Оригинальная статья
                                 </a>
                             </div>
                         </div>
-                    </div>
+                    </article>
                 </React.Fragment>
             }
         </div>
