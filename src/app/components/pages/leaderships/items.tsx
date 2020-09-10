@@ -1,7 +1,8 @@
-import React, { useState, DOMElement } from 'react';
-import parse, { DomElement } from 'html-react-parser'
+import React, { useState } from 'react'
+import parse from 'html-react-parser'
 import cn from 'classnames'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
+import Fade from '../../Animations/Fade/Fade'
 
 type LeadershipsItemTypes = {
     id: number,
@@ -21,8 +22,6 @@ const LeadershipsItem: React.FunctionComponent<LeadershipsItemTypes> = (props) =
         'expanded': show
     })
 
-    var descriptorElements: Array<JSX.Element> = parse(props.text) as Array<JSX.Element>
-
     return (
         <div className='item leadership-item flex'>
             <div className="profile">
@@ -38,15 +37,12 @@ const LeadershipsItem: React.FunctionComponent<LeadershipsItemTypes> = (props) =
                     <hr/>
                 </header>
                 <article className="descriptor">
-                    {descriptorElements[0]}
-                    {
-                        descriptorElements.map((item, index) => {
-                            return index != 0 && item
-                        })
-                    }
+                    <Fade startIndex={1} speed={300} step={.7}>
+                        {parse(props.text)}
+                    </Fade>
                 </article>
                 <div className={expandClasses} onClick={() => setShowState(!show)}>
-                    <div className="circle">
+                    <div className="circle flex">
                         <ExpandMoreIcon />
                     </div>
                     <div className="content">
