@@ -1,9 +1,10 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react'
+import { Helmet } from 'react-helmet'
 import { getAsyncData } from '../../../utils/async-get-data';
 import { asyncDataReducer, initialState } from '../../../utils/async-data-states/reducer'
 import { ERROR, FETCHED } from '../../../utils/async-data-states/types'
-import Header from '../../blocks/header/header';
-import LeadershipsItem from './items';
+import Header from '../../blocks/header/header'
+import LeadershipsItem from './items'
 
 const LeadershipsComponent: React.FunctionComponent = () => {
     const [state, dispatch] = useReducer(asyncDataReducer, initialState)
@@ -22,6 +23,9 @@ const LeadershipsComponent: React.FunctionComponent = () => {
 
     return (
         <div className="content">
+            <Helmet>
+                <title>Руководство</title>
+            </Helmet>
             {!state.loading &&
                 <React.Fragment>
                     <Header title={state.data['category']['title']} subtitle={state.data['category']['descriptor']}/>

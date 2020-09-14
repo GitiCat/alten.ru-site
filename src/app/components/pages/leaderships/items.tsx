@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import parse from 'html-react-parser'
 import cn from 'classnames'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
-import Fade from '../../Animations/Fade/Fade'
 
 type LeadershipsItemTypes = {
     id: number,
@@ -37,9 +36,7 @@ const LeadershipsItem: React.FunctionComponent<LeadershipsItemTypes> = (props) =
                     <hr/>
                 </header>
                 <article className="descriptor">
-                    <Fade startIndex={1} speed={300} step={.7}>
-                        {parse(props.text)}
-                    </Fade>
+                    {parse(props.text)}
                 </article>
                 <div className={expandClasses} onClick={() => setShowState(!show)}>
                     <div className="circle flex">

@@ -1,8 +1,13 @@
-import React from 'react';
+import React from 'react'
+import { Helmet } from 'react-helmet'
 
 const GalleryComponent: React.FunctionComponent = () => {
     return (
-        <div></div>
+        <div className='content'>
+            <Helmet>
+                <title>Галерея</title>
+            </Helmet>
+        </div>
     )
 }
 

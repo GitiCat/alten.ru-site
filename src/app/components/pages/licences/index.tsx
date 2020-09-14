@@ -1,4 +1,5 @@
 import React, { useReducer, useEffect } from 'react';
+import { Helmet } from 'react-helmet'
 import { getAsyncData } from '../../../utils/async-get-data'
 import { asyncDataReducer, initialState } from '../../../utils/async-data-states/reducer'
 import { ERROR, FETCHED } from '../../../utils/async-data-states/types'
@@ -22,6 +23,9 @@ const LicencesComponent: React.FunctionComponent = () => {
     
     return (
         <div className="content">
+            <Helmet>
+                <title>Лицензии</title>
+            </Helmet>
             {!state.loading &&
                 <React.Fragment>
                     <Header title={state.data['category']['title']} subtitle={state.data['category']['descriptor']}/>

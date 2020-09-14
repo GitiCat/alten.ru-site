@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 import Top from './elements/top/top';
 import Info from './elements/info/info';
 import Services from './elements/services/services';
@@ -19,6 +20,9 @@ const HomeComponent : React.FunctionComponent = () => {
 
     return (
         <div className="content">
+            <Helmet>
+                <title>Главная</title>
+            </Helmet>
             <Top/>
             <Info/>
             <Services/>

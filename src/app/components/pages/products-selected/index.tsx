@@ -1,5 +1,6 @@
-import React, { useReducer, useEffect, useRef, useState } from 'react';
-import { RouteComponentProps } from 'react-router-dom';
+import React, { useReducer, useEffect, useRef, useState } from 'react'
+import { Helmet } from 'react-helmet'
+import { RouteComponentProps } from 'react-router-dom'
 import { getAsyncData } from '../../../utils/async-get-data'
 import { asyncDataReducer, initialState } from '../../../utils/async-data-states/reducer'
 import { ERROR, FETCHED, LOADING } from '../../../utils/async-data-states/types'
@@ -52,6 +53,9 @@ const ProductsSelected: React.FunctionComponent<RouteComponentProps> = ({ locati
     
     return (
         <div className="content">
+            <Helmet>
+                <title>Продукция</title>
+            </Helmet>
             {!state.loading &&
                 <React.Fragment>
                     <Header title='Продукция' subtitle='Продукция нашего предприятия' />

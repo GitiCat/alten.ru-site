@@ -1,4 +1,5 @@
 import React, { useReducer, useEffect } from 'react'
+import { Helmet } from 'react-helmet'
 import Header from '../../blocks/header/header'
 import NewsItem from './item'
 import { DateFormat, isNew } from '../../../utils/date'
@@ -21,6 +22,9 @@ const NewsComponent: React.FunctionComponent = () => {
     
     return (
         <div className="content">
+            <Helmet>
+                <title>Новости</title>
+            </Helmet>
             {!state.loading &&
                 <React.Fragment>
                     <Header title='Новости' subtitle='Новости космической отрасли и деятельности предприятия'/>
