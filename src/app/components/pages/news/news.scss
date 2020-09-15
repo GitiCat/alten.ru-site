@@ -14,9 +14,9 @@
                 width: 25%;
                 height: 1px;
                 background: linear-gradient(to right, 
-                    #003fb2 0%, 
-                    #3b69e5 35%, 
-                    #7a96ff 50%,
+                    $main-dark-color 0%, 
+                    $main-middle-color 35%, 
+                    $main-light-color 50%,
                     transparent 100%
                 );
             }
@@ -72,7 +72,7 @@
                     }
 
                     &:first-child {
-                        background-color: $mainColorLight;
+                        background-color: $main-light-color;
                     }
 
                     &.new {
@@ -129,7 +129,7 @@
             }
 
             &:first-child {
-                background-color: $mainColorLight;
+                background-color: $main-light-color;
             }
 
             &.new {

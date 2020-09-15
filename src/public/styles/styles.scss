@@ -1,3 +1,7 @@
+@import "./utils/vars.scss";
+@import "./utils/functions.scss";
+@import "./utils/mixins.scss";
+
 @font-face {
     font-family: "Roboto-Thin";
     src: url("/fonts/Roboto/Roboto-Thin.ttf");
@@ -23,15 +27,6 @@
     src: url("/fonts/Roboto/Roboto-Bold.ttf");
 }
 
-$titleColor: #212121;
-$titleLightColor: #fafafa;
-$textColor: #616161;
-$lightTextColor: #bdbdbd;
-
-$mainColorLight: #7a96ff;
-$mainColorMiddle: #3b69e5;
-$mainColorDark: #003fb2;
-
 * {
     margin: 0;
     padding: 0;
@@ -40,8 +35,7 @@ $mainColorDark: #003fb2;
 
 html,
 body {
-    width: 100%;
-    height: 100vh;
+    @include size(100%, 100vh)
 }
 
 body {
@@ -49,11 +43,11 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: 1rem;
-    line-height: 1.5;
+    line-height: $default-line-height;
     letter-spacing: normal;
     text-decoration: none;
     text-transform: none;
-    color: $titleColor;
+    color: $default-body-color;
 }
 
 body.disable-scroll {
@@ -89,12 +83,12 @@ header {
         margin: 0 0 12px;
         
         h4 {
-            color: $titleColor;
+            color: $main-title-color;
             font-family: "Roboto-Regular", sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            font-size: 1.25rem;
-            line-height: 2rem;
+            @include respond-to(font-size, (18, 18, 16));
+            line-height: $big-line-height;
             letter-spacing: .0125em;
             text-decoration: inherit;
             text-transform: inherit;
@@ -103,7 +97,7 @@ header {
     }
 
     &.light {
-        > h1, > h2, > h4, > p { color: $titleLightColor }
+        > h1, > h2, > h4, > p { color: $light-title-color; }
     }
      
     > h1 {
@@ -111,11 +105,12 @@ header {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         font-size: 3.75rem;
-        line-height: 1.2;
+        @include respond-to(font-size, (62, 62, 46));
+        line-height: $lower-line-height;
         letter-spacing: 0;
         text-decoration: inherit;
         text-transform: inherit;
-        color: $titleColor;
+        color: $main-title-color;
         margin: 0 0 12px;
     }
     
@@ -123,12 +118,12 @@ header {
         font-family: inherit;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        font-size: 2rem;
-        line-height: 1.2;
+        @include respond-to(font-size, (32, 32, 28));
+        line-height: $lower-line-height;
         letter-spacing: -.008em;
         text-decoration: inherit;
         text-transform: inherit;
-        color: $titleColor;
+        color: $main-title-color;
         margin: 0 0 12px;
     }
 
@@ -137,22 +132,22 @@ header {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         font-size: 1.25rem;
-        line-height: 1.625rem;
+        line-height: $middle-line-height;
         letter-spacing: .0073529412em;
         text-decoration: inherit;
         text-transform: inherit;
-        color: $titleColor;
+        color: $main-title-color;
         margin: 0 0 12px;
     }
 
     > p {
         font-family: inherit;
-        font-size: 1rem;
+        @include respond-to(font-size, (16, 16, 14));
         line-height: 1.5;
         letter-spacing: 0;
         text-decoration: inherit;
         text-transform: inherit;
-        color: $textColor;
+        color: $main-text-color;
     }
 
     > hr {
@@ -165,9 +160,9 @@ header {
 
         background: linear-gradient(
             90deg,
-            $mainColorDark 0%,
-            $mainColorDark 25%,
-            $mainColorMiddle 45%,
+            $main-dark-color 0%,
+            $main-dark-color 25%,
+            $main-middle-color 45%,
             transparent 100%
         )
     }
@@ -179,12 +174,12 @@ article.descriptor {
 
     > p {
         font-family: inherit;
-        font-size: 1rem;
+        @include respond-to(font-size, (16, 16, 14));
         line-height: 1.5;
         letter-spacing: normal;
         text-decoration: inherit;
         text-transform: inherit;
-        color: $textColor;
+        color: $main-text-color;
         margin: 0 0 7px;
     }
 }
@@ -196,12 +191,12 @@ article.descriptor {
         font-family: inherit;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        font-size: .875rem;
+        @include respond-to(font-size, (16, 16, 14));
         line-height: 1.25rem;
         letter-spacing: .0178571429em;
         text-decoration: none;
         text-transform: none;
-        color: $titleColor;
+        color: $main-text-color;
         opacity: .6;
     }
 }
@@ -221,7 +216,7 @@ a._action {
     font-family: 'Roboto-Medium', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-size: .8rem;
+    @include respond-to(font-size, (14, 14, 12));
     line-height: inherit;
     letter-spacing: .0892857143em;
     text-transform: uppercase;
@@ -234,11 +229,11 @@ button._contained {
     transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1), background-color 280ms ease;
 
     &.dark {
-        background-color: $mainColorMiddle;
+        background-color: $main-middle-color;
         color: white;
 
         &:hover {
-            background-color: $mainColorDark;
+            background-color: $main-dark-color;
         }
     }
 }
@@ -247,8 +242,8 @@ a._outlined {
     background-color: transparent;
     border-width: 1px;
     border-style: solid;
-    border-color: $mainColorMiddle;
-    color: $titleColor;
+    border-color: $main-middle-color;
+    color: $main-title-color;
     transition: border-color 280ms ease, background-color 280ms ease;
 
     &.light {
@@ -257,18 +252,18 @@ a._outlined {
     }
     
     &:hover {
-        border-color: $mainColorMiddle;
-        background-color: rgba($color: $mainColorLight, $alpha: 0.3);
+        border-color: $main-middle-color;
+        background-color: rgba($color: $main-light-color, $alpha: 0.3);
     }
 }
 
 a._action {
     transition: color 280ms ease;
     padding: 0;
-    color: $mainColorMiddle;
+    color: $main-middle-color;
 
     &:hover {
-        color: $mainColorDark;
+        color: $main-dark-color;
     }
 }
 
@@ -348,13 +343,13 @@ a._action {
 
 .container {
     position: relative;
-    padding: 116px 14.5%;
+    @include respond-to(padding, ('116px 14.5%', '116px 14.5%', '116px 7.5%'));
     overflow: hidden;
 }
 
 section.container,
 article.container {
-    padding: 86px 14.5%;
+    @include respond-to(padding, ('116px 14.5%', '116px 14.5%', '116px 7.5%'));
 }
 
 section.item-section {
@@ -383,12 +378,12 @@ article.content {
         font-family: inherit;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        font-size: 1rem;
+        @include respond-to(font-size, (16, 16, 14));
         line-height: 1.5;
         letter-spacing: normal;
         text-decoration: inherit;
         text-transform: inherit;
-        color: $textColor;
+        color: $main-text-color;
         margin: 0 0 7px;
     }
 
@@ -408,14 +403,14 @@ article.content {
                 bottom: 0;
                 width: 2px;
                 border-radius: 4px;
-                background-color: $mainColorMiddle;
+                background-color: $main-middle-color;
             }
         }
     }
 }
 
 article.text {
-    padding: 86px 14.5%;
+    @include respond-to(padding, ('116px 14.5%', '116px 14.5%', '116px 7.5%'));
     padding-top: 43px;
 
     p, ul > li {
@@ -427,7 +422,7 @@ article.text {
         letter-spacing: normal;
         text-decoration: inherit;
         text-transform: inherit;
-        color: $textColor;
+        color: $main-text-color;
         margin: 0 0 7px;
     }
 
@@ -465,7 +460,7 @@ article.text {
                 bottom: 0;
                 width: 2px;
                 border-radius: 4px;
-                background-color: $mainColorMiddle;
+                background-color: $main-middle-color;
             }
         }
     }

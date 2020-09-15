@@ -1,9 +1,9 @@
 .container.licences {
     background: linear-gradient(
         25deg,
-        $mainColorDark 0%,
-        $mainColorDark 25%,
-        $mainColorMiddle 100%
+        $main-dark-color 0%,
+        $main-dark-color 25%,
+        $main-middle-color 100%
     );
 
     .gerb-bg {
@@ -25,8 +25,8 @@
     }
 
     .context > .logos > .logo {
-        width: 105px;
-        height: 105px;
+        @include respond-to(width, (105px, 105px, 90px));
+        @include respond-to(height, (105px, 105px, 90px));
         margin-bottom: 16px;
         margin-right: 42px;
 
@@ -39,6 +39,7 @@
         p {
             color: #fafafa;
             margin-bottom: 22px;
+            @include respond-to(font-size, (16, 16, 14));
         }
     }
 
@@ -51,7 +52,7 @@
         & > .licence-image {
             position: absolute;
             display: block;
-            width: 240px;
+            @include respond-to(width, (240px, 240px, 210px));
             height: 100%;
             
             background-size: cover;

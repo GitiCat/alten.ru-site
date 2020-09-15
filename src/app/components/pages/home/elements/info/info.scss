@@ -7,8 +7,8 @@
         span:first-child {
             position: relative;
             font-family: 'Roboto-Light', sans-serif;
-            font-size: 36px;
-            color: $titleColor;
+            @include respond-to(font-size, (36, 36, 28));
+            color: $main-title-color;
             margin-right: 36px;
 
             &:after {
@@ -22,7 +22,7 @@
                 border-radius: 50%;
                 border-right-width: 2px;
                 border-right-style: dotted;
-                border-color: $mainColorDark;
+                border-color: $main-dark-color;
 
                 transform: rotateZ(36deg);
             }
@@ -30,12 +30,12 @@
 
         span:last-child {
             font-family: inherit;
-            font-size: 1rem;
+            @include respond-to(font-size, (16, 16, 14));
             line-height: inherit;
             letter-spacing: 0;
             text-decoration: none;
             text-transform: none;
-            color: $textColor;
+            color: $main-text-color;
             padding-top: 7px;
         }
     }

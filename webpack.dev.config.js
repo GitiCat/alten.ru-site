@@ -1,9 +1,11 @@
 const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin'),
-      WebpackBundleAnalyzer = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+      WebpackBundleAnalyzer = require('webpack-bundle-analyzer').BundleAnalyzerPlugin,
+      TerserPlugin = require('terser-webpack-plugin'),
+      MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
-const serverHost = 'localhost',
+const serverHost = '192.168.0.173',
       serverPort = 8080;
 
 const bundleAnalyzerHost = 'localhost',
@@ -41,7 +43,9 @@ module.exports = {
                 test: /\.scss$/,
                 use: [
                     'style-loader',
+                    MiniCssExtractPlugin.loader,
                     'css-loader',
+                    'postcss-loader',
                     'sass-loader'
                 ]
             },
@@ -69,6 +73,13 @@ module.exports = {
             analyzerMode: 'static',
             logLevel: 'error',
             openAnalyzer: false
+        }),
+        new MiniCssExtractPlugin({
+            filename: '[name].css'
+        }),
+        new TerserPlugin({
+            cache: true,
+            parallel: true
         })
     ],
     devServer: {
@@ -76,7 +87,6 @@ module.exports = {
         port: serverPort,
         historyApiFallback: true,
         contentBase: path.join(__dirname, 'src', 'public'),
-
         proxy: {
             '/api_v0/': {
                 target: 'http://192.168.0.173:8000',

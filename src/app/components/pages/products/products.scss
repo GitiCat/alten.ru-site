@@ -23,7 +23,7 @@
             }
 
             .block-title svg rect {
-                fill: rgba($color: $mainColorMiddle, $alpha: .15);
+                fill: rgba($color: $main-middle-color, $alpha: .15);
                 stroke-dashoffset: 20px;
                 opacity: 1;
             }
@@ -57,7 +57,7 @@
                 font-size: 1.25rem;
                 letter-spacing: normal;
                 line-height: 1.4;
-                color: $titleColor;
+                color: $main-title-color;
             }
 
             svg {
@@ -69,7 +69,7 @@
                 align-items: center;
 
                 rect {
-                    stroke: $mainColorMiddle;
+                    stroke: $main-middle-color;
                     stroke-width: 3px;
                     width: 40px;
                     height: 40px;
@@ -81,7 +81,7 @@
                 }
 
                 path {
-                    stroke: $mainColorMiddle;
+                    stroke: $main-middle-color;
                     stroke-width: 2px;
                     transform: translateX(-100%);
                     opacity: 0;

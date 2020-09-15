@@ -2,7 +2,7 @@ footer {
     flex: 0 0 auto;
     padding: 74px 14.5%;
     padding-bottom: 0;
-    background-color: #212121;
+    background-color: $default-body-color;
 
     .footer-block {
         margin: 0 4%;
@@ -12,7 +12,7 @@ footer {
 
             font-family: 'Roboto-Medium', sans-serif;
             font-size: 16px;
-            color: #e8e8e8;
+            color: $light-title-color;
             letter-spacing: .03em;
         }
 
@@ -26,16 +26,16 @@ footer {
             
             background: linear-gradient(
                 to right,
-                $mainColorDark 0%,
-                $mainColorMiddle 35%,
-                $mainColorLight 50%,
+                $main-middle-color 0%,
+                $main-middle-color 35%,
+                $main-light-color 50%,
                 transparent 100%
             );
         }
 
         &:nth-child(2), &:nth-child(3) {
             & .f-nav-link:hover {
-                color: $mainColorMiddle;
+                color: $main-middle-color;
                 transform: translateX(10px);
             }
         }
@@ -43,7 +43,7 @@ footer {
         &:nth-child(4) {
             & > div {
                 margin: 0 0 6px;
-                color: #e8e8e8;
+                color: $light-title-color;
                 letter-spacing: .03em;
             }
         }
@@ -59,11 +59,11 @@ footer {
             transition: color .3s ease, transform .3s ease;
 
             &:hover {
-                color: $mainColorMiddle;
+                color: $main-middle-color;
             }
 
             &.active {
-                color: $mainColorMiddle;
+                color: $main-middle-color;
             }
         }
 
@@ -75,7 +75,7 @@ footer {
                 font-size: 32px;
                 letter-spacing: .03em;
                 line-height: 1.4;
-                color: #e8e8e8;
+                color: $light-title-color;
             }
 
             & > span {
@@ -83,7 +83,7 @@ footer {
                 font-size: 14px;
                 letter-spacing: .03em;
                 line-height: 1.4;
-                color: #c3c3c3;
+                color: $light-text-color;
             }
         }
     }
@@ -99,6 +99,6 @@ footer {
         font-family: 'Roboto-Light', sans-serif;
         font-size: 14px;
         letter-spacing: .03em;
-        color: $textColor;
+        color: $main-text-color;
     }
 }

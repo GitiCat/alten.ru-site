@@ -15,7 +15,7 @@
     
     &::-webkit-scrollbar-thumb {
         border-radius: 15px;
-        background-color: $titleColor;
+        background-color: $main-title-color;
     }
     
     & > .preview-list-item {
@@ -36,7 +36,7 @@
 
         & > input[type='radio']:checked {
             + label:before {
-                background: $mainColorDark !important;
+                background: $main-dark-color !important;
                 opacity: .8;
             }
             
@@ -61,7 +61,7 @@
                 left: 0;
                 width: 100%;
                 height: 100%;
-                background: linear-gradient(90deg, $mainColorDark 0%, $mainColorDark 35%, $mainColorMiddle 75%, $mainColorMiddle 100%);
+                background: linear-gradient(90deg, $main-dark-color 0%, $main-dark-color 35%, $main-middle-color 75%, $main-middle-color 100%);
                 opacity: .7;
                 z-index: 0;
 
@@ -129,7 +129,7 @@
                     letter-spacing: normal;
                     text-decoration: inherit;
                     text-transform: inherit;
-                    color: $textColor;
+                    color: $main-text-color;
                     margin: 0 0 7px;
                     text-indent: 0;
                 }
@@ -159,7 +159,7 @@
 
                 & > thead > tr > td {
                     font-size: 14px !important;
-                    color: $titleColor;
+                    color: $main-title-color;
                     line-height: 1.4;
                     letter-spacing: .03em;
                     vertical-align: bottom;
@@ -171,7 +171,7 @@
                 & > tbody > tr > td > ul {
                     font-family: 'Roboto-Light', sans-serif;
                     font-size: 14px !important;
-                    color: $titleColor;
+                    color: $main-title-color;
                     line-height: 1.4;
                     letter-spacing: .03em;
                 }
