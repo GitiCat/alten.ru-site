@@ -3,28 +3,25 @@
     height: $height;
 }
 
-$screens: (all, $large-screen, $middle-screen);
-@mixin respond-to($property, $values) {
-    
-    @for $i from 1 through length($values) {
+$screens: (large, $note-screen);
+@mixin responsive($property, $values) {
+    $value: '';
+
+    @for $i from 1 to length($values) {
         
-        @if nth($values, $i) != '' {
+        @if $property == font-size {
+            $value: rem(nth($values, $i));
+        } @else {
+            $value: nth($values, $i);
+        }
 
-            $value: '';
+        $screen: nth($screens, $i);
 
-            @if $property == font-size {
-                $value: rem(nth($values, $i))
-            } @else {
-                $value: nth($values, $i)
-            }
-
-            @if nth($screens, $i) == 'all' {
+        @if $screen == 'large' {
+            #{$property}: #{$value};
+        } @else {
+            @media only screen and (max-width: $screen) {
                 #{$property}: #{$value};
-            }
-            @else {
-                @media only screen and (max-width: nth($screens, $i)) {
-                    #{$property}: #{$value}
-                }
             }
         }
     }

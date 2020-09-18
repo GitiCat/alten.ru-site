@@ -7,7 +7,7 @@
         span:first-child {
             position: relative;
             font-family: 'Roboto-Light', sans-serif;
-            @include respond-to(font-size, (36, 36, 28));
+            @include responsive(font-size, (36, 28));
             color: $main-title-color;
             margin-right: 36px;
 
@@ -30,7 +30,7 @@
 
         span:last-child {
             font-family: inherit;
-            @include respond-to(font-size, (16, 16, 14));
+            @include responsive(font-size, (16, 14));
             line-height: inherit;
             letter-spacing: 0;
             text-decoration: none;

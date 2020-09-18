@@ -4,15 +4,15 @@
     }
 
     & > li > svg {
-        @include respond-to(width, (48px, 48px, 42px));
-        @include respond-to(height, (48px, 48px, 42px));
+        @include responsive(width, (48px, 42px));
+        @include responsive(height, (48, 42));
 
         color: white;
         margin: 0 0 17px;
     }
 
     & > li > .context > h3 {
-        @include respond-to(font-size, (18, 18, 16));
+        @include responsive(font-size, (18, 16));
         letter-spacing: .03em;
         line-height: 1.4;
         color: white;
@@ -20,7 +20,7 @@
     }
 
     & > li > .context > p {
-        @include respond-to(font-size, (16, 16, 14));
+        @include responsive(font-size, (16, 14));
         line-height: 1.4;
         letter-spacing: .03em;
         color: #f1f1f1;
