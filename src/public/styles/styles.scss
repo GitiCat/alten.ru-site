@@ -87,12 +87,13 @@ header {
             font-family: "Roboto-Regular", sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            font-size: rem(18);
             line-height: $big-line-height;
             letter-spacing: .0125em;
             text-decoration: inherit;
             text-transform: inherit;
             margin: 0 !important;
+            
+            @include responsive(font-size, (18, 16));
         }
     }
 
@@ -118,13 +119,14 @@ header {
         font-family: inherit;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        font-size: rem(32);
         line-height: $lower-line-height;
         letter-spacing: -.008em;
         text-decoration: inherit;
         text-transform: inherit;
         color: $main-title-color;
         margin: 0 0 12px;
+
+        @include responsive(font-size, (32, 28));
     }
 
     h4 {
@@ -142,12 +144,13 @@ header {
 
     > p {
         font-family: inherit;
-        font-size: rem(16);
         line-height: 1.5;
         letter-spacing: 0;
         text-decoration: inherit;
         text-transform: inherit;
         color: $main-text-color;
+
+        @include responsive(font-size, (16, 14));
     }
 
     > hr {
@@ -174,13 +177,14 @@ article.descriptor {
 
     > p {
         font-family: inherit;
-        font-size: rem(16);
         line-height: 1.5;
         letter-spacing: normal;
         text-decoration: inherit;
         text-transform: inherit;
         color: $main-text-color;
         margin: 0 0 7px;
+
+        @include responsive(font-size, (16, 14));
     }
 }
 

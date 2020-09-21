@@ -7,7 +7,7 @@ $screens: (large, $note-screen);
 @mixin responsive($property, $values) {
     $value: '';
 
-    @for $i from 1 to length($values) {
+    @for $i from 1 through length($values) {
         
         @if $property == font-size {
             $value: rem(nth($values, $i));
@@ -20,7 +20,7 @@ $screens: (large, $note-screen);
         @if $screen == 'large' {
             #{$property}: #{$value};
         } @else {
-            @media only screen and (max-width: $screen) {
+            @media screen and (max-width: $screen) {
                 #{$property}: #{$value};
             }
         }

@@ -5,7 +5,7 @@
 
     & > li > svg {
         @include responsive(width, (48px, 42px));
-        @include responsive(height, (48, 42));
+        @include responsive(height, (48px, 42px));
 
         color: white;
         margin: 0 0 17px;

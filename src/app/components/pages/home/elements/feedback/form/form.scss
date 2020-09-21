@@ -12,7 +12,7 @@
         }
 
         label {
-            font-size: 16px;
+            @include responsive(font-size, (16, 14));
             letter-spacing: .03em;
             line-height: 1.4;
             color: $main-title-color;

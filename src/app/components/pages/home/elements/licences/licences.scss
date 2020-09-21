@@ -25,8 +25,8 @@
     }
 
     .context > .logos > .logo {
-        @include respond-to(width, (105px, 105px, 90px));
-        @include respond-to(height, (105px, 105px, 90px));
+        @include responsive(width, (105px, 90px));
+        @include responsive(height, (105px, 90px));
         margin-bottom: 16px;
         margin-right: 42px;
 
@@ -39,7 +39,7 @@
         p {
             color: #fafafa;
             margin-bottom: 22px;
-            @include respond-to(font-size, (16, 16, 14));
+            @include responsive(font-size, (16, 14));
         }
     }
 
@@ -52,7 +52,7 @@
         & > .licence-image {
             position: absolute;
             display: block;
-            @include respond-to(width, (240px, 240px, 210px));
+            @include responsive(width, (240px, 210px));
             height: 100%;
             
             background-size: cover;
