@@ -1,19 +1,45 @@
 footer {
     flex: 0 0 auto;
-    padding: 74px 14.5%;
+    @include responsive(padding, ('74px 14.5% 0', '74px 7.5% 0'));
     padding-bottom: 0;
     background-color: $default-body-color;
 
+    .footer-container {
+        @include responsive(flex-direction, (row, column));
+        
+        & > .footer-block {
+            @include responsive(text-align, (left, center));
+            @include responsive(margin-bottom, (0, 42px));
+
+            > hr {
+                @include responsive(background, (
+                    'linear-gradient(to right, #3b69e5 0%, #3b69e5 35%, #7a96ff 50%, transparent 100%)',
+                    'linear-gradient(to right, transparent 0%, #3b69e5 50%, transparent 100%)'
+                ));
+                @include responsive(margin, ('0 0 12px', '0 auto 12px'))
+            }
+        }
+    }
+
     .footer-block {
         margin: 0 4%;
+
+        &:first-child {
+            min-width: 342px;
+        }
+
+        &:last-child {
+            min-width: 210px;
+        }
 
         & > span {
             margin: 0 0 7px;
 
             font-family: 'Roboto-Medium', sans-serif;
-            font-size: 16px;
             color: $light-title-color;
             letter-spacing: .03em;
+
+            @include responsive(font-size, (16px, 18px));
         }
 
         & > hr {
@@ -23,14 +49,6 @@ footer {
             height: 1px;
             margin: 0 0 12px;
             border: 0;
-            
-            background: linear-gradient(
-                to right,
-                $main-middle-color 0%,
-                $main-middle-color 35%,
-                $main-light-color 50%,
-                transparent 100%
-            );
         }
 
         &:nth-child(2), &:nth-child(3) {
@@ -50,11 +68,12 @@ footer {
 
         .f-nav-link {
             font-family: 'Roboto-Light', sans-serif;
-            font-size: 14px;
             line-height: 1.4;
             color: #c3c3c3;
             letter-spacing: .03em;
             margin: 0 0 6px;
+
+            @include responsive(font-size, (14px, 16px));
 
             transition: color .3s ease, transform .3s ease;
 
