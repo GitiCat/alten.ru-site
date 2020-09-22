@@ -1,21 +1,11 @@
-import React, { ReactText, ReactComponentElement } from 'react'
+import React, { ReactText } from 'react'
 import cn from 'classnames'
+import { inputChangeHandle } from './utils/input-change'
 
 interface ProductSelectedPreviewListTypes {
     items: [string, ReactText],
     changeState: Function,
     history
-}
-
-const inputChangeHandle = (func: Function, index: number, history) => {    
-    let params: Array<string> = [];
-    window.location.search.substr(0).split('&').forEach(p => params.push(p.replace('?', '')));
-
-    let product = params[1];
-    product = product.replace(product.substr(product.indexOf('=') + 1, product.length), index.toString());
-    
-    history.push({ search: `?${params[0]}&${product}` })
-    func(index);
 }
 
 const ProductSelectedPreviewList
@@ -34,7 +24,7 @@ const ProductSelectedPreviewList
                     return (
                         <div key={index} className="preview-list-item">
                             <input type="radio" name="product-preview-list-item" id={`preview-list-item-${index}`}
-                            onChange={e => inputChangeHandle(props.changeState, index, props.history)}/>
+                            onChange={() => inputChangeHandle(props.changeState, index, props.history)}/>
                             <label className="flex" htmlFor={`preview-list-item-${index}`}>
                                 <div className="block-title light">
                                     <h3>{item['title']}</h3>

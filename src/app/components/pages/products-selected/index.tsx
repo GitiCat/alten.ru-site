@@ -5,8 +5,10 @@ import { getAsyncData } from '../../../utils/async-get-data'
 import { asyncDataReducer, initialState } from '../../../utils/async-data-states/reducer'
 import { ERROR, FETCHED, LOADING } from '../../../utils/async-data-states/types'
 import Header from '../../blocks/header/header'
+import ProductMobilePreviewList from './preview-mobile/index'
 import ProductPreviewList from './preview'
 import ProductDisplay from './display'
+import { setWindowResizeEvent } from './utils/resizing'
 
 const getSearchParams = (search: URLSearchParams, data_length: number) => {
     const categoryIdFromSearch: number = Number(search.get('category')),
@@ -20,6 +22,7 @@ const getSearchParams = (search: URLSearchParams, data_length: number) => {
 
 const ProductsSelected: React.FunctionComponent<RouteComponentProps> = ({ location, history }) => {
     const [state, setState] = useReducer(asyncDataReducer, initialState)
+    const [isMobile, setPreviewType] = useState(false)
     const prevRef = useRef({})
     const search = new URLSearchParams(location.search)
     const params = getSearchParams(search, state?.data?.length)
@@ -38,6 +41,7 @@ const ProductsSelected: React.FunctionComponent<RouteComponentProps> = ({ locati
     }
     
     useEffect(() => {
+        setWindowResizeEvent(isMobile, setPreviewType)
         API(params.categoryId)
         prevRef.current = params.categoryId
     }, [])
@@ -61,7 +65,10 @@ const ProductsSelected: React.FunctionComponent<RouteComponentProps> = ({ locati
                     <Header title='Продукция' subtitle='Продукция нашего предприятия' />
                     <section className="container">
                         <div className="product-display flex">
-                            <ProductPreviewList items={state.data} changeState={setCurrentId} history={history}/>
+                            {!isMobile 
+                                ? <ProductPreviewList items={state.data} changeState={setCurrentId} history={history}/>
+                                : <ProductMobilePreviewList items={state.data} changeState={setCurrentId} history={history}/>
+                            }
                             <ProductDisplay 
                                 title={currentItem['title']}
                                 descriptor={currentItem['descriptor']}

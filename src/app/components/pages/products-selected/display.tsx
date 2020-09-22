@@ -36,4 +36,4 @@ const ProductSelectedDisplay: React.FunctionComponent<ProductSelectedDisplayType
     )
 }
 
-export default ProductSelectedDisplay
+export default React.memo(ProductSelectedDisplay)
