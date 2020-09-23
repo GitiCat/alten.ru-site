@@ -74,6 +74,14 @@ button {
     border: none;
 }
 
+.top {
+    z-index: 9999 !important;
+}
+
+.pre-top {
+    z-index: 9998 !important;
+}
+
 header {
     position: relative;
     display: block;

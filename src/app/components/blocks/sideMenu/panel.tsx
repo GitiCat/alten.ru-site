@@ -27,7 +27,7 @@ const changeTogglePosition = (isActive: boolean) => {
         container.style.setProperty('--left-pos', `${moveOn}%`);
     }
     else {
-        container.style.setProperty('--left-pos', `3%`);
+        container.style.setProperty('--left-pos', `2%`);
     }
 }
 
@@ -57,6 +57,10 @@ const SidePanel: React.FunctionComponent = () => {
     const dispatch: Dispatch    = useDispatch()
 
     const isActive: boolean       = store?.sidemenu?.isActive;
+    const toggleContainerClasses  = cn({
+        'toggle-container': true,
+        'top': store?.sidemenu?.isActive
+    })
     const toggleClasses: string   = cn({
         'toggle': true,
         'active': store?.sidemenu?.isActive
@@ -87,7 +91,7 @@ const SidePanel: React.FunctionComponent = () => {
 
     return (
         <React.Fragment>
-            <div className="toggle-container">
+            <div className={toggleContainerClasses}>
                 <svg className={toggleClasses} viewBox="0 0 100 100" width="45"
                     onClick={() => toggleHandle(isActive, dispatch)}>
                     <path className="line top"

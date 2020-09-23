@@ -9,7 +9,8 @@ const SideMenu: React.FunctionComponent<SideMenuTypes> = (props) => {
 
     const sidemenuClasses: string = cn({
         'side-menu': true,
-        'show': props.isShow
+        'show': props.isShow,
+        'pre-top': props.isShow
     })
 
     return (

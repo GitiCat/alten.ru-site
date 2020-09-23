@@ -20,5 +20,6 @@ const isScreenSizeTo = (current: number, needed: number): boolean => {
 }
 
 export {
-    setWindowResizeEvent
+    setWindowResizeEvent,
+    isScreenSizeTo
 }

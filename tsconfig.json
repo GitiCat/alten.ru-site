@@ -9,5 +9,7 @@
         "lib": ["DOM", "ES6"],
         "noImplicitAny": false,
         "outDir": "./dist"
-    }
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules", "**/*.spec.ts"]
 }

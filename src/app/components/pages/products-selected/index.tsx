@@ -3,16 +3,17 @@ import { Helmet } from 'react-helmet'
 import { RouteComponentProps } from 'react-router-dom'
 import { getAsyncData } from '../../../utils/async-get-data'
 import { asyncDataReducer, initialState } from '../../../utils/async-data-states/reducer'
-import { ERROR, FETCHED, LOADING } from '../../../utils/async-data-states/types'
+import { ERROR, FETCHED } from '../../../utils/async-data-states/types'
 import Header from '../../blocks/header/header'
 import ProductMobilePreviewList from './preview-mobile/index'
 import ProductPreviewList from './preview'
 import ProductDisplay from './display'
 import { setWindowResizeEvent } from './utils/resizing'
+import { ProductProvider } from './utils/context'
 
 const getSearchParams = (search: URLSearchParams, data_length: number) => {
     const categoryIdFromSearch: number = Number(search.get('category')),
-          productIdFromSearch: number = Number(search.get('product'))
+        productIdFromSearch: number = Number(search.get('product'))
 
     let categoryId: number = categoryIdFromSearch,
         productId: number = productIdFromSearch
@@ -36,25 +37,25 @@ const ProductsSelected: React.FunctionComponent<RouteComponentProps> = ({ locati
                 'category': id
             }
         })
-        .then(result => setState({ type: FETCHED, payload: { data: result } }))
-        .catch(error => setState({ type: ERROR, payload: { errorString: error } }))
+            .then(result => setState({ type: FETCHED, payload: { data: result } }))
+            .catch(error => setState({ type: ERROR, payload: { errorString: error } }))
     }
-    
+
     useEffect(() => {
         setWindowResizeEvent(isMobile, setPreviewType)
         API(params.categoryId)
         prevRef.current = params.categoryId
     }, [])
-    
+
     useEffect(() => {
-        if(prevRef.current != params.categoryId) {
+        if (prevRef.current != params.categoryId) {
             API(params.categoryId)
             prevRef.current = params.categoryId
         }
     })
 
     let currentItem: {} = state.data == undefined ? {} : state.data[currentId]
-    
+
     return (
         <div className="content">
             <Helmet>
@@ -65,11 +66,13 @@ const ProductsSelected: React.FunctionComponent<RouteComponentProps> = ({ locati
                     <Header title='Продукция' subtitle='Продукция нашего предприятия' />
                     <section className="container">
                         <div className="product-display flex">
-                            {!isMobile 
-                                ? <ProductPreviewList items={state.data} changeState={setCurrentId} history={history}/>
-                                : <ProductMobilePreviewList items={state.data} changeState={setCurrentId} history={history}/>
-                            }
-                            <ProductDisplay 
+                            <ProductProvider value={currentId}>
+                                {!isMobile
+                                    ? <ProductPreviewList items={state.data} changeState={setCurrentId} history={history} />
+                                    : <ProductMobilePreviewList items={state.data} changeState={setCurrentId} history={history} />
+                                }
+                            </ProductProvider>
+                            <ProductDisplay
                                 title={currentItem['title']}
                                 descriptor={currentItem['descriptor']}
                                 features={currentItem['feature']}
