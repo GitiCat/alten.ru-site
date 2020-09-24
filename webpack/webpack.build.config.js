@@ -6,6 +6,7 @@ const baseWebpackConfig = require('./webpack.base.config')
 const { PATHS } = require('./paths')
 
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 
 const buildWebpackConfig = merge(baseWebpackConfig, {
     mode: 'production',
@@ -31,6 +32,18 @@ const buildWebpackConfig = merge(baseWebpackConfig, {
         },
         noEmitOnErrors: true,
         minimize: true,
+        minimizer: new TerserPlugin({
+            cache: true,
+            parallel: true,
+            terserOptions: {
+                compress: {
+                    conditionals: true,
+                    dead_code: true,
+                    directives: true,
+                    if_return: true
+                }
+            }
+        }),
         removeAvailableModules: true,
         removeEmptyChunks: true,
         mergeDuplicateChunks: true

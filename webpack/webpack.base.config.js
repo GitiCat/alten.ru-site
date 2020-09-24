@@ -110,7 +110,7 @@ module.exports = {
             analyzerPort: bundleAnalyzerPort,
             analyzerMode: 'static',
             logLevel: 'error',
-            openAnalyzer: true
+            openAnalyzer: false
         })
     ]
 }

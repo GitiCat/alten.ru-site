@@ -8,6 +8,11 @@ const devServerHost = '192.168.0.173',
 
 const devWebpackConfig = merge(baseWebpackConfig, {
     mode: 'development',
+    optimization: {
+        splitChunks: {
+            chunks: 'all',
+        }
+    },
     devServer: {
         historyApiFallback: true,
         noInfo: false,

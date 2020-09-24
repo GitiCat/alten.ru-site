@@ -10,9 +10,7 @@ import configureStore from './app/store/index';
 const store = createStore(configureStore);
 
 render((
-    <Suspense fallback='loader...'>
-        <Provider store={store}>
-            <App/>
-        </Provider>
-    </Suspense>
+    <Provider store={store}>
+        <App />
+    </Provider>
 ), document.getElementById('renderer'));
