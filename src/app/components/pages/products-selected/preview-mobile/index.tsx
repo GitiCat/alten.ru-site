@@ -5,7 +5,7 @@ import cn from 'classnames'
 import ChangeTogglePosition from './utils/preview-mobile-func'
 
 type PreviewMobileTypes = {
-    items: [string, ReactText],
+    items: {},
     changeState: Function,
     history
 }

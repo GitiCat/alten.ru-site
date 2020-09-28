@@ -14,7 +14,7 @@ const DocumentsComponent: React.FunctionComponent = () => {
             api_v: 0,
             url: 'documents'
         })
-        .then(result => dispatch({ type: FETCHED, payload: { data: result } }))
+        .then(result => dispatch({ type: FETCHED, payload: { data: result.data } }))
         .catch(error => dispatch({ type: ERROR, payload: { errorString: error}}))
     }, [])
     
@@ -29,7 +29,7 @@ const DocumentsComponent: React.FunctionComponent = () => {
                     <article className="article container">
                         <div className="wrapper">
                             {
-                                state.data.map((item: {}, index: number) => {
+                                (state.data as []).map((item: {}, index: number) => {
                                     return (
                                         <DocumentsWrapperList key={index}
                                             title = {item['title']}

@@ -26,7 +26,7 @@ const ProductsSelected: React.FunctionComponent<RouteComponentProps> = ({ locati
     const [isMobile, setPreviewType] = useState(false)
     const prevRef = useRef({})
     const search = new URLSearchParams(location.search)
-    const params = getSearchParams(search, state?.data?.length)
+    const params = getSearchParams(search, (state?.data as [])?.length)
     const [currentId, setCurrentId] = useState(params.productId)
 
     const API = (id: number) => {
@@ -37,7 +37,7 @@ const ProductsSelected: React.FunctionComponent<RouteComponentProps> = ({ locati
                 'category': id
             }
         })
-            .then(result => setState({ type: FETCHED, payload: { data: result } }))
+            .then(result => setState({ type: FETCHED, payload: { data: result.data } }))
             .catch(error => setState({ type: ERROR, payload: { errorString: error } }))
     }
 

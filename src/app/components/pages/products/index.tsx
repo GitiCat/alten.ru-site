@@ -15,7 +15,7 @@ const ProductsComponent: React.FunctionComponent = () => {
             url: 'products-by-category',
             params: {}
         })
-        .then(result => dispatch({ type: FETCHED, payload: { data: result }}))
+        .then(result => dispatch({ type: FETCHED, payload: { data: result.data }}))
         .catch(error => dispatch({ type: ERROR, payload: { errorString: error }}))
     }, [])
     
@@ -29,7 +29,7 @@ const ProductsComponent: React.FunctionComponent = () => {
                     <Header title='Продукция' subtitle='Категории и продукция нашего предприятия'/>
                     <article className="text">
                         {
-                            state.data.map((item: {}, index: number) => {
+                            (state.data as []).map((item: {}, index: number) => {
                                 return (
                                     <CategoryProductBlock key={index}
                                         id={item['id']}

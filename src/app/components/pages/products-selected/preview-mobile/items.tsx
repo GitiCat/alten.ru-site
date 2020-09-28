@@ -4,7 +4,7 @@ import { inputChangeHandle } from '../utils/input-change'
 import { ProductConsumer } from '../utils/context'
 
 type PreviewMobileListTypes = {
-    items: [string, ReactText]
+    items: {},
     changeState: Function
     history
 }
@@ -13,7 +13,7 @@ const PreviewMobileList: React.FunctionComponent<PreviewMobileListTypes> = (prop
     return (
         <div className="preview-mobile-list">
             {
-                props.items.map((item: {}, index: number) => {
+                (props.items as []).map((item: {}, index: number) => {
                     const image = item['main_image']
 
                     const imgClasses = cn({

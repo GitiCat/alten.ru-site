@@ -1,5 +1,5 @@
 export interface AsyncDataStatesTypes {
-    data?: [string, string | number],
+    data?: {},
     loading?: boolean,
     isError?: boolean,
     errorString?: string

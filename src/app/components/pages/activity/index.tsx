@@ -17,7 +17,7 @@ const ActivityComponent: React.FunctionComponent = () => {
                 'category': 'activity'
             }
         })
-        .then(result => dispatch({ type: FETCHED, payload: { data: result } }))
+        .then(result => dispatch({ type: FETCHED, payload: { data: result.data } }))
         .catch(error => dispatch({ type: ERROR, payload: { errorString: error } }))
     }, [])
     
@@ -31,9 +31,9 @@ const ActivityComponent: React.FunctionComponent = () => {
                     <Header title={state.data['category']['title']} subtitle={state.data['category']['descriptor']}/>
                     <article className="text">
                         {
-                            state.data["data"].map((item: Array<String>) => {
+                            state.data['data'].map((item) => {
                                 return (
-                                    parse(item["text"])
+                                    parse(item['text'])
                                 )
                             })
                         }

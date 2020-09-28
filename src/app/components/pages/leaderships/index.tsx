@@ -17,7 +17,7 @@ const LeadershipsComponent: React.FunctionComponent = () => {
                     'category': 'leaderships'
                 }
             })
-            .then(result => dispatch({ type: FETCHED, payload: { data: result } }))
+            .then(result => dispatch({ type: FETCHED, payload: { data: result.data } }))
             .catch(error => dispatch({ type: ERROR, payload: { errorString: error } }))
     }, [])
 

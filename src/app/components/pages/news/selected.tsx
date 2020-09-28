@@ -23,7 +23,7 @@ const NewsSelectedComponent: React.FunctionComponent<RouteComponentProps> = ({ m
                 'id': item_id
             }
         })
-            .then(result => dispatch({ type: FETCHED, payload: { data: result } }))
+            .then(result => dispatch({ type: FETCHED, payload: { data: result.data } }))
             .catch(error => dispatch({ type: ERROR, payload: { errorString: error } }))
     }, [])
 

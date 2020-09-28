@@ -16,7 +16,7 @@ const NewsComponent: React.FunctionComponent = () => {
             url: 'news',
             params: {}
         })
-        .then(result => dispatch({ type: FETCHED, payload: { data: result } }))
+        .then(result => dispatch({ type: FETCHED, payload: { data: result.data } }))
         .catch(error => dispatch({ type: ERROR, payload: { errorString: error } }))
     }, [])
     
@@ -31,7 +31,7 @@ const NewsComponent: React.FunctionComponent = () => {
                     <article className="article container">
                         <div className="list">
                             {
-                                state.data.map((item: {}, index: number) => {
+                                (state.data as []).map((item: {}, index: number) => {
                                     const isItemNew: boolean = isNew(item['created_at'], 7);
                                     const date: string = DateFormat(item['created_at'])
 

@@ -4,7 +4,7 @@ import { inputChangeHandle } from './utils/input-change'
 import { ProductConsumer } from './utils/context'
 
 interface ProductSelectedPreviewListTypes {
-    items: [string, ReactText],
+    items: {},
     changeState: Function,
     history
 }
@@ -14,7 +14,7 @@ const ProductSelectedPreviewList
     return (
         <div className="preview-list">
             {
-                props.items.map((item: {}, index: number) => {
+                (props.items as []).map((item: {}, index: number) => {
                     const image = item['main_image']
                     
                     const imgClasses = cn({
