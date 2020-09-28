@@ -40,11 +40,11 @@ const getAsyncData = async (props: AsyncGetMethodTypes): Promise<PromiseMessageT
         
         xhr.onload = () => {
             if (xhr.status == 200) return resolve(promiseMessage({status: xhr.status, message: xhr.statusText, data: JSON.parse(xhr.responseText)}))
-            else return reject(promiseMessage({status: xhr.status, message: xhr.statusText, data: JSON.parse(xhr.responseText)}))
+            else return reject(promiseMessage({status: xhr.status, message: xhr.statusText, data: null}))
         }
 
         xhr.onerror = () => {
-            return reject(promiseMessage({status: xhr.status, message: xhr.statusText, data: JSON.parse(xhr.responseText)}))
+            return reject(promiseMessage({status: xhr.status, message: xhr.statusText, data: null}))
         }
     })
 

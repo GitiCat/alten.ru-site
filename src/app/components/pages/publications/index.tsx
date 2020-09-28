@@ -2,7 +2,7 @@ import React, { useEffect, useReducer } from 'react'
 import { Helmet } from 'react-helmet'
 import { getAsyncData } from '../../../utils/async-get-data'
 import { asyncDataReducer, initialState } from '../../../utils/async-data-states/reducer'
-import { FETCHED, ERROR } from '../../../utils/async-data-states/types'
+import { LOADING, ERROR } from '../../../utils/async-data-states/types'
 import Header from '../../blocks/header/header'
 
 const PublicationsComponent: React.FunctionComponent = () => {
@@ -14,7 +14,7 @@ const PublicationsComponent: React.FunctionComponent = () => {
             url: "publications",
             params: null
         })
-            .then(result => dispatch({ type: FETCHED, payload: { data: result } }))
+            .then(result => dispatch({ type: LOADING, payload: { data: result.data } }))
             .catch(error => dispatch({ type: ERROR, payload: { errorString: error } }))
     }, [])
     
@@ -23,7 +23,7 @@ const PublicationsComponent: React.FunctionComponent = () => {
             <Helmet>
                 <title>Публикации</title>
             </Helmet>
-            {state.loading ?
+            {!state.loading ?
                 <React.Fragment>
                     <Header title='Публикации' subtitle='Статьи и публикации предприятия' />
                 </React.Fragment>
