@@ -1,30 +1,30 @@
 @import "./utils/vars.scss";
 @import "./utils/functions.scss";
 @import "./utils/mixins.scss";
-
+@import "../../app/components/blocks/suspens-loader/suspens-loader.scss";
 @font-face {
     font-family: "Roboto-Thin";
-    src: url("/fonts/Roboto/Roboto-Thin.ttf");
+    src: url("/static/assepts/fonts/Roboto/Roboto-Thin.ttf");
 }
 
 @font-face {
     font-family: "Roboto-Light";
-    src: url("/fonts/Roboto/Roboto-Light.ttf");
+    src: url("/static/assepts/fonts/Roboto/Roboto-Light.ttf");
 }
 
 @font-face {
     font-family: "Roboto-Regular";
-    src: url("/fonts/Roboto/Roboto-Regular.ttf");
+    src: url("/static/assepts/fonts/Roboto/Roboto-Regular.ttf");
 }
 
 @font-face {
     font-family: "Roboto-Medium";
-    src: url("/fonts/Roboto/Roboto-Medium.ttf");
+    src: url("/static/assepts/fonts/Roboto/Roboto-Medium.ttf");
 }
 
 @font-face {
     font-family: "Roboto-Bold";
-    src: url("/fonts/Roboto/Roboto-Bold.ttf");
+    src: url("/static/assepts/fonts/Roboto/Roboto-Bold.ttf");
 }
 
 * {
@@ -35,7 +35,8 @@
 
 html,
 body {
-    @include size(100%, 100vh)
+    @include size(100%,
+    100vh)
 }
 
 body {
@@ -86,10 +87,8 @@ header {
     position: relative;
     display: block;
     margin-bottom: 48px;
-
     &.card-header {
         margin: 0 0 12px;
-        
         h4 {
             color: $main-title-color;
             font-family: "Roboto-Regular", sans-serif;
@@ -100,16 +99,20 @@ header {
             text-decoration: inherit;
             text-transform: inherit;
             margin: 0 !important;
-            
-            @include responsive(font-size, (18, 16));
+            @include responsive(font-size,
+            (18,
+            16));
         }
     }
-
     &.light {
-        > h1, > h2, > h4, > p { color: $light-title-color; }
+        >h1,
+        >h2,
+        >h4,
+        >p {
+            color: $light-title-color;
+        }
     }
-     
-    > h1 {
+    >h1 {
         font-family: inherit;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -119,11 +122,11 @@ header {
         text-transform: inherit;
         color: $main-title-color;
         margin: 0 0 12px;
-        
-        @include responsive(font-size, (62, 46));
+        @include responsive(font-size,
+        (62,
+        46));
     }
-    
-    > h2 {
+    >h2 {
         font-family: inherit;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -133,10 +136,10 @@ header {
         text-transform: inherit;
         color: $main-title-color;
         margin: 0 0 12px;
-
-        @include responsive(font-size, (32, 28));
+        @include responsive(font-size,
+        (32,
+        28));
     }
-
     h4 {
         font-family: inherit;
         -webkit-font-smoothing: antialiased;
@@ -149,41 +152,32 @@ header {
         color: $main-title-color;
         margin: 0 0 12px;
     }
-
-    > p {
+    >p {
         font-family: inherit;
         line-height: 1.5;
         letter-spacing: 0;
         text-decoration: inherit;
         text-transform: inherit;
         color: $main-text-color;
-
-        @include responsive(font-size, (16, 14));
+        @include responsive(font-size,
+        (16,
+        14));
     }
-
-    > hr {
+    >hr {
         position: absolute;
         left: 0;
         bottom: -20px;
         border: 0;
         width: 50%;
         height: 1px;
-
-        background: linear-gradient(
-            90deg,
-            $main-dark-color 0%,
-            $main-dark-color 25%,
-            $main-middle-color 45%,
-            transparent 100%
-        )
+        background: linear-gradient( 90deg, $main-dark-color 0%, $main-dark-color 25%, $main-middle-color 45%, transparent 100%)
     }
 }
 
 article.descriptor {
     display: block;
     margin-bottom: 22px;
-
-    > p {
+    >p {
         font-family: inherit;
         line-height: 1.5;
         letter-spacing: normal;
@@ -191,14 +185,14 @@ article.descriptor {
         text-transform: inherit;
         color: $main-text-color;
         margin: 0 0 7px;
-
-        @include responsive(font-size, (16, 14));
+        @include responsive(font-size,
+        (16,
+        14));
     }
 }
 
 .card-descriptor {
     margin-bottom: 16px;
-    
     p {
         font-family: inherit;
         -webkit-font-smoothing: antialiased;
@@ -209,8 +203,9 @@ article.descriptor {
         text-transform: none;
         color: $main-text-color;
         opacity: .6;
-
-        @include responsive(font-size, (16, 14));
+        @include responsive(font-size,
+        (16,
+        14));
     }
 }
 
@@ -233,19 +228,18 @@ a._action {
     letter-spacing: .0892857143em;
     text-transform: uppercase;
     padding: 0 16px 0 16px;
-
-    @include responsive(font-size, (14, 12))
+    @include responsive(font-size,
+    (14,
+    12))
 }
 
 a._contained,
 button._contained {
-    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0,0,0,.12);
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, .12);
     transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1), background-color 280ms ease;
-
     &.dark {
         background-color: $main-middle-color;
         color: white;
-
         &:hover {
             background-color: $main-dark-color;
         }
@@ -259,12 +253,10 @@ a._outlined {
     border-color: $main-middle-color;
     color: $main-title-color;
     transition: border-color 280ms ease, background-color 280ms ease;
-
     &.light {
         color: #fff;
         border-color: #fff;
     }
-    
     &:hover {
         border-color: $main-middle-color;
         background-color: rgba($color: $main-light-color, $alpha: 0.3);
@@ -275,15 +267,16 @@ a._action {
     transition: color 280ms ease;
     padding: 0;
     color: $main-middle-color;
-
     &:hover {
         color: $main-dark-color;
     }
 }
 
+
 /*
     Set display flex
 */
+
 .root,
 .flex {
     display: -webkit-box;
@@ -308,8 +301,7 @@ a._action {
     justify-content: space-around;
 }
 
-.flex-dir-col
-{
+.flex-dir-col {
     -webkit-flex-flow: column nowrap;
     -ms-flex-flow: column nowrap;
     flex-flow: column nowrap;
@@ -327,13 +319,18 @@ a._action {
     flex-wrap: wrap;
 }
 
-.flex-block-1, 
+.flex-block-1,
 .flex-block-2 {
     padding: 0 2.5%;
 }
 
-.flex-block-1 { flex: 1 0; }
-.flex-block-2 { flex: 2 0; }    
+.flex-block-1 {
+    flex: 1 0;
+}
+
+.flex-block-2 {
+    flex: 2 0;
+}
 
 .bg-cover {
     background-size: cover;
@@ -348,8 +345,7 @@ a._action {
 .root {
     position: relative;
     min-height: 100%;
-
-    & > .content {
+    &>.content {
         flex: 1 0 auto;
         min-height: 100vh;
     }
@@ -358,13 +354,16 @@ a._action {
 .container {
     position: relative;
     overflow: hidden;
-    
-    @include responsive(padding, ('116px 14.5%', '116px 7.5%'));
+    @include responsive(padding,
+    ('116px 14.5%',
+    '116px 7.5%'));
 }
 
 section.container,
 article.container {
-    @include responsive(padding, ('116px 14.5%', '116px 7.5%'));
+    @include responsive(padding,
+    ('116px 14.5%',
+    '116px 7.5%'));
 }
 
 section.item-section {
@@ -375,21 +374,20 @@ section.item-section {
     &.left {
         margin-right: 42px;
     }
-
     img {
         border-radius: 4px;
-        box-shadow: 1px 6px 12px rgba(0,0,0,0.32), 1px 4px 10px rgba(0,0,0,0.26);
-        transition: transform 280ms ease, box-shadow 280ms ease; 
-
+        box-shadow: 1px 6px 12px rgba(0, 0, 0, 0.32), 1px 4px 10px rgba(0, 0, 0, 0.26);
+        transition: transform 280ms ease, box-shadow 280ms ease;
         &:hover {
             transform: perspective(10px) translateZ(.4px);
-            box-shadow: 1px 10px 20px rgba(0,0,0,0.23), 1px 6px 12px rgba(0,0,0,0.19)
+            box-shadow: 1px 10px 20px rgba(0, 0, 0, 0.23), 1px 6px 12px rgba(0, 0, 0, 0.19)
         }
     }
 }
 
 article.content {
-    p, ul > li {
+    p,
+    ul>li {
         font-family: inherit;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -399,18 +397,16 @@ article.content {
         text-transform: inherit;
         color: $main-text-color;
         margin: 0 0 7px;
-
-        @include responsive(font-size, (16, 14));
+        @include responsive(font-size,
+        (16,
+        14));
     }
-
     ul {
         position: relative;
         display: block;
-
-        > li {
+        >li {
             position: relative;
             padding: 0px 15px;
-
             &:before {
                 position: absolute;
                 content: '';
@@ -426,9 +422,11 @@ article.content {
 }
 
 article.text {
-    @include responsive(padding, ('42px 14.5% 116px', '42px 7.5% 116px'));
-
-    p, ul > li {
+    @include responsive(padding,
+    ('42px 14.5% 116px',
+    '42px 7.5% 116px'));
+    p,
+    ul>li {
         font-family: inherit;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -438,36 +436,34 @@ article.text {
         text-transform: inherit;
         color: $main-text-color;
         margin: 0 0 7px;
-
-        @include responsive(font-size, (16px, 14px));
+        @include responsive(font-size,
+        (16px,
+        14px));
     }
-
     img {
         display: block;
         margin: 16px;
         border: 0;
         border-radius: 4px;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
         transition: transform 320ms ease, box-shadow 280ms ease;
-
-        &.left { float: left; }
-        &.right { float: right; }
-
+        &.left {
+            float: left;
+        }
+        &.right {
+            float: right;
+        }
         &:hover {
             transform: perspective(10px) translateZ(.5px);
-            box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
         }
     }
-
     ul {
         position: relative;
         display: block;
-
-        > li {
+        >li {
             position: relative;
             padding: 0px 15px;
-
             &:before {
                 position: absolute;
                 content: '';
@@ -490,7 +486,7 @@ article.text {
 .no-image {
     position: relative;
     display: block;
-    background-image: url('/images/no-photo.png');
+    background-image: url('/static/assepts/images/no-photo.png');
     background-repeat: no-repeat;
     background-position: center !important;
     background-size: contain !important;

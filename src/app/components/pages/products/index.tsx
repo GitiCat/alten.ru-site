@@ -1,5 +1,4 @@
 import React, { useEffect, useReducer } from 'react'
-import { Helmet } from 'react-helmet'
 import Header from '../../blocks/header/header'
 import { getAsyncData } from '../../../utils/async-get-data'
 import { asyncDataReducer ,initialState } from '../../../utils/async-data-states/reducer'
@@ -18,12 +17,13 @@ const ProductsComponent: React.FunctionComponent = () => {
         .then(result => dispatch({ type: FETCHED, payload: { data: result.data }}))
         .catch(error => dispatch({ type: ERROR, payload: { errorString: error }}))
     }, [])
+
+    useEffect(() => {
+        document.title = 'Продукция'
+    })
     
     return (
         <div className="content">
-            <Helmet>
-                <title>Продукция</title>
-            </Helmet>
             {!state.loading &&
                 <React.Fragment>
                     <Header title='Продукция' subtitle='Категории и продукция нашего предприятия'/>

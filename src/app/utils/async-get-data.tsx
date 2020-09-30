@@ -33,7 +33,7 @@ const getAsyncData = async (props: AsyncGetMethodTypes): Promise<PromiseMessageT
     if (props.params != null) url += `?${encodeQueryData(props.params)}`
 
     const request: Promise<PromiseMessageTypes> = new Promise((resolve, reject) => {
-        xhr.open('GET', url)
+        xhr.open('GET', url, true)
         xhr.setRequestHeader('Accept', 'text/plain')
         xhr.setRequestHeader('Content-Type', 'text/json;charset=utf-8')
         xhr.send()

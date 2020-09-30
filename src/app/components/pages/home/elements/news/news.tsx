@@ -1,35 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { getAsyncData } from '../../../../../utils/async-get-data'
+import { asyncDataReducer, initialState } from '../../../../../utils/async-data-states/reducer'
+import { ERROR, FETCHED } from '../../../../../utils/async-data-states/types'
 
 import NewsItem from './items/items';
 
-type NewsStateTypes = {
-    data?: [string, string | number]
-    ready?: boolean
-}
-
-const NewsElement: React.FunctionComponent<NewsStateTypes> = ( {data = null, ready = false } ) => {
-
-    const [apiData, setApiData] = useState(data)
-    const [isReady, setReadyState] = useState(ready)
+const NewsElement: React.FunctionComponent = () => {
+    const [state, dispatch] = useReducer(asyncDataReducer, initialState)
 
     useEffect(() => {
-        const getAsyncApiData = async () => {
-            const result = await axios({
-                method: "GET",
-                url: "/api_v0/news/",
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            setApiData(result.data);
-            setReadyState(true)
-        }
-
-        getAsyncApiData();
+        getAsyncData({
+            api_v: 0,
+            url: 'news',
+            params: null
+        })
+        .then(result => dispatch({ type: FETCHED, payload: {data: result.data} }))
+        .catch(error => dispatch({ type: ERROR, payload: {errorString: error}} ))
     }, [])
-
+    
     return (
         <section className="container news">
             <header>
@@ -37,17 +26,17 @@ const NewsElement: React.FunctionComponent<NewsStateTypes> = ( {data = null, rea
                 <p>Свежие новости космической отрасли и деятельности предприятия</p>
             </header>
             <div className="content flex flex-dir-col">
-                <Link to='/news' className="_contained dark" style={{alignSelf: 'flex-start'}}>Показать все новости</Link>
+                <Link to='/news' className="_contained dark" style={{ alignSelf: 'flex-start' }}>Показать все новости</Link>
                 <div className="h-list flex">
-                    {isReady &&
-                        apiData.slice(0, 4).map((item, index) => {
+                    {!state.loading &&
+                        (state.data as []).slice(0, 4).map((item, index) => {
                             return <NewsItem key={index}
-                            id = {item['id']}
-                            title = {item['name']}
-                            subtitle = {item['subtitle']}
-                            text = {item['text']}
-                            mainImage = {item['main_image']}
-                            createdAt = {item['create_at']}
+                                id={item['id']}
+                                title={item['name']}
+                                subtitle={item['subtitle']}
+                                text={item['text']}
+                                mainImage={item['main_image']}
+                                createdAt={item['create_at']}
                             />
                         })
                     }

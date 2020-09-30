@@ -1,5 +1,4 @@
 import React, { useEffect, useReducer } from 'react'
-import { Helmet } from 'react-helmet'
 import { getAsyncData } from '../../../utils/async-get-data';
 import { asyncDataReducer, initialState } from '../../../utils/async-data-states/reducer'
 import { ERROR, FETCHED } from '../../../utils/async-data-states/types'
@@ -21,11 +20,12 @@ const LeadershipsComponent: React.FunctionComponent = () => {
             .catch(error => dispatch({ type: ERROR, payload: { errorString: error } }))
     }, [])
 
+    useEffect(() => {
+        document.title = 'Руководство'
+    })
+
     return (
         <div className="content">
-            <Helmet>
-                <title>Руководство</title>
-            </Helmet>
             {!state.loading &&
                 <React.Fragment>
                     <Header title={state.data['category']['title']} subtitle={state.data['category']['descriptor']}/>

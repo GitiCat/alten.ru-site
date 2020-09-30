@@ -1,57 +1,108 @@
-import React, { Suspense, lazy } from 'react';
+import React from 'react';
 import {
     Router,
     Route,
     Switch
 } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
+import Loadable from 'react-loadable'
 import SideMenuPanel from './components/blocks/sideMenu/panel';
+import FooterBlock from './components/blocks/footer/footer'
 import { MemodBlackoutBlock } from './components/blocks/blackout/blackout';
 import SuspensLoader from './components/blocks/suspens-loader/suspens-loader'
 
-const history = createBrowserHistory();
+const HomeComponent = Loadable({
+    loader: () => import('./components/pages/home/index'),
+    loading: () => <SuspensLoader/>
+})
 
-const HomeComponent: React.FunctionComponent = lazy(() => import('./components/pages/home/index'));
-const HistoryComponent: React.FunctionComponent = lazy(() => import('./components/pages/history/index'));
-const ActivityComponent: React.FunctionComponent = lazy(() => import('./components/pages/activity/index'));
-const ProductsComponent: React.FunctionComponent = lazy(() => import('./components/pages/products/index'));
-const ProductsSelected: React.FunctionComponent = lazy(() => import('./components/pages/products-selected/index'));
-const CompanyComponent: React.FunctionComponent = lazy(() => import('./components/pages/company/index'));
-const LeadershipsComponent: React.FunctionComponent = lazy(() => import('./components/pages/leaderships/index'));
-const PublicationsComponent: React.FunctionComponent = lazy(() => import('./components/pages/publications/index'));
-const LicencesComponent: React.FunctionComponent = lazy(() => import('./components/pages/licences/index'));
-const DocumentsComponent: React.FunctionComponent = lazy(() => import('./components/pages/documents/index'));
-const GalleryComponent: React.FunctionComponent = lazy(() => import('./components/pages/gallery/index'));
-const NewsComponent: React.FunctionComponent = lazy(() => import('./components/pages/news/index'));
-const NewsSelectedConponent: React.FunctionComponent = lazy(() => import('./components/pages/news/selected'));
-const FooterBlock: React.ExoticComponent = lazy(() => import('./components/blocks/footer/footer'));
+const HistoryComponent = Loadable({
+    loader: () => import('./components/pages/history/index'),
+    loading: () => <SuspensLoader/>
+})
+
+const ActivityComponent = Loadable({
+    loader: () => import('./components/pages/activity/index'),
+    loading: () => <SuspensLoader/>
+})
+
+const ProductsComponent = Loadable({
+    loader: () => import('./components/pages/products/index'),
+    loading: () => <SuspensLoader/>
+})
+
+const ProductsSelected = Loadable({
+    loader: () => import('./components/pages/products-selected/index'),
+    loading: () => <SuspensLoader/>
+})
+
+const CompanyComponent = Loadable({
+    loader: () => import('./components/pages/company/index'),
+    loading: () => <SuspensLoader/>
+})
+
+const LeadershipsComponent = Loadable({
+    loader: () => import('./components/pages/leaderships/index'),
+    loading: () => <SuspensLoader/>
+})
+
+const PublicationsComponent = Loadable({
+    loader: () => import('./components/pages/publications/index'),
+    loading: () => <SuspensLoader/>
+})
+
+const LicencesComponent = Loadable({
+    loader: () => import('./components/pages/licences/index'),
+    loading: () => <SuspensLoader/>
+})
+
+const DocumentsComponent = Loadable({
+    loader: () => import('./components/pages/documents/index'),
+    loading: () => <SuspensLoader/>
+})
+
+const GalleryComponent = Loadable({
+    loader: () => import('./components/pages/documents/index'),
+    loading: () => <SuspensLoader/>
+})
+
+const NewsComponent = Loadable({
+    loader: () => import('./components/pages/news/index'),
+    loading: () => <SuspensLoader/>
+})
+
+const NewsSelectedConponent = Loadable({
+    loader: () => import('./components/pages/news/selected'),
+    loading: () => <SuspensLoader/>
+})
+
+const history = createBrowserHistory();
 
 const App: React.FunctionComponent = () => {
     return (
         <React.Fragment>
             <Router history={history}>
-                <Suspense fallback={<SuspensLoader/>}>
                 <MemodBlackoutBlock />
                 <SideMenuPanel />
-                    <Switch>
-                        <Route path='/' exact component={HomeComponent} />
-                        <Route path='/history' component={HistoryComponent} />
-                        <Route path='/activity' component={ActivityComponent} />
-                        <Route exact path='/products' component={ProductsComponent} />
-                        <Route path='/products/rechargeable-batteries' component={ProductsSelected} />
-                        <Route path='/products/primary-current-sources' component={ProductsSelected} />
-                        <Route path='/products/zru' component={ProductsSelected} />
-                        <Route exact path='/company' component={CompanyComponent} />
-                        <Route path='/company/leaderships' component={LeadershipsComponent} />
-                        <Route path='/company/publications' component={PublicationsComponent} />
-                        <Route path='/company/licences' component={LicencesComponent} />
-                        <Route path='/company/documents' component={DocumentsComponent} />
-                        <Route path='/company/gallery' component={GalleryComponent} />
-                        <Route exact path='/news' component={NewsComponent} />
-                        <Route exact path='/news/:news_id' component={NewsSelectedConponent} />
-                    </Switch>
+                <Switch>
+                    <Route exact path='/' component={HomeComponent} />
+                    <Route exact path='/history' component={HistoryComponent} />
+                    <Route exact path='/history' component={HistoryComponent} />
+                    <Route exact path='/activity' component={ActivityComponent} />
+                    <Route exact path='/products' component={ProductsComponent} />
+                    <Route exact path='/products/rechargeable-batteries' component={ProductsSelected} />
+                    <Route exact path='/products/primary-current-sources' component={ProductsSelected} />
+                    <Route exact path='/products/zru' component={ProductsSelected} />
+                    <Route exact path='/company' component={CompanyComponent} />
+                    <Route exact path='/company/leaderships' component={LeadershipsComponent} />
+                    <Route exact path='/company/publications' component={PublicationsComponent} />
+                    <Route exact path='/company/licences' component={LicencesComponent} />
+                    <Route exact path='/company/documents' component={DocumentsComponent} />
+                    <Route exact path='/company/gallery' component={GalleryComponent} />
+                    <Route exact path='/news' component={NewsComponent} />
+                    <Route path='/news/:news_id' component={NewsSelectedConponent} />
+                </Switch>
                 <FooterBlock />
-                </Suspense>
             </Router>
         </React.Fragment>
     )

@@ -1,5 +1,4 @@
 import React, { useReducer, useEffect } from 'react'
-import { Helmet } from 'react-helmet'
 import { getAsyncData } from '../../../utils/async-get-data'
 import { asyncDataReducer, initialState } from '../../../utils/async-data-states/reducer'
 import { ERROR, FETCHED } from '../../../utils/async-data-states/types'
@@ -17,12 +16,13 @@ const DocumentsComponent: React.FunctionComponent = () => {
         .then(result => dispatch({ type: FETCHED, payload: { data: result.data } }))
         .catch(error => dispatch({ type: ERROR, payload: { errorString: error}}))
     }, [])
+
+    useEffect(() => {
+        document.title = 'Документы'
+    })
     
     return (
         <div className='content'>
-            <Helmet>
-                <title>Документы</title>
-            </Helmet>
             {!state.loading && 
                 <React.Fragment>
                     <Header title='Документы' subtitle='Общедоступные документы предприятия'/>

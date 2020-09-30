@@ -2,7 +2,9 @@ import React from 'react';
 
 const SuspensLoader: React.FunctionComponent = () => {
     return (
-        <h1>Loading...</h1>
+        <div className="suspens-container flex">
+            <div className="spiner"></div>
+        </div>
     )
 }
 

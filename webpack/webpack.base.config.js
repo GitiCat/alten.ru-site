@@ -8,14 +8,14 @@ const path = require('path')
 const { PATHS } = require('./paths')
 
 const bundleAnalyzerHost = 'localhost',
-      bundleAnalyzerPort = 3000
+    bundleAnalyzerPort = 3000
 
 module.exports = {
     entry: {
         app: path.resolve(PATHS.SRC, 'index.tsx')
     },
     output: {
-        filename: '[name].bundle.js',
+        filename: '[name].js?v=[hash]',
         path: PATHS.BUILD,
         publicPath: '/'
     },
@@ -23,11 +23,10 @@ module.exports = {
         extensions: ['.js', '.jsx', '.ts', '.tsx']
     },
     module: {
-        rules: [
-            {
+        rules: [{
                 test: /\.ts(x?)$/,
                 exclude: /node_modules/,
-                loader: 'ts-loader'
+                loader: ['babel-loader', 'ts-loader']
             },
             {
                 test: /\.scss$/,
@@ -70,14 +69,12 @@ module.exports = {
             },
             {
                 test: /\.(png|jpg|gif|svg)$/i,
-                use: [
-                    {
-                        loader: 'url-loader',
-                        options: {
-                            limit: 8192
-                        }
+                use: [{
+                    loader: 'url-loader',
+                    options: {
+                        limit: 8192
                     }
-                ]
+                }]
             }
         ]
     },

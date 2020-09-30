@@ -1,11 +1,5 @@
 .container.licences {
-    background: linear-gradient(
-        25deg,
-        $main-dark-color 0%,
-        $main-dark-color 25%,
-        $main-middle-color 100%
-    );
-
+    background: linear-gradient( 25deg, $main-dark-color 0%, $main-dark-color 25%, $main-middle-color 100%);
     .gerb-bg {
         position: absolute;
         left: 7%;
@@ -13,71 +7,59 @@
         bottom: 7%;
         width: 100%;
         z-index: 0;
-
-        background-image: url("/images/gerb_logo.png");
         background-repeat: no-repeat;
         background-size: contain;
         opacity: .3;
     }
-
-    header, .content {
+    header,
+    .content {
         z-index: 1;
     }
-
-    .context > .logos > .logo {
+    .context>.logos>.logo {
         @include responsive(width, (105px, 90px));
         @include responsive(height, (105px, 90px));
         margin-bottom: 16px;
         margin-right: 42px;
-
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
     }
-
-    .context > .text {
+    .context>.text {
         p {
             color: #fafafa;
             margin-bottom: 22px;
             @include responsive(font-size, (16, 14));
         }
     }
-
     .licences-images {
         position: relative;
         display: block;
         width: 100%;
         height: 100%;
-
-        & > .licence-image {
+        &>.licence-image {
             position: absolute;
             display: block;
             @include responsive(width, (240px, 210px));
             height: 100%;
-            
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
             box-shadow: 9px 4px 14px 7px rgba($color: #000000, $alpha: .3);
-
             &.image-1 {
                 left: 17.5%;
                 transform: scale(1);
                 z-index: 4;
             }
-
             &.image-2 {
                 left: 27%;
                 transform: scale(0.95);
                 z-index: 3;
             }
-
             &.image-3 {
                 left: 36%;
                 transform: scale(0.9);
                 z-index: 2;
             }
-
             &.image-4 {
                 left: 45%;
                 transform: scale(0.85);

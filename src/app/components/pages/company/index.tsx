@@ -1,13 +1,12 @@
-import React from 'react';
-import { Helmet } from 'react-helmet';
+import React, { useEffect } from 'react';
 
 const CompanyComponent: React.FunctionComponent = () => {
+    useEffect(() => {
+        document.title = 'Предприятие'
+    })
+    
     return (
-        <div className='content'>
-            <Helmet>
-                <title>Предприятие</title>
-            </Helmet>
-        </div>
+        <div className='content'></div>
     )
 }
 

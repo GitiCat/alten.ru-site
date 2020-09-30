@@ -1,5 +1,4 @@
 import React, { useEffect, useReducer } from 'react';
-import { Helmet } from 'react-helmet';
 import parse from 'html-react-parser'
 import { getAsyncData } from '../../../utils/async-get-data';
 import { asyncDataReducer, initialState } from '../../../utils/async-data-states/reducer'
@@ -21,13 +20,12 @@ const HistoryComponent: React.FunctionComponent = () => {
         .catch(error => dispatch({ type: ERROR, payload: { errorString: error } }))
     }, [])
 
-    console.log(state);
-    
+    useEffect(() => {
+        document.title = 'История'
+    })
+
     return (
         <div className='content'>
-            <Helmet>
-                <title>История</title>
-            </Helmet>
             {!state.loading &&
                 <React.Fragment>
                     <Header title={state.data['category']['title']} subtitle={state.data['category']['descriptor']}/>

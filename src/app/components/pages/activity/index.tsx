@@ -1,5 +1,4 @@
 import React, { useReducer, useEffect } from 'react';
-import { Helmet } from 'react-helmet';
 import parse from 'html-react-parser';
 import { getAsyncData } from '../../../utils/async-get-data';
 import { asyncDataReducer, initialState } from '../../../utils/async-data-states/reducer'
@@ -20,12 +19,13 @@ const ActivityComponent: React.FunctionComponent = () => {
         .then(result => dispatch({ type: FETCHED, payload: { data: result.data } }))
         .catch(error => dispatch({ type: ERROR, payload: { errorString: error } }))
     }, [])
+
+    useEffect(() => {
+        document.title = 'Деястельность'
+    })
     
     return (
         <div className="content">
-            <Helmet>
-                <title>Деятельность</title>
-            </Helmet>
             {!state.loading && 
                 <React.Fragment>
                     <Header title={state.data['category']['title']} subtitle={state.data['category']['descriptor']}/>

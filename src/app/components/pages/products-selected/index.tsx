@@ -1,5 +1,4 @@
 import React, { useReducer, useEffect, useRef, useState } from 'react'
-import { Helmet } from 'react-helmet'
 import { RouteComponentProps } from 'react-router-dom'
 import { getAsyncData } from '../../../utils/async-get-data'
 import { asyncDataReducer, initialState } from '../../../utils/async-data-states/reducer'
@@ -52,15 +51,14 @@ const ProductsSelected: React.FunctionComponent<RouteComponentProps> = ({ locati
             API(params.categoryId)
             prevRef.current = params.categoryId
         }
+
+        document.title = 'Продукция'
     })
 
     let currentItem: {} = state.data == undefined ? {} : state.data[currentId]
 
     return (
         <div className="content">
-            <Helmet>
-                <title>Продукция</title>
-            </Helmet>
             {!state.loading &&
                 <React.Fragment>
                     <Header title='Продукция' subtitle='Продукция нашего предприятия' />

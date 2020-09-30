@@ -17,12 +17,12 @@ const getStyle = (imageUrl: string) => {
 };
 
 const LicencesElement: React.FunctionComponent = () => {
-    const logoUrl = getImageUrl("/images/logos");
-    const licenceUrl = getImageUrl("/images/licences");
+    const logoUrl = getImageUrl("/static/assepts/images/logos");
+    const licenceUrl = getImageUrl("/static/assepts/images/licences");
 
     return (
         <section className="container licences flex flex-dir-col">
-            <div className="gerb-bg"></div>
+            <div className="gerb-bg" style={{backgroundImage: `url(static/assepts/images/gerb_logo.png)`}}></div>
             <header className="light">
                 <h2>Лицензии</h2>
                 <p>Документы, подтверждающие нашу деятельность</p>

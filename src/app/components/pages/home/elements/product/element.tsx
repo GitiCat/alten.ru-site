@@ -9,7 +9,7 @@ type ProductBlockTypes = {
 };
 
 const imageUrl = (imageName: string) => {
-    return `/images/${imageName}`;
+    return `/static/assepts/images/${imageName}`;
 };
 
 const onMouseEnterHandle = (e: React.MouseEvent<HTMLAnchorElement>) => {

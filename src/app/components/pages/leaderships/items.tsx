@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import parse from 'html-react-parser'
 import cn from 'classnames'
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 
 type LeadershipsItemTypes = {
     id: number,
@@ -40,7 +39,9 @@ const LeadershipsItem: React.FunctionComponent<LeadershipsItemTypes> = (props) =
                 </article>
                 <div className={expandClasses} onClick={() => setShowState(!show)}>
                     <div className="circle flex">
-                        <ExpandMoreIcon />
+                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+                    </svg>
                     </div>
                     <div className="content">
                         {show ? 'Свернуть' : 'Развернуть'}

@@ -1,14 +1,15 @@
 {
     "compileOnSave": true,
     "compilerOptions": {
-        "target": "ES6",
-        "module": "CommonJS",
+        "target": "ES5",
+        "module": "ESNext",
         "jsx": "react",
         "esModuleInterop": true,
         "inlineSourceMap": true,
-        "lib": ["DOM", "ES6"],
+        "lib": ["DOM", "ES5", "ScriptHost", "ES2015.Promise"],
         "noImplicitAny": false,
-        "outDir": "build"
+        "outDir": "build",
+        "moduleResolution": "Node"
     },
     "include": ["src/**/*"],
     "exclude": ["node_modules", "**/*.spec.ts"]
