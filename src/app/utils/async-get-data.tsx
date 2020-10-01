@@ -36,6 +36,7 @@ const getAsyncData = async (props: AsyncGetMethodTypes): Promise<PromiseMessageT
         xhr.open('GET', url, true)
         xhr.setRequestHeader('Accept', 'text/plain')
         xhr.setRequestHeader('Content-Type', 'text/json;charset=utf-8')
+
         xhr.send()
         
         xhr.onload = () => {

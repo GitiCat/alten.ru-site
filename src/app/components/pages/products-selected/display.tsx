@@ -10,7 +10,7 @@ type ProductSelectedDisplayTypes = {
 }
 
 const ProductSelectedDisplay: React.FunctionComponent<ProductSelectedDisplayTypes> = (props) => {
-    const image = props.image_url == null ? '/images/no-photo.png' : props.image_url
+    const image = props.image_url == null ? '/static/assepts/images/no-photo.png' : props.image_url
     const imageWidth = props.image_url == null ? 300 : 300,
           imageHeight = props.image_url == null ? 300 : 350
     

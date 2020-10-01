@@ -13,7 +13,7 @@ const { LoaderOptionsPlugin } = require('webpack')
 const buildWebpackConfig = merge(baseWebpackConfig, {
     output: {
         chunkFilename: '[name].[chunkhash].js',
-        publicPath: 'static/assepts/'
+        publicPath: '/static/assepts/'
     },
     mode: 'production',
     devtool: false,

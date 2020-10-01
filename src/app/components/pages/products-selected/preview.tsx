@@ -33,7 +33,7 @@ const ProductSelectedPreviewList
                                         <div className="block-title light">
                                             <h3>{item['title']}</h3>
                                         </div>
-                                        <div className={imgClasses} style={{backgroundImage: `url(${image == null ? '/images/no-photo.png' : image['image']})`}}/>
+                                        <div className={imgClasses} style={{backgroundImage: `url(${image == null ? '/static/assepts/images/no-photo.png' : image['image']})`}}/>
                                     </label>
                                 </div>
                             }

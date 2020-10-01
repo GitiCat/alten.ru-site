@@ -31,7 +31,7 @@ const PreviewMobileList: React.FunctionComponent<PreviewMobileListTypes> = (prop
                                     <header className='light'>
                                         <h4>{item['title']}</h4>
                                     </header>
-                                    <div className={imgClasses} style={{backgroundImage: `url(${image == null ? '/images/no-photo.png' : image['image']})`}}/>
+                                    <div className={imgClasses} style={{backgroundImage: `url(${image == null ? '/static/assepts/images/no-photo.png' : image['image']})`}}/>
                                 </label>
                             </div>
                             }
