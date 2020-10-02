@@ -483,6 +483,14 @@ article.text {
     margin: 0 0 48px;
 }
 
+.arrow-block-container {
+    position: relative;
+}
+
+.arrow-block-container .revers {
+    margin-left: auto;
+}
+
 .no-image {
     position: relative;
     display: block;
@@ -496,6 +504,7 @@ article.text {
     opacity: .35;
 }
 
+@import "../../app/components/pages/company/company.scss";
 @import "../../app/components/pages/home/elements/top/top.scss";
 @import "../../app/components/pages/home/elements/info/info.scss";
 @import "../../app/components/pages/home/elements/services/services.scss";

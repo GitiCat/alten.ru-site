@@ -62,7 +62,7 @@ const DocumentsComponent = Loadable({
 })
 
 const GalleryComponent = Loadable({
-    loader: () => import('./components/pages/documents/index'),
+    loader: () => import('./components/pages/gallery/index'),
     loading: () => <SuspensLoader/>
 })
 

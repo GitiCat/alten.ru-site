@@ -11,7 +11,7 @@
     "plugins": [
         "@babel/plugin-transform-strict-mode",
         "@babel/plugin-syntax-dynamic-import",
-        ["transform-remove-console", {"exclude": ["error", "warn"]}],
+        ["transform-remove-console", {"exclude": ["log", "error", "warn"]}],
         ["@babel/plugin-transform-runtime", { "regenerator": true }],
         ["@babel/plugin-transform-modules-commonjs", { "loose": true }]
     ]
