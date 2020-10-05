@@ -10,7 +10,7 @@ const CompanyComponent: React.FunctionComponent = () => {
     })
 
     const getImageUrl = (name: string) => {
-        return `/static/assepts/image/${name}`
+        return `/images/${name}`
     }
 
     return (
@@ -32,7 +32,7 @@ const CompanyComponent: React.FunctionComponent = () => {
                     </div>
                     <div className="arrow-block flex">
                         <picture>
-                            <img src={getImageUrl(null)} />
+                            <img src={getImageUrl('publications.jpg')} />
                         </picture>
                         <div className="content">
                             <header className='light'>

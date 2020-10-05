@@ -1,6 +1,7 @@
-import item from '../../../pages/news/item'
-import preview from '../../../pages/products-selected/preview'
 import { ReversOrient } from './types'
+
+const DEFAULT_TRANSLATE_X = .25,
+      DEFAULT_TRANSLATE_Y = .15
 
 export const initial = (root: HTMLElement, isRevers: boolean = false, orient: ReversOrient = ReversOrient.Even) => {
     const childrens: NodeListOf<HTMLDivElement> = root.querySelectorAll('div.arrow-block'),
@@ -8,7 +9,7 @@ export const initial = (root: HTMLElement, isRevers: boolean = false, orient: Re
 
     isRevers === true && setReversBlocks(orient, childrens)
 
-    window.onresize = (e: UIEvent) => {
+    window.onresize = () => {
         canvasResize(canvas, canvas.clientWidth, canvas.clientHeight)
         canvasDrawWithArray(canvas, childrens)
     }
@@ -49,13 +50,29 @@ const getElementsPosition = (elems: NodeListOf<HTMLDivElement>): Array<{}> => {
     let positions: Array<{}> = []
 
     elems.forEach(elem => {
-        let content: HTMLDivElement = elem.querySelector('.content')
-        let bcr = content.getBoundingClientRect()
+        const content: HTMLDivElement = elem.querySelector('.content')
+        const isRevers: boolean = content.parentElement.classList.contains('revers')
         
-            
+        const t: number = content.offsetTop,
+              l: number = content.offsetLeft,
+              w: number = content.getBoundingClientRect().width,
+              h: number = content.getBoundingClientRect().height
+
+        const fromY = t + h + (h - (h - (h * DEFAULT_TRANSLATE_Y))),
+              fromX = isRevers == false
+              ? l - (w - (w - (w * DEFAULT_TRANSLATE_X))) + (w / 2)
+              : l + (w - (w - (w * DEFAULT_TRANSLATE_X))) + (w / 2)
+
+        const toY = t + (h / 2) + (h - (h - (h * DEFAULT_TRANSLATE_Y))),
+              toX = isRevers == false
+              ? l - (w - (w - (w * DEFAULT_TRANSLATE_X))) + w
+              : l + (w - (w - (w * DEFAULT_TRANSLATE_X))) 
+
         positions.push({
-            top: bcr.y,
-            left: bcr.x
+            fromX: fromX,
+            fromY: fromY,
+            toX: toX,
+            toY: toY
         })
     })
 
@@ -72,14 +89,16 @@ const canvasDrawWithArray = (canvas: HTMLCanvasElement, childrens: NodeListOf<HT
 const drawCanvasLine = (canvas: HTMLCanvasElement, from: {}, to: {}) => {
     const context = canvas.getContext('2d');
 
-    let   startX = from['left'],
-          startY = from['top'],
-          endX = to['left'],
-          endY = to['top']
+    let startX = from['fromX'],
+        startY = from['fromY'],
+        endX = to['toX'],
+        endY = to['toY']
 
     context.beginPath()
+    context.lineWidth = 4
+    context.strokeStyle = '#003fb2'
     context.moveTo(startX, startY)
-    context.lineTo(endX, endY)
+    context.bezierCurveTo(startX, endY, startX, endY, endX, endY)
     context.stroke()
     context.closePath()
 }

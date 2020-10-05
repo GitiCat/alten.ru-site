@@ -1,30 +1,23 @@
 .wrapper {
     position: relative;
-
     .wrapper-list {
         position: relative;
         display: block;
         margin-bottom: 72px;
-
-        & > .wrapper-list-item {
+        &>.wrapper-list-item {
             position: relative;
             display: block;
             margin-left: 16px;
             margin-bottom: 42px;
             padding: 15px 20px;
             max-width: 75%;
-            
             @include responsive(max-width, (75%, 100%));
-
             transition: all .3s ease;
-
             &:hover {
                 box-shadow: 1px 3px 5px 0px rgba($color: #000000, $alpha: .6);
             }
-
-            & > .title {
+            &>.title {
                 margin: 0 0 16px;
-
                 h2 {
                     font-size: 16px;
                     letter-spacing: .03em;
@@ -32,14 +25,12 @@
                     color: $main-title-color;
                 }
             }
-
-            & > .content {
-                & > .text {
+            &>.content {
+                &>.text {
                     display: block;
                     margin: 0 0 22px;
                 }
-                
-                & > .text p {
+                &>.text p {
                     font-size: 14px;
                     letter-spacing: .03em;
                     line-height: 1.4;
@@ -47,11 +38,10 @@
                     color: #4f4f4f;
                     margin: 0 0 6px;
                 }
-
-                & > .files {
+                &>.files {
                     display: block;
                     margin: 0 0 12px;
-                    & > span {
+                    &>span {
                         display: block;
                         font-family: 'Roboto-Medium', sans-serif;
                         font-size: 14px;
@@ -60,7 +50,6 @@
                         color: $main-title-color;
                         margin: 0 0 12px;
                     }
-
                     .file {
                         position: relative;
                         align-items: center;
@@ -68,21 +57,18 @@
                         margin-left: 12px;
                         margin-bottom: 12px;
                         cursor: pointer;
-
                         .type {
                             display: block;
                             background-position: center;
                             background-repeat: no-repeat;
-                            background-size: contain;                            
+                            background-size: contain;
                             width: 25px;
                             height: 25px;
                             margin-right: 6px;
-                            
                             &.pdf {
-                                background-image: url('/images/icons/pdf_icon.png');
+                                background-image: url('/static/assepts/images/icons/pdf_icon.png');
                             }
                         }
-
                         span {
                             font-size: 14px;
                             letter-spacing: .03em;

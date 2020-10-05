@@ -4,25 +4,33 @@
         z-index: 1;
     }
     .content {
+        border-radius: 4px;
         z-index: 2;
         transform: translateX(-25%) translateY(15%);
         background: linear-gradient(75deg, $main-dark-color 0%, $main-dark-color 25%, $main-middle-color 100%);
         box-shadow: 0px 6px 10px rgba($color: #000000, $alpha: .13), 0px 10px 14px rgba($color: #000000, $alpha: .26);
     }
     img {
-        width: 300px;
-        height: 300px;
+        width: 350px;
+        height: 350px;
     }
     .content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
         width: 350px;
         height: 350px;
         padding: 32px 26px;
+        >a {
+            margin-top: auto;
+        }
     }
     &.revers {
         picture {
             order: 1;
         }
         .content {
+            align-items: flex-end;
             order: 0;
             text-align: right;
             transform: translateX(25%) translateY(15%);
