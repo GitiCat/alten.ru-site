@@ -1,20 +1,20 @@
-(yandex_maps = () => { 
-    if(window.location.pathname == '/') {
+(yandex_maps = () => {
+    if (window.location.pathname == '/') {
         const loadScriptTimeout = 1500
-        
-        const 
+
+        const
             apikey = '1b71717f-f1d4-48b3-8d45-e635b8d38ab8',
-            mode = 'debug',
+            mode = 'production',
             lang = 'ru_RU',
             load = '',
             onload = 'yandex_maps.onloadHandle'
-        
+
         const script = document.createElement('script')
 
         setTimeout(() => {
             script.async = true
             script.src = `https://api-maps.yandex.ru/2.1?apikey=${apikey}&mode=${mode}&load=${load}&lang=${lang}&onload=${onload}`
-    
+
             document.body.appendChild(script)
 
         }, loadScriptTimeout)
@@ -42,20 +42,20 @@
 
                 routeControl.routePanel.options.set({
                     allowSwitch: false,
-	                reverseGeocoding: true,
-                    types: { 
-                        masstransit: true, 
-                        pedestrian: true, 
-                        taxi: true 
+                    reverseGeocoding: true,
+                    types: {
+                        masstransit: true,
+                        pedestrian: true,
+                        taxi: true
                     }
                 })
 
                 routeControl.routePanel.state.set({
                     tyle: "masstransit",
-	                fromEnabled: true,
-	                from: "Электроугли, Центральная 114",
-	                toEnabled: false,
-	                to: "Электроугли, Центральная 59"
+                    fromEnabled: true,
+                    from: "Электроугли, Центральная 114",
+                    toEnabled: false,
+                    to: "Электроугли, Центральная 59"
                 })
 
                 map.controls.add(routeControl)
