@@ -1,0 +1,78 @@
+.data-preloader__container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    svg {
+        display: none;
+    }
+    .data-preloader {
+        position: relative;
+        width: 92px;
+        height: 92px;
+        margin-bottom: 42px;
+        border: 7px solid $main-middle-color;
+        border-radius: 50%;
+        filter: url('#goo');
+        animation-name: rotate;
+        animation-duration: 3s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        &:before,
+        &:after {
+            position: absolute;
+            content: "";
+            width: 25px;
+            height: 25px;
+            background-color: $main-dark-color;
+            border-radius: 50%;
+            animation-duration: 3.5s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+        &:before {
+            top: 25px;
+            left: 27px;
+            animation-name: translate_before;
+        }
+        &:after {
+            bottom: 25px;
+            left: 27px;
+            animation-name: translate_after;
+        }
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotateZ(0);
+    }
+    to {
+        transform: rotateZ(360deg);
+    }
+}
+
+@keyframes translate_before {
+    from {
+        top: 25px
+    }
+    50% {
+        top: -50px
+    }
+    to {
+        top: 25px
+    }
+}
+
+@keyframes translate_after {
+    from {
+        bottom: 25px
+    }
+    50% {
+        bottom: -50px
+    }
+    to {
+        bottom: 25px
+    }
+}

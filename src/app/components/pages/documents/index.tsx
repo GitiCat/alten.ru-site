@@ -4,6 +4,7 @@ import { asyncDataReducer, initialState } from '../../../utils/async-data-states
 import { ERROR, FETCHED } from '../../../utils/async-data-states/types'
 import Header from '../../blocks/header/header'
 import DocumentsWrapperList from './wrapperList'
+import DataPreloader from '../../blocks/data-preloader/index'
 
 const DocumentsComponent: React.FunctionComponent = () => {
     const [state, dispatch] = useReducer(asyncDataReducer, initialState)
@@ -23,7 +24,7 @@ const DocumentsComponent: React.FunctionComponent = () => {
     
     return (
         <div className='content'>
-            {!state.loading && 
+            {!state.loading ? 
                 <React.Fragment>
                     <Header title='Документы' subtitle='Общедоступные документы предприятия'/>
                     <article className="article container">
@@ -42,6 +43,7 @@ const DocumentsComponent: React.FunctionComponent = () => {
                         </div>
                     </article>
                 </React.Fragment>
+                : <DataPreloader/>
             }
         </div>
     )

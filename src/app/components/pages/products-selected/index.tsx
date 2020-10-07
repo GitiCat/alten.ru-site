@@ -9,6 +9,7 @@ import ProductPreviewList from './preview'
 import ProductDisplay from './display'
 import { setWindowResizeEvent } from './utils/resizing'
 import { ProductProvider } from './utils/context'
+import DataPreloader from '../../blocks/data-preloader/index'
 
 const getSearchParams = (search: URLSearchParams, data_length: number) => {
     const categoryIdFromSearch: number = Number(search.get('category')),
@@ -59,7 +60,7 @@ const ProductsSelected: React.FunctionComponent<RouteComponentProps> = ({ locati
 
     return (
         <div className="content">
-            {!state.loading &&
+            {!state.loading ?
                 <React.Fragment>
                     <Header title='Продукция' subtitle='Продукция нашего предприятия' />
                     <section className="container">
@@ -80,6 +81,7 @@ const ProductsSelected: React.FunctionComponent<RouteComponentProps> = ({ locati
                         </div>
                     </section>
                 </React.Fragment>
+                : <DataPreloader/>
             }
         </div>
     )

@@ -4,6 +4,7 @@ import { getAsyncData } from '../../../utils/async-get-data';
 import { asyncDataReducer, initialState } from '../../../utils/async-data-states/reducer'
 import { ERROR, FETCHED } from '../../../utils/async-data-states/types'
 import Header from '../../blocks/header/header';
+import DataPreloader from '../../blocks/data-preloader/index'
 
 const ActivityComponent: React.FunctionComponent = () => {
     const [state, dispatch] = useReducer(asyncDataReducer, initialState)
@@ -26,7 +27,7 @@ const ActivityComponent: React.FunctionComponent = () => {
     
     return (
         <div className="content">
-            {!state.loading && 
+            {!state.loading ?
                 <React.Fragment>
                     <Header title={state.data['category']['title']} subtitle={state.data['category']['descriptor']}/>
                     <article className="text">
@@ -39,6 +40,7 @@ const ActivityComponent: React.FunctionComponent = () => {
                         }
                     </article>
                 </React.Fragment>
+                : <DataPreloader/>
             }
         </div>
     )

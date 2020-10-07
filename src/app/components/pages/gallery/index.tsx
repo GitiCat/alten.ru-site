@@ -3,6 +3,7 @@ import { getAsyncData } from '../../../utils/async-get-data'
 import { asyncDataReducer, initialState } from '../../../utils/async-data-states/reducer'
 import { ERROR, LOADING } from '../../../utils/async-data-states/types'
 import Header from '../../blocks/header/header'
+import DataPreloader from '../../blocks/data-preloader/index'
 
 const GalleryComponent: React.FunctionComponent = () => {
     const [state, dispatch] = useReducer(asyncDataReducer, initialState)
@@ -30,7 +31,7 @@ const GalleryComponent: React.FunctionComponent = () => {
 
                     </article>
                 </React.Fragment>
-                : <div className="loading">loading...</div>
+                : <DataPreloader/>
             }
         </div>
     )

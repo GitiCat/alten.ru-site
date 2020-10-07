@@ -5,6 +5,7 @@ import { DateFormat, isNew } from '../../../utils/date'
 import { getAsyncData } from '../../../utils/async-get-data'
 import { asyncDataReducer, initialState } from '../../../utils/async-data-states/reducer'
 import { FETCHED, ERROR } from '../../../utils/async-data-states/types'
+import DataPreloader from '../../blocks/data-preloader/index'
 
 const NewsComponent: React.FunctionComponent = () => {
     const [state, dispatch] = useReducer(asyncDataReducer, initialState)
@@ -25,7 +26,7 @@ const NewsComponent: React.FunctionComponent = () => {
     
     return (
         <div className="content">
-            {!state.loading &&
+            {!state.loading ?
                 <React.Fragment>
                     <Header title='Новости' subtitle='Новости космической отрасли и деятельности предприятия'/>
                     <article className="article container">
@@ -50,6 +51,7 @@ const NewsComponent: React.FunctionComponent = () => {
                         </div>
                     </article>
                 </React.Fragment>
+                : <DataPreloader/>
             }
         </div>
     )
