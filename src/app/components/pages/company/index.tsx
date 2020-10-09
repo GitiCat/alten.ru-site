@@ -11,7 +11,7 @@ const CompanyComponent: React.FunctionComponent = () => {
     })
 
     const getImageUrl = (name: string) => {
-        return `/images/${name}`
+        return `/static/assepts/images/${name}`
     }
 
     return (

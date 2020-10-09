@@ -8,7 +8,6 @@ const { PATHS } = require('./paths')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
-const { LoaderOptionsPlugin } = require('webpack')
 
 const buildWebpackConfig = merge(baseWebpackConfig, {
     output: {

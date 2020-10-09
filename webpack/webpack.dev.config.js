@@ -14,7 +14,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         },
         runtimeChunk: true
     },
-    devtool: 'eval-source-map',
+    devtool: 'cheap-module-source-map',
     devServer: {
         historyApiFallback: true,
         noInfo: false,
