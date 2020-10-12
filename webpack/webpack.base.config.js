@@ -15,8 +15,9 @@ module.exports = {
         app: path.resolve(PATHS.SRC, 'index.tsx')
     },
     output: {
-        filename: '[name].js?v=[hash]',
         path: PATHS.BUILD,
+        filename: '[name].[hash:8].js',
+        chunkFilename: '[id].[hash:8].js',
         publicPath: '/'
     },
     resolve: {
@@ -96,7 +97,7 @@ module.exports = {
             }
         }),
         new MiniCssExtractPlugin({
-            filename: '[name].css'
+            filename: '[name].[hash:8].css'
         }),
         new TerserWebpackPlugin({
             cache: true,

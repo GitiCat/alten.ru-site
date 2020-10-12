@@ -3,6 +3,7 @@ import { getAsyncData } from '../../../utils/async-get-data'
 import { asyncDataReducer, initialState } from '../../../utils/async-data-states/reducer'
 import { LOADING, ERROR } from '../../../utils/async-data-states/types'
 import Header from '../../blocks/header/header'
+import EntryBlock from '../../blocks/entry-content/index'
 import DataPreloader from '../../blocks/data-preloader/index'
 
 const PublicationsComponent: React.FunctionComponent = () => {
@@ -27,6 +28,12 @@ const PublicationsComponent: React.FunctionComponent = () => {
             {state.loading ?
                 <React.Fragment>
                     <Header title='Публикации' subtitle='Статьи и публикации предприятия' />
+                    <article className="container">
+                        {state.data != null 
+                            ? <div className=""></div>
+                            : <EntryBlock/>
+                        }
+                    </article>
                 </React.Fragment>
                 : <DataPreloader/>
             }

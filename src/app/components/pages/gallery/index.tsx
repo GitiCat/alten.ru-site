@@ -3,6 +3,7 @@ import { getAsyncData } from '../../../utils/async-get-data'
 import { asyncDataReducer, initialState } from '../../../utils/async-data-states/reducer'
 import { ERROR, LOADING } from '../../../utils/async-data-states/types'
 import Header from '../../blocks/header/header'
+import EntryBlock from '../../blocks/entry-content/index'
 import DataPreloader from '../../blocks/data-preloader/index'
 
 const GalleryComponent: React.FunctionComponent = () => {
@@ -27,8 +28,11 @@ const GalleryComponent: React.FunctionComponent = () => {
             {state.loading ?
                 <React.Fragment>
                     <Header title='Галерея' subtitle='Фотоальбомы предприяти'/>
-                    <article>
-
+                    <article className="container">
+                        {state.data != null 
+                            ? <div className=""></div>
+                            : <EntryBlock/>
+                        }
                     </article>
                 </React.Fragment>
                 : <DataPreloader/>

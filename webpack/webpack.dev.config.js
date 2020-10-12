@@ -45,7 +45,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     },
     plugins: [
         new webpack.SourceMapDevToolPlugin({
-            filename: '[file].map'
+            filename: '[file].[hash:8].map'
         })
     ]
 })
