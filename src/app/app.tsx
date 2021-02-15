@@ -46,11 +46,6 @@ const LeadershipsComponent = Loadable({
     loading: () => <SuspensLoader/>
 })
 
-const LeadershipSelectedComponent = Loadable({
-    loader: () => import('./components/pages/leaderships/selected'),
-    loading: () => <SuspensLoader/>
-})
-
 const PublicationsComponent = Loadable({
     loader: () => import('./components/pages/publications/index'),
     loading: () => <SuspensLoader/>
@@ -100,7 +95,6 @@ const App: React.FunctionComponent = () => {
                     <Route exact path='/products/zru' component={ProductsSelected} />
                     <Route exact path='/company' component={CompanyComponent} />
                     <Route exact path='/company/leaderships' component={LeadershipsComponent} />
-                    <Route path='/company/leaderships/:id' component={LeadershipSelectedComponent}/>
                     <Route exact path='/company/publications' component={PublicationsComponent} />
                     <Route exact path='/company/licences' component={LicencesComponent} />
                     <Route exact path='/company/documents' component={DocumentsComponent} />
