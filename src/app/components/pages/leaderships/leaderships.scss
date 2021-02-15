@@ -1,58 +1,16 @@
-.leadership-item .expand {
-    position: relative;
-    float: left;
-    min-width: 130px;
-    padding: 4px 7px;
-    align-items: center;
-    justify-content: flex-start;
-    cursor: pointer;
-
-    &:before {
-        position: absolute;
-        content: '';
-        left: 3px;
-        top: 0;
-        bottom: 0;
-        width: 25%;
-        border-radius: 50px;
-        background-color: $main-dark-color;
-        z-index: -1;
-        transition: width 400ms ease-in-out;
-    }
-
-    &:hover .circle > svg {
-        transform: rotate(-90deg);
-    }
-
-    .circle {
-        align-items: center;
-        justify-content: flex-start;
-        margin-right: 5px;
-
-        > svg {
-            color: white;
-            transition: transform 280ms ease;
-        }
-    }
-
-    .content {
-        color: $main-title-color;
-        transition: all 400ms ease;
-    }
-    
-    &.expanded {
-        user-select: none;
-
-        &:before {
-            width: 100%;
-        }
-
-        .circle > svg {
-            transform: rotate(270deg);
-        }
-
-        .content {
-            color: white;
+.leadership-item {
+    &.preview {
+        margin: 0 0 118px;
+        .descriptor>p {
+            display: none;
+            &:first-child {
+                display: -webkit-box;
+                -webkit-line-clamp: 5;
+                line-clamp: 5;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
         }
     }
 }

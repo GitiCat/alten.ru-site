@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import parse from 'html-react-parser'
-import cn from 'classnames'
+import { Link } from 'react-router-dom'
 
 type LeadershipsItemTypes = {
     id: number,
@@ -10,18 +10,14 @@ type LeadershipsItemTypes = {
     image: {
         url: string,
         descriptor?: string
-    }
+    },
+    classList: string,
+    isPreview: boolean
 }
 
 const LeadershipsItem: React.FunctionComponent<LeadershipsItemTypes> = (props) => {
-    const [show, setShowState] = useState(false)
-    const expandClasses = cn({
-        'flex expand': true,
-        'expanded': show
-    })
-
     return (
-        <div className='item leadership-item flex'>
+        <div className={props.classList}>
             <div className="profile">
                 <picture className="profile left">
                     <img src={props.image.url} alt={props.image.descriptor}
@@ -37,16 +33,10 @@ const LeadershipsItem: React.FunctionComponent<LeadershipsItemTypes> = (props) =
                 <article className="descriptor">
                     {parse(props.text)}
                 </article>
-                <div className={expandClasses} onClick={() => setShowState(!show)}>
-                    <div className="circle flex">
-                    <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
-                    </svg>
-                    </div>
-                    <div className="content">
-                        {show ? 'Свернуть' : 'Развернуть'}
-                    </div>
-                </div>
+                {props.isPreview 
+                    ? <Link to={`/company/leaderships/${props.id}`} className='_contained dark'>Перейти</Link>
+                    : <Link to={`/company/leaderships`} className='_contained dark'>Вернуться</Link>
+                }
             </div>
         </div>
     )

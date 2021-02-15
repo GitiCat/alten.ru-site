@@ -3,14 +3,12 @@
         overflow: hidden;
         align-items: center;
         margin-bottom: 36px;
-
         span:first-child {
             position: relative;
             font-family: 'Roboto-Light', sans-serif;
             @include responsive(font-size, (36, 28));
             color: $main-title-color;
             margin-right: 36px;
-
             &:after {
                 position: absolute;
                 content: '';
@@ -18,16 +16,13 @@
                 bottom: 3px;
                 width: 45px;
                 height: 45px;
-
                 border-radius: 50%;
                 border-right-width: 2px;
                 border-right-style: dotted;
                 border-color: $main-dark-color;
-
                 transform: rotateZ(36deg);
             }
         }
-
         span:last-child {
             font-family: inherit;
             @include responsive(font-size, (16, 14));
@@ -39,6 +34,11 @@
             padding-top: 7px;
         }
     }
+}
+
+.content .container .flex-block-1 .descriptor p b {
+    font-size: 24px;
+    color: #212121;
 }
 
 .block:last-child {

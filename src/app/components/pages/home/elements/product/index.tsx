@@ -15,7 +15,7 @@ const ProductElement: React.FunctionComponent = () => {
                         params="?category=3&product=0"
                     />
                     <ProductBlock
-                        title="Литий-ионные аккумуляторы"
+                        title="Литий-ионные батареи"
                         image="lion.jpg"
                         url="/products/rechargeable-batteries"
                         params="?category=2&product=0"

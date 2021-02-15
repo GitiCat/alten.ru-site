@@ -11,7 +11,7 @@ const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
 
 const buildWebpackConfig = merge(baseWebpackConfig, {
     output: {
-        chunkFilename: '[name].[chunkhash].js',
+        chunkFilename: '[name].[chunkhash:8].js',
         publicPath: '/static/assepts/'
     },
     mode: 'production',

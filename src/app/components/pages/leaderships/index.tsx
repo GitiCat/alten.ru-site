@@ -1,4 +1,5 @@
 import React, { useEffect, useReducer } from 'react'
+import cn from 'classnames'
 import { getAsyncData } from '../../../utils/async-get-data';
 import { asyncDataReducer, initialState } from '../../../utils/async-data-states/reducer'
 import { ERROR, FETCHED } from '../../../utils/async-data-states/types'
@@ -12,7 +13,7 @@ const LeadershipsComponent: React.FunctionComponent = () => {
     useEffect(() => {
         getAsyncData({ 
                 api_v: 0, 
-                url: 'articles', 
+                url: 'articles',
                 params: {
                     'category': 'leaderships'
                 }
@@ -34,13 +35,22 @@ const LeadershipsComponent: React.FunctionComponent = () => {
                         <div className="list">
                             {
                                 state.data['data'].map((item: {}, index: number) => {
+                                    const classList = cn({
+                                        'item': true,
+                                        'leadership-item': true,
+                                        'flex': true,
+                                        'preview': true
+                                    })
+                                    
                                     return (
                                         <LeadershipsItem key={index}
                                             id={item['id']}
                                             title={item['title']}
                                             subtitle={item['subtitle']}
                                             text={item['text']}
-                                            image={{url: item['main_image']['image']}}/>
+                                            image={{url: item['main_image']['image']}}
+                                            classList={classList}
+                                            isPreview={true}/>
                                     )
                                 })
                             }
