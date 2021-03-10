@@ -21,7 +21,7 @@ const ActivityComponent: React.FunctionComponent = () => {
     }, [])
 
     useEffect(() => {
-        document.title = 'Деястельность'
+        document.title = 'Деятельность'
     })
     
     return (

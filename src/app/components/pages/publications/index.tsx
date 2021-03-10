@@ -27,7 +27,7 @@ const PublicationsComponent: React.FunctionComponent = () => {
         <div className='content'>
             {state.loading ?
                 <React.Fragment>
-                    <Header title='Публикации' subtitle='Статьи и публикации предприятия' />
+                    <Header title='Публикации' subtitle='Патенты и публикации предприятия' />
                     <article className="container">
                         {state.data != null 
                             ? <div className=""></div>

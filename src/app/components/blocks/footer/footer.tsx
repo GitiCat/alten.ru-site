@@ -21,8 +21,8 @@ class FooterBlock extends React.PureComponent<{}, any> {
                     <div className="footer-block flex flex-dir-col">
                         <span>Предприятие</span>
                         <hr/>
-                        <NavLink className='f-nav-link' activeClassName='active' to='/company/leadership'>Руководство</NavLink>
-                        <NavLink className='f-nav-link' activeClassName='active' to='/compnay/publications'>Публикации</NavLink>
+                        <NavLink className='f-nav-link' activeClassName='active' to='/company/leaderships'>Руководство</NavLink>
+                        <NavLink className='f-nav-link' activeClassName='active' to='/company/publications'>Публикации</NavLink>
                         <NavLink className='f-nav-link' activeClassName='active' to='/company/licences'>Лицензии</NavLink>
                         <NavLink className='f-nav-link' activeClassName='active' to='/company/gallery'>Галерея</NavLink>
                     </div>
@@ -31,7 +31,7 @@ class FooterBlock extends React.PureComponent<{}, any> {
                         <hr/>
                         <NavLink className='f-nav-link' activeClassName='active' to='/'>Главная</NavLink>
                         <NavLink className='f-nav-link' activeClassName='active' to='/history'>История</NavLink>
-                        <NavLink className='f-nav-link' activeClassName='active' to='/licences'>Лицензии</NavLink>
+                        <NavLink className='f-nav-link' activeClassName='active' to='/company/licences'>Лицензии</NavLink>
                         <NavLink className='f-nav-link' activeClassName='active' to='/activity'>Деятельность</NavLink>
                         <NavLink className='f-nav-link' activeClassName='active' to='/products'>Продукция</NavLink>
                         <NavLink className='f-nav-link' activeClassName='active' to='/company/documents'>Документы</NavLink>
@@ -42,7 +42,7 @@ class FooterBlock extends React.PureComponent<{}, any> {
                         <hr/>
                         <div>Телефон: <a className='f-nav-link' href="tel:84999951789">+7 (499) 995-17-89</a></div>
                         <div>Факс / телефон: <a className='f-nav-link' href="tel:84992406412">+7 (499) 240-64-12</a></div>
-                        <div>Адрес: <a className='f-nav-link' href="https://yandex.ru/maps/21642/elektrougli/?z=17&ll=38.206184%2C55.724726&l=map&origin=jsapi_2_1_68&from=api-maps&mode=whatshere&whatshere%5Bpoint%5D=38.204875%2C55.723554&whatshere%5Bzoom%5D=17">142455 Московская область, Центральная улица, 59</a></div>
+                        <div>Адрес: <a className='f-nav-link' href="https://yandex.ru/maps/21642/elektrougli/?z=17&ll=38.206184%2C55.724726&l=map&origin=jsapi_2_1_68&from=api-maps&mode=whatshere&whatshere%5Bpoint%5D=38.204875%2C55.723554&whatshere%5Bzoom%5D=17">142455 Московская область, г. Электроугли, Центральная улица, 59</a></div>
                         <a className='f-nav-link' href="mailto:info@npk-alten.ru">info@npk-alten.ru</a>
                         <a className='f-nav-link' href="https://npk-alten.ru">npk-alten.ru - официальный сайт АО НПК АЛЬТЭН</a>
                     </div>

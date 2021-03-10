@@ -461,20 +461,51 @@ article.text {
     ul {
         position: relative;
         display: block;
+        margin: 0 0 12px;
         >li {
             position: relative;
-            padding: 0px 15px;
-            &:before {
+            padding: 0px 2.45em;
+            &>ul {
+                padding-top: 4px;
+            }
+            &:before,
+            &>ul>li:before {
                 position: absolute;
                 content: '';
                 top: 0;
-                left: 2px;
+                left: 22px;
                 bottom: 0;
-                width: 2px;
-                border-radius: 4px;
                 background-color: $main-middle-color;
             }
+            &:before {
+                width: 2px;
+                border-radius: 4px;
+            }
+            &>ul>li:before {
+                width: 4px;
+                height: 4px;
+                top: 10px;
+                border-radius: 100%;
+            }
         }
+    }
+    h3 {
+        font-family: "Roboto-Regular", sans-serif;
+        line-height: 1.5;
+        margin: 0 0 12px;
+        margin-top: 22px;
+        color: $main-title-color;
+        @include responsive(font-size,
+        (18px,
+        16px));
+    }
+    strong {
+        font-family: "Roboto-Regular", sans-serif;
+        line-height: 1.5;
+        color: $main-title-color;
+        @include responsive(font-size,
+        (16px,
+        14px));
     }
 }
 
@@ -516,6 +547,7 @@ article.text {
 @import "../../app/components/pages/news/news.scss";
 @import "../../app/components/pages/products/products.scss";
 @import "../../app/components/pages/products-selected/product-selected.scss";
+@import "../../app/components/pages/leaderships/leaderships.scss";
 @import "../../app/components/blocks/entry-content/entry-content.scss";
 @import "../../app/components/blocks/data-preloader/data-preloader.scss";
 @import "../../app/components/blocks/header/header.scss";
