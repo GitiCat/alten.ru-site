@@ -1,11 +1,11 @@
 .leaderships-container {
     flex-wrap: wrap;
     &>.leadership-category {
-        width: 35.5%;
-        margin: 0 0 42px;
-        &>h2 {
+        width: 75%;
+        //margin: 0 0 12px;
+        /*&>h2 {
             position: relative;
-            margin: 0 0 42px;
+            //margin: 0 0 42px;
             &:after {
                 position: absolute;
                 display: block;
@@ -16,39 +16,46 @@
                 height: 1px;
                 background: linear-gradient(to right, $main-dark-color 0%, $main-dark-color 25%, $main-middle-color 35%, $main-light-color 50%, transparent 100%);
             }
-        }
+        }*/
         &>.item {
             margin: 0 0 12px;
-            &>.person-name {
-                font-size: 16px;
-                font-family: "Roboto-Medium", sans-serif;
-                color: $main-title-color;
-                margin: 0 0 4px;
-                line-height: 1.5;
-            }
-            &>.person-position {
-                position: relative;
-                padding-left: 12px;
-                font-size: 14px;
-                color: $main-text-color;
-                line-height: 1.5;
-                &:before {
-                    position: absolute;
-                    display: block;
-                    content: "";
-                    top: 7.5px;
-                    left: 0;
-                    width: 4px;
-                    height: 4px;
-                    border-radius: 100%;
-                    background-color: $main-middle-color;
+            &>.person {
+                display: inline-block;
+                width: 34%;
+                margin-right: 42px;
+                &>.person-name {
+                    font-size: 18px;
+                    font-family: "Roboto-Medium", sans-serif;
+                    color: $main-title-color;
+                    margin: 0 0 4px;
+                    line-height: 1.5;
+                }
+                &>.person-position {
+                    position: relative;
+                    padding-left: 12px;
+                    font-size: 14px;
+                    color: $main-text-color;
+                    line-height: 1.5;
+                    &:before {
+                        position: absolute;
+                        display: block;
+                        content: "";
+                        top: 7.5px;
+                        left: 1px;
+                        width: 4px;
+                        height: 4px;
+                        border-radius: 100%;
+                        background-color: $main-middle-color;
+                    }
                 }
             }
-            &>.person-phone {
-                font-family: "Roboto-Light", sans-serif;
-                font-size: 14px;
-                line-height: 1.5;
-                color: $main-text-color;
+            &>.contacts {
+                &>.person-phone {
+                    font-family: "Roboto-Light", sans-serif;
+                    font-size: 14px;
+                    line-height: 1.5;
+                    color: $main-text-color;
+                }
             }
         }
     }
