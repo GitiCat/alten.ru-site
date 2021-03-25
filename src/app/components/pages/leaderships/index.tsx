@@ -28,12 +28,11 @@ const LeadershipsComponent: React.FunctionComponent = () => {
             {!state.loading ?
                 <React.Fragment>
                     <Header title="Руководство" subtitle="Административный персонал АО «НПК «АЛЬТЭН»"/>
-                    <article className="text leaderships-container flex flex-dir-row">
+                    <article className="text leaderships-container flex flex-dir-col">
                         {
                             (state.data as []).map((item, index) => {
                                 return (
                                     <LeadershipsManager key={index} 
-                                        name={item['item']}
                                         descriptor={item['descriptor']}
                                         responsible={item['responsible']}
                                         position={item['position']}
@@ -43,7 +42,8 @@ const LeadershipsComponent: React.FunctionComponent = () => {
                                         isVisible={item['is_visible']}
                                         isPhoneVisible={item['is_phone_visible']}
                                         isFaxVisible={item['is_fax_visible']}
-                                        isEmailVisible={item['is_email_visible']}/>
+                                        isEmailVisible={item['is_email_visible']}
+                                        personnels={item['personnels']}/>
                                 )
                             })
                         }

@@ -37,8 +37,8 @@ const ProductsSelected: React.FunctionComponent<RouteComponentProps> = ({ locati
                 'category': id
             }
         })
-            .then(result => setState({ type: FETCHED, payload: { data: result.data } }))
-            .catch(error => setState({ type: ERROR, payload: { errorString: error } }))
+        .then(result => setState({ type: FETCHED, payload: { data: result.data } }))
+        .catch(error => setState({ type: ERROR, payload: { errorString: error } }))
     }
 
     useEffect(() => {
@@ -53,7 +53,7 @@ const ProductsSelected: React.FunctionComponent<RouteComponentProps> = ({ locati
             prevRef.current = params.categoryId
         }
 
-        document.title = 'Продукция'
+        document.title = 'Продукции'
     })
 
     let currentItem: {} = state.data == undefined ? {} : state.data[currentId]

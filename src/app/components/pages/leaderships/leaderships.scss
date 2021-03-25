@@ -1,60 +1,135 @@
-.leaderships-container {
-    flex-wrap: wrap;
-    &>.leadership-category {
-        width: 75%;
-        //margin: 0 0 12px;
-        /*&>h2 {
-            position: relative;
-            //margin: 0 0 42px;
-            &:after {
-                position: absolute;
-                display: block;
-                content: "";
-                bottom: -50%;
-                left: 0;
-                width: 57%;
-                height: 1px;
-                background: linear-gradient(to right, $main-dark-color 0%, $main-dark-color 25%, $main-middle-color 35%, $main-light-color 50%, transparent 100%);
+.leaderships-container-manager {
+    margin: 24px;
+    .contacts,
+    .manager-block--contacts {
+        & .contact {
+            &>span {
+                font-family: inherit;
+                @include responsive(font-size, (16, 14));
+                color: $main-title-color;
+                margin-right: 6px;
+                line-height: 1;
             }
-        }*/
-        &>.item {
-            margin: 0 0 12px;
-            &>.person {
-                display: inline-block;
-                width: 34%;
-                margin-right: 42px;
-                &>.person-name {
-                    font-size: 18px;
-                    font-family: "Roboto-Medium", sans-serif;
-                    color: $main-title-color;
-                    margin: 0 0 4px;
-                    line-height: 1.5;
+            &>a {
+                position: relative;
+                font-family: inherit;
+                @include responsive(font-size, (16, 14));
+                color: $main-text-color;
+                line-height: 1;
+                transition: all .3s ease;
+                padding: 4px 7px;
+                &:before {
+                    position: absolute;
+                    content: "";
+                    top: 0;
+                    bottom: 0;
+                    width: 0;
+                    left: 0;
+                    opacity: .9;
+                    background-color: $main-middle-color;
+                    border-radius: 4px;
+                    transition: all .25s ease-in;
+                    z-index: -1;
                 }
-                &>.person-position {
-                    position: relative;
-                    padding-left: 12px;
-                    font-size: 14px;
-                    color: $main-text-color;
-                    line-height: 1.5;
+                &:hover {
+                    color: #fff;
                     &:before {
-                        position: absolute;
-                        display: block;
-                        content: "";
-                        top: 7.5px;
-                        left: 1px;
-                        width: 4px;
-                        height: 4px;
-                        border-radius: 100%;
-                        background-color: $main-middle-color;
+                        width: 100%;
                     }
                 }
             }
-            &>.contacts {
-                &>.person-phone {
-                    font-family: "Roboto-Light", sans-serif;
-                    font-size: 14px;
-                    line-height: 1.5;
-                    color: $main-text-color;
+        }
+    }
+    .manager-block {
+        display: block;
+        margin: 0 0 16px;
+        &--title {
+            position: relative;
+            display: block;
+            margin: 0 0 18px;
+            &:after {
+                position: absolute;
+                content: "";
+                bottom: -5px;
+                left: 0;
+                background: linear-gradient(to right, $main-dark-color, $main-dark-color, $main-middle-color, $main-light-color, transparent);
+                width: 32%;
+                height: 1px;
+            }
+            &>p {
+                font-family: inherit;
+                @include responsive(font-size, (16, 14));
+                color: $main-text-color;
+                margin: 0 0 12px;
+            }
+            &>h3 {
+                font-family: inherit;
+                @include responsive(font-size, (18, 16));
+                color: $main-title-color;
+                margin: 0 0 4px;
+                padding: 0;
+            }
+            &>span {
+                position: relative;
+                font-family: inherit;
+                @include responsive(font-size, (16, 14));
+                color: $main-text-color;
+                margin: 0;
+                padding: 0;
+            }
+        }
+        &--contacts {
+            &>.contact {
+                margin: 0 0 9px;
+                align-items: center;
+                &>svg {
+                    color: $main-dark-color;
+                    width: 20px;
+                    height: 20px;
+                    margin-right: 4px;
+                }
+            }
+        }
+    }
+    .personnels-block {
+        &.managed {
+            position: relative;
+            display: block;
+            padding-left: 12px;
+        }
+        &>.item {
+            float: left;
+            clear: both;
+            &.unmanaged {
+                margin: 0 0 12px;
+                &>.person {
+                    width: 385px;
+                    &>.person--name {
+                        margin: 0 0 4px;
+                    }
+                }
+                &>.contacts>.contact {
+                    margin: 0 0 4px;
+                }
+            }
+            &>.person {
+                position: relative;
+                &>.person {
+                    &--position {
+                        position: relative;
+                        padding-left: 12px;
+                        &:before {
+                            position: absolute;
+                            display: block;
+                            content: "";
+                            left: 1.6px;
+                            top: 9px;
+                            background-color: $main-middle-color;
+                            width: 5px;
+                            height: 5px;
+                            border-radius: 100%;
+                        }
+                    }
                 }
             }
         }
