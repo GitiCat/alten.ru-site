@@ -53,7 +53,7 @@ const ProductsSelected: React.FunctionComponent<RouteComponentProps> = ({ locati
             prevRef.current = params.categoryId
         }
 
-        document.title = 'Продукции'
+        document.title = 'Продукция'
     })
 
     let currentItem: {} = state.data == undefined ? {} : state.data[currentId]
