@@ -27,7 +27,7 @@ const GalleryComponent: React.FunctionComponent = () => {
         <div className='content'>
             {state.loading ?
                 <React.Fragment>
-                    <Header title='Галерея' subtitle='Фотоальбомы предприяти'/>
+                    <Header title='Галерея' subtitle='Фотоальбомы предприятия'/>
                     <article className="container">
                         {state.data != null 
                             ? <div className=""></div>
