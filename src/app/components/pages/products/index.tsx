@@ -49,4 +49,4 @@ const ProductsComponent: React.FunctionComponent = () => {
     )
 }
 
-export default ProductsComponent;
+export default ProductsComponent
