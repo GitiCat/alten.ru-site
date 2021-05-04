@@ -21,7 +21,7 @@ interface IProductTypes {
 interface IApiResponseStatus {
     isError: boolean,
     statusCode: number | null
-    errorText: string | null,
+    responseMessage: string | null,
 }
 
 export {

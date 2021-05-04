@@ -6,7 +6,7 @@ const initialGlobalContext: GlobalContextTypes = {
         data: {},
         responseStatus: {
             statusCode: null,
-            errorText: null,
+            responseMessage: null,
             isError: false
         }
     }, 

@@ -9,7 +9,7 @@ interface IGlobalContextProguctCategoryTypes {
 }
 
 interface GlobalContextTypes {
-    productCategories: IGlobalContextProguctCategoryTypes
+    productCategories: IGlobalContextProguctCategoryTypes | {}
     isInitialized: boolean
 }
 

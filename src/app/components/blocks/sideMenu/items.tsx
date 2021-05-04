@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import NavLinkItem from '../navLinkItem';
+import { GlobalContext } from '../../../contexts/global-context'
+import { IProductCategoryTypes } from '../../../types/api-types';
 
 const SideMenuItems: React.FunctionComponent = () => {
+    const globalContext = useContext(GlobalContext)
+
     return (
         <div className="side-menu--items">
             <div className="link-icon flex">
@@ -30,18 +34,14 @@ const SideMenuItems: React.FunctionComponent = () => {
                     </svg>
                 </div>
                 <div className="sub">
-                    <NavLinkItem to={{
-                        pathname: '/products/primary-current-sources',
-                        search: '?category=3&product=0'
-                    }}>Первичные источники тока</NavLinkItem>
-                    <NavLinkItem to={{
-                        pathname: '/products/rechargeable-batteries',
-                        search: '?category=2&product=0'
-                    }}>Литий-йонные батареи</NavLinkItem>
-                    <NavLinkItem to={{
-                        pathname: '/products/zru',
-                        search: '?category=1&product=0'
-                    }}>Зарядно - разрядные устройства</NavLinkItem>
+                    {
+                        (globalContext.productCategories as []).length > 0 && 
+                            (globalContext.productCategories as []).map((item: IProductCategoryTypes, index: number) => {
+                                return (
+                                    <NavLinkItem key={index} to={{pathname: `/products/${item.id}`}}>{item.name}</NavLinkItem>
+                                )
+                            })
+                    }
                 </div>
             </div>
             <div className="category">

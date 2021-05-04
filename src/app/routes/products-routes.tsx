@@ -11,27 +11,17 @@ import {
     initialState,
     productSelectedReducer
 } from '../store/products-selected/reducer'
-import { getAsyncData } from '../utils/async-get-data'
 import { useReducerWithMiddleware } from '../redux-middleware/index'
 import ChangeProductSelectedMiddleware from '../redux-middleware/change-product-selected-middleware'
+import { IProductCategoryTypes } from '../types/api-types'
 
 const ProductsRoutes: React.FunctionComponent = () => {
     const globalContext: GlobalContextTypes = useContext(GlobalContext)
-    const [categories, setCategories] = useState(null)
     const [state, dispatch] = useReducerWithMiddleware(
         productSelectedReducer,
         initialState,
         [ChangeProductSelectedMiddleware]
     )
-    
-    useEffect(() => {
-        getAsyncData({api_v: 0, url: 'categories-product'})
-            .then(response => setCategories(response.data))
-    }, [])
-
-    useEffect(() => {
-        globalContext.productCategories = categories
-    })
 
     const initialContextValues: SelectedProductContextTypes = {
         state: state,
@@ -41,9 +31,9 @@ const ProductsRoutes: React.FunctionComponent = () => {
     return (
         <SelectedProductContext.Provider value={initialContextValues}>
             <Route exact path='/products' component={Loadables.ProductsComponent} />
-            {categories && 
-                (categories as []).map((item, index) => {
-                    const path: string = `/products/${item['id']}`
+            {(globalContext.productCategories as []).length > 0 && 
+                (globalContext.productCategories as []).map((item: IProductCategoryTypes, index: number) => {
+                    const path: string = `/products/${item.id}`
                     return (
                         <Route key={index} exact path={path} component={Loadables.ProductsSelected}/>
                     )

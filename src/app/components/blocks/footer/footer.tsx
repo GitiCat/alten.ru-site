@@ -15,27 +15,27 @@ class FooterBlock extends React.PureComponent<{}, any> {
                     <div className="footer-block">
                         <div className="company">
                             <h3>АО НПК АЛЬТЭН</h3>
-                            <span>Акционерное общество «Научно-производственный комплекс «Альтэрнативная энергетика»</span>
+                            <span>Акционерное общество «Научно-производственный комплекс «Альтернативная энергетика»</span>
                         </div>
                     </div>
                     <div className="footer-block flex flex-dir-col">
                         <span>Предприятие</span>
                         <hr/>
-                        <NavLink className='f-nav-link' activeClassName='active' to='/company/leaderships'>Руководство</NavLink>
-                        <NavLink className='f-nav-link' activeClassName='active' to='/company/publications'>Публикации</NavLink>
-                        <NavLink className='f-nav-link' activeClassName='active' to='/company/licences'>Лицензии</NavLink>
-                        <NavLink className='f-nav-link' activeClassName='active' to='/company/gallery'>Галерея</NavLink>
+                        <NavLink exact className='f-nav-link' activeClassName='active' to='/company/leaderships'>Руководство</NavLink>
+                        <NavLink exact className='f-nav-link' activeClassName='active' to='/company/publications'>Публикации</NavLink>
+                        <NavLink exact className='f-nav-link' activeClassName='active' to='/company/licences'>Лицензии</NavLink>
+                        <NavLink exact className='f-nav-link' activeClassName='active' to='/company/gallery'>Галерея</NavLink>
                     </div>
                     <div className="footer-block flex flex-dir-col">
                         <span>Карта сайта</span>
                         <hr/>
-                        <NavLink className='f-nav-link' activeClassName='active' to='/'>Главная</NavLink>
-                        <NavLink className='f-nav-link' activeClassName='active' to='/history'>История</NavLink>
-                        <NavLink className='f-nav-link' activeClassName='active' to='/company/licences'>Лицензии</NavLink>
-                        <NavLink className='f-nav-link' activeClassName='active' to='/activity'>Деятельность</NavLink>
-                        <NavLink className='f-nav-link' activeClassName='active' to='/products'>Продукция</NavLink>
-                        <NavLink className='f-nav-link' activeClassName='active' to='/company/documents'>Документы</NavLink>
-                        <NavLink className='f-nav-link' activeClassName='active' to='/news'>Новости</NavLink>
+                        <NavLink exact className='f-nav-link' activeClassName='active' to='/'>Главная</NavLink>
+                        <NavLink exact className='f-nav-link' activeClassName='active' to='/history'>История</NavLink>
+                        <NavLink exact className='f-nav-link' activeClassName='active' to='/company/licences'>Лицензии</NavLink>
+                        <NavLink exact className='f-nav-link' activeClassName='active' to='/activity'>Деятельность</NavLink>
+                        <NavLink exact className='f-nav-link' activeClassName='active' to='/products'>Продукция</NavLink>
+                        <NavLink exact className='f-nav-link' activeClassName='active' to='/company/documents'>Документы</NavLink>
+                        <NavLink exact className='f-nav-link' activeClassName='active' to='/news'>Новости</NavLink>
                     </div>
                     <div className="footer-block flex flex-dir-col">
                         <span>Контакты</span>
