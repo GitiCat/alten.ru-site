@@ -38,7 +38,7 @@ const SideMenuItems: React.FunctionComponent = () => {
                         (globalContext.productCategories as []).length > 0 && 
                             (globalContext.productCategories as []).map((item: IProductCategoryTypes, index: number) => {
                                 return (
-                                    <NavLinkItem key={index} to={{pathname: `/products/${item.id}`}}>{item.name}</NavLinkItem>
+                                    <NavLinkItem key={index} to={{pathname: `/products/${item.id}`, state: {'category_id': item.id}}}>{item.name}</NavLinkItem>
                                 )
                             })
                     }

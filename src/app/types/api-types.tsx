@@ -6,6 +6,12 @@ interface IProductCategoryTypes {
     createdAt: Date
 }
 
+interface IProductPreviewTypes {
+    id: number,
+    title: string,
+    image_url: string
+}
+
 interface IProductTypes {
     id: number,
     name: string,
@@ -13,7 +19,13 @@ interface IProductTypes {
     category: number,
     descriptor: string | null,
     features: string | null,
-    //main_image
+    main_image: {
+        id: number,
+        image: string,
+        descriptor: string,
+        gallery: number,
+        createdAt: Date
+    } | null,
     file: string | null,
     createdAt: Date
 }
@@ -26,6 +38,7 @@ interface IApiResponseStatus {
 
 export {
     IProductCategoryTypes,
-    IProductTypes,
-    IApiResponseStatus
+    IProductPreviewTypes,
+    IApiResponseStatus,
+    IProductTypes
 }

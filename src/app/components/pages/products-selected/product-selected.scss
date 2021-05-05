@@ -1,0 +1,8 @@
+.product-selected--slider {
+    & > .slider-item {
+        & > input[type='radio'] { display: none; }
+        & > label {
+            
+        }
+    }
+}
