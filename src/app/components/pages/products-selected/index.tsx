@@ -65,6 +65,8 @@ const ProductsSelected: React.FunctionComponent<RouteComponentProps> = (props) =
         .catch(error => dispatch({ type: ERROR, payload: { errorString: error } }))
     }, [])
 
+    console.log(state);
+
     return (
         <div className="content">
             {!state.loading ?
