@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { IProductTypes } from '../../../../types/api-types'
 import ProductSelectedSliderItem from './item'
 import {
+    InitialSliderUtils,
     onMouseDownEventHandler,
     onMouseUpEventHandler,
     onMouseMoveEventHandle
@@ -12,6 +13,10 @@ type ProductSelectedSliderTypes = {
 }
 
 const ProductSelectedSlider: React.FunctionComponent<ProductSelectedSliderTypes> = (props) => {
+    useEffect(() => {
+        InitialSliderUtils()
+    })
+    
     return (
         <div className="product-selected--slider"
             onMouseDown={onMouseDownEventHandler}

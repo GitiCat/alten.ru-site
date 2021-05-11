@@ -29,7 +29,7 @@ const ProductSelectedSliderItem: React.FunctionComponent<IProductPreviewTypes> =
             <input id={`slider-item--${props.id}`} type="radio" name="product-selected-slider--item"
                 onChange={(e) => { sliderInputChange(e) }} />
             <label htmlFor={`slider-item--${props.id}`}>
-                <div className={bgBlockClasses} style={{ backgroundImage: `url(${props.image_url})` }} />
+                <div className={bgBlockClasses} style={{ backgroundImage: props.image_url !== null && `url(${props.image_url})`}} />
                 <span>{props.title}</span>
             </label>
         </div>

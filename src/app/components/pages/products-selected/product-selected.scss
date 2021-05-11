@@ -20,6 +20,8 @@
                 }
 
                 & > .slider-item {
+                    &.events-block { pointer-events: none; }
+                    
                     position: relative;
                     display: inline-block;
                     width: 195px;
