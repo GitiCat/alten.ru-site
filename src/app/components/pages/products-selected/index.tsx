@@ -49,6 +49,10 @@ const getCategoryId = (
     return Number(path.slice(path.lastIndexOf('/') + 1, path.length))
 }
 
+const getProductId = (): number => {
+    return Number(sessionStorage.getItem(SELECTED_PRODUCT_ITEM_ID) || 0)
+}
+
 /**
  * Render dom component for current selected products category
  * @param props route component props
@@ -59,6 +63,7 @@ const ProductsSelected: React.FunctionComponent<RouteComponentProps> = (props) =
     const context: SelectedProductContextTypes = useContext(SelectedProductContext)
     const [state, dispatch] = useReducer(asyncDataReducer, initialState)
     const selectedCategoryId: number = getCategoryId(props, context)
+    const selectedProductId: number = getProductId()
 
     useEffect(() => {
         getAsyncData({
@@ -71,7 +76,7 @@ const ProductsSelected: React.FunctionComponent<RouteComponentProps> = (props) =
         .then(result => {
             context.dispatch({ type: SET_PRODUCT, payload: { 
                 selectedCategoryId: selectedCategoryId,
-                selectedItemId: 0
+                selectedItemId: selectedProductId
             }})
             dispatch({ type: FETCHED, payload: { data: result.data } })
         })
