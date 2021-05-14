@@ -1,0 +1,32 @@
+.information-block--container {
+    position: relative;
+    float: left;
+    border-radius: 4px;
+    border: 1px solid rgba($color: $default-body-color, $alpha: .65);
+    padding: 16px 20px;
+    padding-right: 42px;
+
+    &:before {
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 4px;
+    }
+
+    &.block--info {
+        border-color: rgba($color: $info-block-color, $alpha: .35);
+        background-color: rgba($color: $info-block-color, $alpha: .15);
+
+        &::before { background-color: rgba($color:  $info-block-color, $alpha: .65);}
+    }
+    
+    > span {
+        display: block;
+        font-size: 14px;
+        font-weight: normal;
+        color: $default-body-color;
+        opacity: .9;
+    }
+}
