@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useReducer } from 'react'
 import Header from '../../blocks/header/header'
 import DataPreloader from '../../blocks/data-preloader/index'
 import ProductSelectedSlider from './slider/index'
+import ProductSelectedContent from './content/index'
 import { RouteComponentProps } from 'react-router-dom'
 import {
     SelectedProductContext,
@@ -11,6 +12,7 @@ import {
     SELECTED_PRODUCT_CATEGORY_ID,
     SELECTED_PRODUCT_ITEM_ID
 } from '../../../consts/product-selected-consts'
+import { SET_PRODUCT } from '../../../store/products-selected/types'
 import {
     asyncDataReducer,
     initialState
@@ -20,6 +22,7 @@ import {
     FETCHED,
 } from '../../../utils/async-data-states/types'
 import { getAsyncData } from '../../../utils/async-get-data'
+import { IProductSelectedContentTypes } from '../../../types/selected-product-types'
 
 /**
  * Get category id for async get data method call from the server
@@ -52,20 +55,36 @@ const getCategoryId = (
 const ProductsSelected: React.FunctionComponent<RouteComponentProps> = (props) => {
     const context: SelectedProductContextTypes = useContext(SelectedProductContext)
     const [state, dispatch] = useReducer(asyncDataReducer, initialState)
+    const selectecCategoryId: number = getCategoryId(props, context)
 
     useEffect(() => {
         getAsyncData({
             api_v: 0,
             url: 'products',
             params: {
-                'category': getCategoryId(props, context)
+                'category': selectecCategoryId
             }
         })
-        .then(result => dispatch({ type: FETCHED, payload: { data: result.data } }))
+        .then(result => {
+            context.dispatch({ type: SET_PRODUCT, payload: { 
+                selectedCategoryId: selectecCategoryId,
+                selectedItemId: 0
+            }})
+            dispatch({ type: FETCHED, payload: { data: result.data } })
+        })
         .catch(error => dispatch({ type: ERROR, payload: { errorString: error } }))
     }, [])
-
-    console.log(state);
+    
+    //  current selected product id
+    const id: number = context.state.selectedItemId
+    //  Current selected product values
+    const item: IProductSelectedContentTypes = state.data !== null && {
+        title: state.data[id].title,
+        descriptor: state.data[id].descriptor,
+        feature: state.data[id].feature,
+        image_url: state.data[id].main_image,
+        files: state.data[id].file
+    }
 
     return (
         <div className="content">
@@ -74,6 +93,11 @@ const ProductsSelected: React.FunctionComponent<RouteComponentProps> = (props) =
                     <Header title='Продукция' subtitle='Продукция нашего предприятия' />
                     <article className='text'>
                         <ProductSelectedSlider items={state.data}/>
+                        <ProductSelectedContent title={item.title}
+                            descriptor={item.descriptor}
+                            feature={item.feature}
+                            image_url={item.image_url}
+                            files={item.files}/>
                     </article>
                 </React.Fragment>
                 : <DataPreloader />

@@ -1,11 +1,12 @@
 .product-selected--slider {
     display: block;
     white-space: nowrap;
-    padding: 10px 8px;
+    padding: 10px 0;
     user-select: none;
 
     > .product-selected--slider_container {
         width: 100%;
+        margin: 0 0 72px;
         > .slider--list {
             width: 100%;
             height: 100%;
@@ -20,8 +21,10 @@
                 }
 
                 & > .slider-item {
-                    &.events-block { pointer-events: none; }
-                    
+                    &.events-block {
+                        pointer-events: none;
+                    }
+
                     position: relative;
                     display: inline-block;
                     width: 195px;
@@ -87,6 +90,69 @@
                             opacity: 0;
                         }
                     }
+                }
+            }
+        }
+    }
+}
+
+.product-selected--content {
+    position: relative;
+    display: block;
+    width: 100%;
+
+    > .content--title {
+        margin: 0 0 42px;
+        > .product--image {
+            display: block;
+            width: 385px;
+            height: 315px;
+            background-size: contain;
+            background-position: center center;
+            background-repeat: no-repeat;
+            margin-right: 42px;
+        }
+    }
+
+    > .content {
+        > table {
+            width: 80%;
+            > thead > tr > td:first-child,
+            > tbody > tr > td:first-child {
+                width: 50%;
+                min-width: 495px;
+            }
+
+            > thead > tr > td:last-child,
+            > tbody > tr > td:last-child {
+                width: 32%;
+                min-width: 155px;
+            }
+
+            > thead > tr > td {
+                padding: 8px 12px;
+                border: 0 solid rgba($color: $default-body-color, $alpha: 0.45);
+                border-bottom-width: 1px;
+                font-family: "Roboto-Medium", sans-serif;
+                color: $default-body-color;
+            }
+
+            > tbody > tr {
+                &:first-child > td {
+                    padding-top: 12px;
+                }
+
+                > td {
+                    font-family: inherit;
+                    -webkit-font-smoothing: antialiased;
+                    -moz-osx-font-smoothing: grayscale;
+                    line-height: 1.5;
+                    letter-spacing: normal;
+                    text-decoration: inherit;
+                    text-transform: inherit;
+                    color: #616161;
+                    @include responsive('font-size', (16, 14));
+                    padding: 4px 12px;
                 }
             }
         }
