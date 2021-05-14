@@ -37,7 +37,7 @@ const ProductSelectedContent: React.FunctionComponent<IProductSelectedContentTyp
                     </div>
                 </div>
                 <div className="flex flex-dir-col content">
-                    {parse(props.feature)}
+                    {parse(props.feature, {trim: true})}
                 </div>
             </article>
         )

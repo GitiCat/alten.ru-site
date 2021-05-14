@@ -23,6 +23,8 @@ import {
 } from '../../../utils/async-data-states/types'
 import { getAsyncData } from '../../../utils/async-get-data'
 import { IProductSelectedContentTypes } from '../../../types/selected-product-types'
+import { GlobalContextTypes } from '../../../types/global-context-types'
+import { GlobalContext } from '../../../contexts/global-context'
 
 /**
  * Get category id for async get data method call from the server
@@ -53,21 +55,22 @@ const getCategoryId = (
  * @returns render dom component
  */
 const ProductsSelected: React.FunctionComponent<RouteComponentProps> = (props) => {
+    const globalContext: GlobalContextTypes = useContext(GlobalContext)
     const context: SelectedProductContextTypes = useContext(SelectedProductContext)
     const [state, dispatch] = useReducer(asyncDataReducer, initialState)
-    const selectecCategoryId: number = getCategoryId(props, context)
+    const selectedCategoryId: number = getCategoryId(props, context)
 
     useEffect(() => {
         getAsyncData({
             api_v: 0,
             url: 'products',
             params: {
-                'category': selectecCategoryId
+                'category': selectedCategoryId
             }
         })
         .then(result => {
             context.dispatch({ type: SET_PRODUCT, payload: { 
-                selectedCategoryId: selectecCategoryId,
+                selectedCategoryId: selectedCategoryId,
                 selectedItemId: 0
             }})
             dispatch({ type: FETCHED, payload: { data: result.data } })
@@ -90,7 +93,9 @@ const ProductsSelected: React.FunctionComponent<RouteComponentProps> = (props) =
         <div className="content">
             {!state.loading ?
                 <React.Fragment>
-                    <Header title='Продукция' subtitle='Продукция нашего предприятия' />
+                    <Header title='Продукция' subtitle={
+                        (globalContext.productCategories as []).filter(value => value['id'] === selectedCategoryId)[0]['name']
+                    } />
                     <article className='text'>
                         <ProductSelectedSlider items={state.data}/>
                         <ProductSelectedContent title={item.title}
