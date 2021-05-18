@@ -3,6 +3,13 @@ interface IProductCategoryTypes {
     name: string,
     title: string,
     descriptor: string | null,
+    preview_image: {
+        id: number,
+        image: string,
+        descriptor: string,
+        gallery: number,
+        createdAt: Date
+    } | null,
     createdAt: Date
 }
 

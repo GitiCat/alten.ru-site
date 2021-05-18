@@ -1,4 +1,4 @@
-import React, { Dispatch, useContext } from 'react'
+import React, { Dispatch, useContext, useEffect } from 'react'
 import cn from 'classnames'
 import { SelectedProductContext, SelectedProductContextTypes } from '../../../../contexts/selected-product-context'
 import { IProductPreviewTypes } from '../../../../types/api-types'
@@ -28,15 +28,31 @@ const sliderInputChange = (e: React.ChangeEvent<HTMLInputElement>, dispatch: Dis
 
 const ProductSelectedSliderItem: React.FunctionComponent<IProductPreviewTypes> = (props) => {
     const context: SelectedProductContextTypes = useContext(SelectedProductContext)
+    const reference = React.createRef<HTMLInputElement>()
     const bgBlockClasses = cn({
         'slider--item_image': true,
         'no-image': props.image_url === null
     })
 
+    useEffect(() => {
+        if(props.id === context.state.selectedItemId) {
+            reference
+                .current
+                .checked = true
+                
+            reference
+                .current
+                .parentElement
+                .classList
+                .add(INPUT_ACTIVE_CLASS_NAME)
+        }
+    })
+
     return (
         <div className='slider-item'>
             <input id={`slider-item--${props.id}`} type="radio" name="product-selected-slider--item"
-                data-product-id={props.id} onChange={(e) => { sliderInputChange(e, context.dispatch) }} />
+                data-product-id={props.id} onChange={(e) => { sliderInputChange(e, context.dispatch) }} 
+                ref={reference}/>
             <label htmlFor={`slider-item--${props.id}`}>
                 <div className={bgBlockClasses} style={{ backgroundImage: props.image_url !== null && `url(${props.image_url})`}} />
                 <span>{props.title}</span>

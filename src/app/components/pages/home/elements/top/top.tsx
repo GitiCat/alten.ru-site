@@ -10,19 +10,10 @@ const scrollLogosVisibility = (event: Event) => {
         element.classList.remove('hidden')
 }
 
-const headerImageBGPosition = (event: any) => {
-    const windowWidth: number = event.currentTarget.innerWidth
-    const element = document.querySelector('.main-top--bg')
-
-    console.log(element);
-    
-}
-
 const TopElement: React.FunctionComponent<any> = () => {
 
     useEffect(() => {
         window.addEventListener('scroll', scrollLogosVisibility)
-        window.addEventListener('resize', headerImageBGPosition)
         document.getElementById('to-info').addEventListener('click', () => {
             document.querySelector('section').scrollIntoView({
                 behavior: "smooth",
@@ -32,7 +23,6 @@ const TopElement: React.FunctionComponent<any> = () => {
 
         return () => {
             window.removeEventListener('scroll', scrollLogosVisibility)
-            window.removeEventListener('resize', headerImageBGPosition)
             document.getElementById('to-info').removeEventListener('click', () => {})
         }
     })
