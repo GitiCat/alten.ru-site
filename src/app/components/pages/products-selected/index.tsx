@@ -1,4 +1,5 @@
-import React, { useContext, useEffect, useReducer } from 'react'
+import React, { useContext, useEffect, useReducer, useState } from 'react'
+import parse from 'html-react-parser'
 import Header from '../../blocks/header/header'
 import DataPreloader from '../../blocks/data-preloader/index'
 import ProductSelectedSlider from './slider/index'
@@ -23,6 +24,7 @@ import {
 } from '../../../utils/async-data-states/types'
 import { getAsyncData } from '../../../utils/async-get-data'
 import { IProductSelectedContentTypes } from '../../../types/selected-product-types'
+import { IProductCategoryTypes } from '../../../types/api-types'
 import { GlobalContextTypes } from '../../../types/global-context-types'
 import { GlobalContext } from '../../../contexts/global-context'
 
@@ -62,6 +64,7 @@ const ProductsSelected: React.FunctionComponent<RouteComponentProps> = (props) =
     const globalContext: GlobalContextTypes = useContext(GlobalContext)
     const context: SelectedProductContextTypes = useContext(SelectedProductContext)
     const [state, dispatch] = useReducer(asyncDataReducer, initialState)
+    const [currentCategory, setCurrentCategory] = useState<IProductCategoryTypes>(null)
     const selectedCategoryId: number = getCategoryId(props, context)
     const selectedProductId: number = getProductId()
 
@@ -73,16 +76,18 @@ const ProductsSelected: React.FunctionComponent<RouteComponentProps> = (props) =
                 'category': selectedCategoryId
             }
         })
-        .then(result => {
-            context.dispatch({ type: SET_PRODUCT, payload: { 
-                selectedCategoryId: selectedCategoryId,
-                selectedItemId: selectedProductId
-            }})
-            dispatch({ type: FETCHED, payload: { data: result.data } })
-        })
-        .catch(error => dispatch({ type: ERROR, payload: { errorString: error } }))
+            .then(result => {
+                context.dispatch({
+                    type: SET_PRODUCT, payload: {
+                        selectedCategoryId: selectedCategoryId,
+                        selectedItemId: selectedProductId
+                    }
+                })
+                dispatch({ type: FETCHED, payload: { data: result.data } })
+            })
+            .catch(error => dispatch({ type: ERROR, payload: { errorString: error } }))
+        setCurrentCategory((globalContext.productCategories as []).filter(value => value['id'] === selectedCategoryId)[0])
     }, [])
-    
     //  current selected product id
     const id: number = context.state.selectedItemId
     //  Current selected product values
@@ -95,19 +100,30 @@ const ProductsSelected: React.FunctionComponent<RouteComponentProps> = (props) =
     }
 
     return (
-        <div className="content">
+        <div className="content selected-product-content">
             {!state.loading ?
                 <React.Fragment>
-                    <Header title='Продукция' subtitle={
-                        (globalContext.productCategories as []).filter(value => value['id'] === selectedCategoryId)[0]['name']
-                    } />
+                    <Header title='Продукция' subtitle='' />
                     <article className='text'>
-                        <ProductSelectedSlider items={state.data}/>
+                        <div className="title">
+                            {currentCategory !== null &&
+                                <React.Fragment>
+                                    <h1>{currentCategory.name}</h1>
+                                    <div className="descriptor">
+                                        {currentCategory.descriptor && parse(currentCategory.descriptor)}
+                                        <div className="sub">
+                                            {currentCategory.sub_descriptor && parse(currentCategory.sub_descriptor)}
+                                        </div>
+                                    </div>
+                                </React.Fragment>
+                            }
+                        </div>
+                        <ProductSelectedSlider items={state.data} />
                         <ProductSelectedContent title={item.title}
                             descriptor={item.descriptor}
                             feature={item.feature}
                             image_url={item.image_url}
-                            files={item.files}/>
+                            files={item.files} />
                     </article>
                 </React.Fragment>
                 : <DataPreloader />

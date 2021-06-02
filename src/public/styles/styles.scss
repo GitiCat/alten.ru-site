@@ -35,8 +35,7 @@
 
 html,
 body {
-    @include size(100%,
-    100vh)
+    @include size(100%, 100vh);
 }
 
 body {
@@ -95,24 +94,22 @@ header {
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             line-height: $big-line-height;
-            letter-spacing: .0125em;
+            letter-spacing: 0.0125em;
             text-decoration: inherit;
             text-transform: inherit;
             margin: 0 !important;
-            @include responsive(font-size,
-            (18,
-            16));
+            @include responsive(font-size, (18, 16));
         }
     }
     &.light {
-        >h1,
-        >h2,
-        >h4,
-        >p {
+        > h1,
+        > h2,
+        > h4,
+        > p {
             color: $light-title-color;
         }
     }
-    >h1 {
+    > h1 {
         font-family: inherit;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -122,23 +119,19 @@ header {
         text-transform: inherit;
         color: $main-title-color;
         margin: 0 0 12px;
-        @include responsive(font-size,
-        (62,
-        46));
+        @include responsive(font-size, (62, 46));
     }
-    >h2 {
+    > h2 {
         font-family: inherit;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         line-height: $lower-line-height;
-        letter-spacing: -.008em;
+        letter-spacing: -0.008em;
         text-decoration: inherit;
         text-transform: inherit;
         color: $main-title-color;
         margin: 0 0 12px;
-        @include responsive(font-size,
-        (32,
-        28));
+        @include responsive(font-size, (32, 28));
     }
     h4 {
         font-family: inherit;
@@ -146,38 +139,42 @@ header {
         -moz-osx-font-smoothing: grayscale;
         font-size: 1.25rem;
         line-height: $middle-line-height;
-        letter-spacing: .0073529412em;
+        letter-spacing: 0.0073529412em;
         text-decoration: inherit;
         text-transform: inherit;
         color: $main-title-color;
         margin: 0 0 12px;
     }
-    >p {
+    > p {
         font-family: inherit;
         line-height: 1.5;
         letter-spacing: 0;
         text-decoration: inherit;
         text-transform: inherit;
         color: $main-text-color;
-        @include responsive(font-size,
-        (16,
-        14));
+        @include responsive(font-size, (16, 14));
     }
-    >hr {
+    > hr {
         position: absolute;
         left: 0;
         bottom: -20px;
         border: 0;
         width: 50%;
         height: 1px;
-        background: linear-gradient( 90deg, $main-dark-color 0%, $main-dark-color 25%, $main-middle-color 45%, transparent 100%)
+        background: linear-gradient(
+            90deg,
+            $main-dark-color 0%,
+            $main-dark-color 25%,
+            $main-middle-color 45%,
+            transparent 100%
+        );
     }
 }
 
 article.descriptor {
     display: block;
     margin-bottom: 22px;
-    >p {
+    > p {
         font-family: inherit;
         line-height: 1.5;
         letter-spacing: normal;
@@ -185,9 +182,7 @@ article.descriptor {
         text-transform: inherit;
         color: $main-text-color;
         margin: 0 0 7px;
-        @include responsive(font-size,
-        (16,
-        14));
+        @include responsive(font-size, (16, 14));
     }
 }
 
@@ -198,14 +193,12 @@ article.descriptor {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         line-height: 1.25rem;
-        letter-spacing: .0178571429em;
+        letter-spacing: 0.0178571429em;
         text-decoration: none;
         text-transform: none;
         color: $main-text-color;
-        opacity: .6;
-        @include responsive(font-size,
-        (16,
-        14));
+        opacity: 0.6;
+        @include responsive(font-size, (16, 14));
     }
 }
 
@@ -221,21 +214,20 @@ a._action {
     height: 36px;
     border-radius: 4px;
     float: left;
-    font-family: 'Roboto-Medium', sans-serif;
+    font-family: "Roboto-Medium", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     line-height: inherit;
-    letter-spacing: .0892857143em;
+    letter-spacing: 0.0892857143em;
     text-transform: uppercase;
     padding: 0 16px 0 16px;
-    @include responsive(font-size,
-    (14,
-    12))
+    @include responsive(font-size, (14, 12));
 }
 
 a._contained,
 button._contained {
-    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, .12);
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+        0px 1px 5px 0px rgba(0, 0, 0, 0.12);
     transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1), background-color 280ms ease;
     &.dark {
         background-color: $main-middle-color;
@@ -271,7 +263,6 @@ a._action {
         color: $main-dark-color;
     }
 }
-
 
 /*
     Set display flex
@@ -345,7 +336,7 @@ a._action {
 .root {
     position: relative;
     min-height: 100%;
-    &>.content {
+    & > .content {
         flex: 1 0 auto;
         min-height: 100vh;
     }
@@ -354,16 +345,13 @@ a._action {
 .container {
     position: relative;
     overflow: hidden;
-    @include responsive(padding,
-    ('116px 14.5%',
-    '116px 7.5%'));
+    @include responsive(padding, ("116px 14.5%", "116px 7.5%"));
+    padding-bottom: 42px !important;
 }
 
 section.container,
 article.container {
-    @include responsive(padding,
-    ('116px 14.5%',
-    '116px 7.5%'));
+    @include responsive(padding, ("116px 14.5%", "116px 7.5%"));
 }
 
 section.item-section {
@@ -379,15 +367,15 @@ section.item-section {
         box-shadow: 1px 6px 12px rgba(0, 0, 0, 0.32), 1px 4px 10px rgba(0, 0, 0, 0.26);
         transition: transform 280ms ease, box-shadow 280ms ease;
         &:hover {
-            transform: perspective(10px) translateZ(.4px);
-            box-shadow: 1px 10px 20px rgba(0, 0, 0, 0.23), 1px 6px 12px rgba(0, 0, 0, 0.19)
+            transform: perspective(10px) translateZ(0.4px);
+            box-shadow: 1px 10px 20px rgba(0, 0, 0, 0.23), 1px 6px 12px rgba(0, 0, 0, 0.19);
         }
     }
 }
 
 article.content {
     p,
-    ul>li {
+    ul > li {
         font-family: inherit;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -397,19 +385,17 @@ article.content {
         text-transform: inherit;
         color: $main-text-color;
         margin: 0 0 7px;
-        @include responsive(font-size,
-        (16,
-        14));
+        @include responsive(font-size, (16, 14));
     }
     ul {
         position: relative;
         display: block;
-        >li {
+        > li {
             position: relative;
             padding: 0px 15px;
             &:before {
                 position: absolute;
-                content: '';
+                content: "";
                 top: 0;
                 left: 2px;
                 bottom: 0;
@@ -422,23 +408,20 @@ article.content {
 }
 
 article.text {
-    @include responsive(padding,
-    ('42px 14.5% 116px',
-    '42px 7.5% 116px'));
+    @include responsive(padding, ("42px 14.5% 116px", "42px 7.5% 116px"));
     p,
-    ul>li {
-        font-family: inherit;
+    ul > li {
+        font-family: "Roboto-Medium";
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         line-height: 1.5;
         letter-spacing: normal;
         text-decoration: inherit;
         text-transform: inherit;
-        color: $main-text-color;
+        //text-indent: 1.5em;
+        color: $default-body-color;
         margin: 0 0 7px;
-        @include responsive(font-size,
-        (16px,
-        14px));
+        @include responsive(font-size, (15px, 14px));
     }
     img {
         display: block;
@@ -454,7 +437,7 @@ article.text {
             float: right;
         }
         &:hover {
-            transform: perspective(10px) translateZ(.5px);
+            transform: perspective(10px) translateZ(0.5px);
             box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
         }
     }
@@ -462,26 +445,39 @@ article.text {
         position: relative;
         display: block;
         margin: 0 0 12px;
-        >li {
+        > li {
             position: relative;
-            padding: 0px 2.45em;
-            &>ul {
-                padding-top: 4px;
+            padding: 0px 1.6em;
+            & > ul {
+                padding-top: 7px;
+
+                > li {
+                    padding: 0 1rem;
+                    &:before {
+                        top: 0 !important;
+                        width: 2px !important;
+                        height: 100% !important;
+                        border: none !important;
+                        border-radius: 4px !important;
+                        background-color: $main-dark-color;
+                    }
+                }
             }
             &:before,
-            &>ul>li:before {
+            & > ul > li:before {
                 position: absolute;
-                content: '';
-                top: 0;
-                left: 22px;
+                content: "";
+                top: 6px;
+                left: 0;
                 bottom: 0;
-                background-color: $main-middle-color;
+                border: 2px solid $main-dark-color;
             }
             &:before {
-                width: 2px;
-                border-radius: 4px;
+                width: 6px;
+                height: 6px;
+                border-radius: 100%;
             }
-            &>ul>li:before {
+            & > ul > li:before {
                 width: 4px;
                 height: 4px;
                 top: 10px;
@@ -495,17 +491,13 @@ article.text {
         margin: 0 0 12px;
         margin-top: 22px;
         color: $main-title-color;
-        @include responsive(font-size,
-        (18px,
-        16px));
+        @include responsive(font-size, (18px, 16px));
     }
     strong {
         font-family: "Roboto-Regular", sans-serif;
         line-height: 1.5;
-        color: $main-title-color;
-        @include responsive(font-size,
-        (16px,
-        14px));
+        color: $main-dark-color;
+        @include responsive(font-size, (16px, 14px));
     }
 }
 
@@ -524,14 +516,14 @@ article.text {
 .no-image {
     position: relative;
     display: block;
-    background-image: url('/static/assepts/images/no-photo.png');
+    background-image: url("/static/assepts/images/no-photo.png");
     background-repeat: no-repeat;
     background-position: center !important;
     background-size: contain !important;
     width: 100%;
     height: 100%;
     transform: scale(0.55) translateY(-75px) !important;
-    opacity: .35;
+    opacity: 0.35;
 }
 
 @import "../../app/components/pages/company/company.scss";

@@ -4,6 +4,13 @@ import { IProductTypes } from '../../../../types/api-types'
 import ProductSelectedSliderItem from './item'
 
 import 'swiper/swiper.scss'
+import 'swiper/components/navigation/navigation.scss'
+
+import SwiperCore, {
+    Navigation
+} from 'swiper/core'
+
+SwiperCore.use([Navigation])
 
 type ProductSelectedSliderTypes = {
     items: Array<IProductTypes> | {}
@@ -12,7 +19,7 @@ type ProductSelectedSliderTypes = {
 const ProductSelectedSlider: React.FunctionComponent<ProductSelectedSliderTypes> = (props) => {
     return (
         <div className="product-selected--slider">
-            <Swiper className='slider--swiper' spaceBetween={30} slidesPerView='auto'>
+            <Swiper className='slider--swiper' spaceBetween={30} slidesPerView='auto' navigation={true}>
                 {
                     (props.items as []).map((item: IProductTypes, index: number) => {
                         const imageUrl: string = item.main_image === null 

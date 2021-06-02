@@ -1,5 +1,11 @@
 .products-category-block {
+    display: flex;
+    flex-flow: column nowrap;
     margin: 0 0 48px;
+
+    header > p {
+        text-indent: 0;
+    }
 
     .products-list-item {
         position: relative;
