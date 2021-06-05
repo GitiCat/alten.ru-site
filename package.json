@@ -8,7 +8,6 @@
     "build": "webpack --config ./webpack/webpack.build.config.js",
     "tslint:scan": "tslint --project tsconfig.json --config tslint.yaml --force",
     "tslint:fix": "tslint --project tsconfig.json --config tslint.yaml --fix",
-    "tests": "jest",
     "test": "jest"
   },
   "author": {
