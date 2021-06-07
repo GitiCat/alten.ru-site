@@ -6,7 +6,7 @@ import {
     SelectedProductContextTypes 
 } from '../../../contexts/selected-product-context'
 import CategoryProductItem from './item'
-import { SET_PRODUCT } from '../../../store/products-selected/types';
+import { SET_PRODUCT } from '../../../redux/store/products-selected/types';
 
 type CategoryProductBlockTypes = {
     id: number,

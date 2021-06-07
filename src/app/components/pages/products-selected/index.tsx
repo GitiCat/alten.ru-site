@@ -11,9 +11,8 @@ import {
 } from '../../../contexts/selected-product-context'
 import {
     SELECTED_PRODUCT_CATEGORY_ID,
-    SELECTED_PRODUCT_ITEM_ID
 } from '../../../consts/product-selected-consts'
-import { SET_PRODUCT } from '../../../store/products-selected/types'
+import { SelectedProductTypes, SET_PRODUCT_CATEGORY_ID } from '../../../redux/store/products-selected/types'
 import {
     asyncDataReducer,
     initialState
@@ -27,6 +26,8 @@ import { IProductSelectedContentTypes } from '../../../types/selected-product-ty
 import { IProductCategoryTypes } from '../../../types/api-types'
 import { GlobalContextTypes } from '../../../types/global-context-types'
 import { GlobalContext } from '../../../contexts/global-context'
+import { useSelector, useStore } from 'react-redux'
+import { fetchCategoryProductSaga } from '../../../redux/saga/selected-product-saga'
 
 /**
  * Get category id for async get data method call from the server
@@ -38,7 +39,7 @@ const getCategoryId = (
     props: RouteComponentProps,
     context: SelectedProductContextTypes,
 ): number => {
-    if (props.location.state !== undefined && props.location.state !== null)
+    if (props.location.state !== undefined)
         return props.location.state['category_id']
 
     if (context.state.selectedCategoryId !== 0)
@@ -51,85 +52,34 @@ const getCategoryId = (
     return Number(path.slice(path.lastIndexOf('/') + 1, path.length))
 }
 
-const getProductId = (): number => {
-    return Number(sessionStorage.getItem(SELECTED_PRODUCT_ITEM_ID) || 0)
-}
-
 /**
  * Render dom component for current selected products category
  * @param props route component props
  * @returns render dom component
  */
-const ProductsSelected: React.FunctionComponent<RouteComponentProps> = (props) => {
-    const globalContext: GlobalContextTypes = useContext(GlobalContext)
-    const context: SelectedProductContextTypes = useContext(SelectedProductContext)
-    const [state, dispatch] = useReducer(asyncDataReducer, initialState)
-    const [currentCategory, setCurrentCategory] = useState<IProductCategoryTypes>(null)
-    const selectedCategoryId: number = getCategoryId(props, context)
-    const selectedProductId: number = getProductId()
-
-    useEffect(() => {
-        getAsyncData({
-            api_v: 0,
-            url: 'products',
-            params: {
-                'category': selectedCategoryId
-            }
-        })
-            .then(result => {
-                context.dispatch({
-                    type: SET_PRODUCT, payload: {
-                        selectedCategoryId: selectedCategoryId,
-                        selectedItemId: selectedProductId
-                    }
-                })
-                dispatch({ type: FETCHED, payload: { data: result.data } })
-            })
-            .catch(error => dispatch({ type: ERROR, payload: { errorString: error } }))
-        setCurrentCategory((globalContext.productCategories as []).filter(value => value['id'] === selectedCategoryId)[0])
-    }, [])
-    //  current selected product id
-    const id: number = context.state.selectedItemId
-    //  Current selected product values
-    const item: IProductSelectedContentTypes = state.data !== null && {
-        title: state.data[id].title,
-        descriptor: state.data[id].descriptor,
-        feature: state.data[id].feature,
-        image_url: state.data[id].main_image,
-        files: state.data[id].file
-    }
-
+const ProductsSelected: React.FunctionComponent<RouteComponentProps> = (props) => {    
+    const generator = fetchCategoryProductSaga()
+    console.log(generator.next());
+    
     return (
         <div className="content selected-product-content">
-            {!state.loading ?
                 <React.Fragment>
-                    <Header title='Продукция' subtitle='' />
+                    <Header title='Продукция' subtitle=''/>
                     <article className='text'>
                         <div className="title">
-                            {currentCategory !== null &&
                                 <React.Fragment>
-                                    <h1>{currentCategory.name}</h1>
+                                    <h1>
+                                    </h1>
                                     <div className="descriptor">
-                                        {currentCategory.descriptor && parse(currentCategory.descriptor)}
                                         <div className="sub">
-                                            {currentCategory.sub_descriptor && parse(currentCategory.sub_descriptor)}
                                         </div>
                                     </div>
                                 </React.Fragment>
-                            }
                         </div>
-                        <ProductSelectedSlider items={state.data} />
-                        <ProductSelectedContent title={item.title}
-                            descriptor={item.descriptor}
-                            feature={item.feature}
-                            image_url={item.image_url}
-                            files={item.files} />
                     </article>
                 </React.Fragment>
-                : <DataPreloader />
-            }
         </div>
     )
 }
 
-export default ProductsSelected;
+export default React.memo(ProductsSelected)

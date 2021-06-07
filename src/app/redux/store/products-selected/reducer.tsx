@@ -1,4 +1,4 @@
-import { applyMiddleware } from 'redux'
+import { SELECTED_PRODUCT_CATEGORY_ID, SELECTED_PRODUCT_ITEM_ID } from '../../../consts/product-selected-consts'
 import {
     SelectedProductTypes,
     SelectedProductActions,
@@ -7,9 +7,10 @@ import {
     SET_PRODUCT_CATEGORY_ID
 } from './types'
 
+
 export const initialState: SelectedProductTypes = {
-    selectedItemId: 0,
-    selectedCategoryId: 0
+    selectedItemId: parseInt(sessionStorage.getItem(SELECTED_PRODUCT_ITEM_ID)) | 0,
+    selectedCategoryId: parseInt(sessionStorage.getItem(SELECTED_PRODUCT_CATEGORY_ID)) | 0
 }
 
 export const productSelectedReducer = (state = initialState, action: SelectedProductActions)

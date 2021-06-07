@@ -2,10 +2,10 @@ import React from 'react'
 import {
     SelectedProductTypes,
     SelectedProductActions
-} from '../store/products-selected/types'
+} from '../redux/store/products-selected/types'
 import {
     initialState
-} from '../store/products-selected/reducer'
+} from '../redux/store/products-selected/reducer'
 
 type SelectedProductContextTypes = {
     state: SelectedProductTypes,

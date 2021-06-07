@@ -6,7 +6,7 @@ export interface AsyncDataStatesTypes {
 }
 
 export const ERROR = 'ERROR'
-export const FETCHED = 'FETCHED'
+export const FETCHED: string = 'FETCHED'
 export const LOADING = 'LOADING'
 
 interface ErrorState {

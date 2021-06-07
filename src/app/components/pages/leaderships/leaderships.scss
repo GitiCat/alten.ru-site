@@ -117,16 +117,16 @@
                 &>.person {
                     &--position {
                         position: relative;
-                        padding-left: 12px;
+                        padding: 0 1.6em;
                         &:before {
                             position: absolute;
                             display: block;
                             content: "";
-                            left: 1.6px;
-                            top: 9px;
-                            background-color: $main-middle-color;
-                            width: 5px;
-                            height: 5px;
+                            left: 2px;
+                            top: 5px;
+                            width: 6px;
+                            height: 6px;
+                            border: 2px solid $main-dark-color;
                             border-radius: 100%;
                         }
                     }

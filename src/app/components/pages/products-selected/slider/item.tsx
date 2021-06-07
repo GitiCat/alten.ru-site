@@ -2,7 +2,7 @@ import React, { Dispatch, useContext, useEffect } from 'react'
 import cn from 'classnames'
 import { SelectedProductContext, SelectedProductContextTypes } from '../../../../contexts/selected-product-context'
 import { IProductPreviewTypes } from '../../../../types/api-types'
-import { SelectedProductActions, SET_PRODUCT_ITEM_ID } from '../../../../store/products-selected/types'
+import { SelectedProductActions, SET_PRODUCT_ITEM_ID } from '../../../../redux/store/products-selected/types'
 
 //  Const value active input element class name
 const INPUT_ACTIVE_CLASS_NAME: string = 'selected'

@@ -6,7 +6,7 @@ import cn from 'classnames'
 import {
     SET_SIDEMENU_ACTIVE_STATE,
     SET_SIDEMENU_DEACTIVE_STATE
-} from '../../../store/sideMenu/types';
+} from '../../../redux/store/sideMenu/types';
 
 import SideMenu from './menu';
 import SideMenuItems from './items';

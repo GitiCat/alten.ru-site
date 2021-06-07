@@ -5,7 +5,7 @@ import {
     SelectedProductContext,
     SelectedProductContextTypes
 } from '../../../contexts/selected-product-context'
-import { SET_PRODUCT } from '../../../store/products-selected/types'
+import { SET_PRODUCT } from '../../../redux/store/products-selected/types'
 import { History } from 'history'
 
 type CategoryProductItemTypes = {

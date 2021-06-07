@@ -13,7 +13,7 @@ export const initialState: AsyncDataStatesTypes = {
     errorString: null
 }
 
-export const asyncDataReducer = (state, action: AsyncDataActions)
+export const asyncDataReducer = (state = initialState, action: AsyncDataActions)
     : AsyncDataStatesTypes => {
     switch(action.type) {
         case ERROR:
@@ -34,5 +34,8 @@ export const asyncDataReducer = (state, action: AsyncDataActions)
                 ...state,
                 loading: true
             }
+        default: {
+            return state
+        }
     }
 }
