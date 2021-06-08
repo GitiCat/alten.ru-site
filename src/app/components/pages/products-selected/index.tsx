@@ -12,22 +12,23 @@ import {
 import {
     SELECTED_PRODUCT_CATEGORY_ID,
 } from '../../../consts/product-selected-consts'
-import { SelectedProductTypes, SET_PRODUCT_CATEGORY_ID } from '../../../redux/store/products-selected/types'
 import {
-    asyncDataReducer,
-    initialState
-} from '../../../utils/async-data-states/reducer'
+    SelectedProductTypes,
+    SET_PRODUCT,
+    SET_PRODUCT_CATEGORY_ID,
+    UPDATE_PRODUCT,
+    UPDATE_PRODUCT_CATEGORY_ID,
+    UPDATE_PRODUCT_ITEM_ID
+} from '../../../redux/store/products-selected/types'
 import {
-    ERROR,
-    FETCHED,
+    AsyncDataStatesTypes,
+    LOADING
 } from '../../../utils/async-data-states/types'
-import { getAsyncData } from '../../../utils/async-get-data'
 import { IProductSelectedContentTypes } from '../../../types/selected-product-types'
-import { IProductCategoryTypes } from '../../../types/api-types'
+import { IProductCategoryTypes, IProductTypes } from '../../../types/api-types'
 import { GlobalContextTypes } from '../../../types/global-context-types'
 import { GlobalContext } from '../../../contexts/global-context'
-import { useSelector, useStore } from 'react-redux'
-import { fetchCategoryProductSaga } from '../../../redux/saga/selected-product-saga'
+import { useDispatch, useSelector, useStore } from 'react-redux'
 
 /**
  * Get category id for async get data method call from the server
@@ -57,27 +58,61 @@ const getCategoryId = (
  * @param props route component props
  * @returns render dom component
  */
-const ProductsSelected: React.FunctionComponent<RouteComponentProps> = (props) => {    
-    const generator = fetchCategoryProductSaga()
-    console.log(generator.next());
-    
+const ProductsSelected: React.FunctionComponent<RouteComponentProps> = (props) => {
+    const dispatch = useDispatch()
+    const asyncDataSelector: AsyncDataStatesTypes = useSelector(state => state['asyncDataReducer'])
+    const selectedProduct: SelectedProductTypes = useSelector(state => state['productSelected'])
+    const productContext = useContext<SelectedProductContextTypes>(SelectedProductContext)
+    const globalContext = useContext<GlobalContextTypes>(GlobalContext)
+
+    useEffect(() => {
+        const categoryId: number = getCategoryId(props, null)
+        dispatch({
+            type: UPDATE_PRODUCT, payload: {
+                categoryId: categoryId,
+                productId: 0
+            }
+        })
+        dispatch({ type: LOADING, categoryId: categoryId })
+    }, [])
+
+    const currentCategory: IProductCategoryTypes
+        = (globalContext.productCategories as [])
+            .filter((item: IProductCategoryTypes) => item.id === selectedProduct.selectedCategoryId)[0]
+
+    let data: IProductTypes = null
+    if(asyncDataSelector.data !== null) {
+        data = asyncDataSelector.data[selectedProduct.selectedItemId]
+    }
+
     return (
         <div className="content selected-product-content">
+            {!asyncDataSelector.loading ?
                 <React.Fragment>
-                    <Header title='Продукция' subtitle=''/>
-                    <article className='text'>
-                        <div className="title">
+                    <Header title='Продукция' subtitle='' />
+                    {currentCategory !== null &&
+                        <article className='text'>
+                            <div className="title">
                                 <React.Fragment>
-                                    <h1>
-                                    </h1>
+                                    <h1>{currentCategory.title}</h1>
                                     <div className="descriptor">
+                                        {currentCategory.descriptor !== null &&
+                                            parse(currentCategory.descriptor, { trim: true })
+                                        }
                                         <div className="sub">
+                                            {currentCategory.sub_descriptor !== null &&
+                                                parse(currentCategory.sub_descriptor, { trim: true })
+                                            }
                                         </div>
                                     </div>
                                 </React.Fragment>
-                        </div>
-                    </article>
+                            </div>
+                            <ProductSelectedSlider items={asyncDataSelector.data}/>
+                        </article>
+                    }
                 </React.Fragment>
+                : <DataPreloader />
+            }
         </div>
     )
 }

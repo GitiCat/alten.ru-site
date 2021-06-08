@@ -1,4 +1,7 @@
-import { SELECTED_PRODUCT_CATEGORY_ID, SELECTED_PRODUCT_ITEM_ID } from '../../../consts/product-selected-consts'
+import { 
+    SELECTED_PRODUCT_CATEGORY_ID, 
+    SELECTED_PRODUCT_ITEM_ID 
+} from '../../../consts/product-selected-consts'
 import {
     SelectedProductTypes,
     SelectedProductActions,

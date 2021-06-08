@@ -7,14 +7,14 @@ import configureStore from './app/redux/store/index';
 
 import './public/styles/styles.scss';
 import App from './app/app';
-import { fetchCategoryProductSaga } from './app/redux/saga/selected-product-saga'
+import rootSaga from './app/redux/saga/index'
 
 const sagaMiddleware = createSagaMiddleware()
 const store = createStore(
     configureStore,
     applyMiddleware(sagaMiddleware)
 )
-sagaMiddleware.run(fetchCategoryProductSaga)
+sagaMiddleware.run(rootSaga)
 
 render((
     <Provider store={store}>

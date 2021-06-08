@@ -35,17 +35,17 @@ const ProductSelectedSliderItem: React.FunctionComponent<IProductPreviewTypes> =
     })
 
     useEffect(() => {
-        if(props.id === context.state.selectedItemId) {
-            reference
-                .current
-                .checked = true
+        // if(props.id === context.state.selectedItemId) {
+        //     reference
+        //         .current
+        //         .checked = true
                 
-            reference
-                .current
-                .parentElement
-                .classList
-                .add(INPUT_ACTIVE_CLASS_NAME)
-        }
+        //     reference
+        //         .current
+        //         .parentElement
+        //         .classList
+        //         .add(INPUT_ACTIVE_CLASS_NAME)
+        // }
     })
 
     return (
