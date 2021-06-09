@@ -4,13 +4,7 @@ interface IProductCategoryTypes {
     title: string,
     descriptor: string | null,
     sub_descriptor: string | null,
-    preview_image: {
-        id: number,
-        image: string,
-        descriptor: string,
-        gallery: number,
-        createdAt: Date
-    } | null,
+    preview_image: IImageTypes | null,
     createdAt: Date
 }
 
@@ -26,14 +20,8 @@ interface IProductTypes {
     title: string,
     category: number,
     descriptor: string | null,
-    features: string | null,
-    main_image: {
-        id: number,
-        image: string,
-        descriptor: string,
-        gallery: number,
-        createdAt: Date
-    } | null,
+    feature: string | null,
+    main_image: IImageTypes | null,
     file: string | null,
     createdAt: Date
 }
@@ -44,9 +32,18 @@ interface IApiResponseStatus {
     responseMessage: string | null,
 }
 
+interface IImageTypes {
+    id: number,
+    image: string,
+    descriptor: string,
+    gallery: number,
+    createdAt: Date
+}
+
 export {
     IProductCategoryTypes,
     IProductPreviewTypes,
     IApiResponseStatus,
-    IProductTypes
+    IProductTypes,
+    IImageTypes
 }

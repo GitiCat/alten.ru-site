@@ -6,25 +6,16 @@ import ProductSelectedSlider from './slider/index'
 import ProductSelectedContent from './content/index'
 import { RouteComponentProps } from 'react-router-dom'
 import {
-    SelectedProductContext,
-    SelectedProductContextTypes
-} from '../../../contexts/selected-product-context'
-import {
     SELECTED_PRODUCT_CATEGORY_ID,
 } from '../../../consts/product-selected-consts'
 import {
     SelectedProductTypes,
-    SET_PRODUCT,
-    SET_PRODUCT_CATEGORY_ID,
     UPDATE_PRODUCT,
-    UPDATE_PRODUCT_CATEGORY_ID,
-    UPDATE_PRODUCT_ITEM_ID
 } from '../../../redux/store/products-selected/types'
 import {
     AsyncDataStatesTypes,
     LOADING
 } from '../../../utils/async-data-states/types'
-import { IProductSelectedContentTypes } from '../../../types/selected-product-types'
 import { IProductCategoryTypes, IProductTypes } from '../../../types/api-types'
 import { GlobalContextTypes } from '../../../types/global-context-types'
 import { GlobalContext } from '../../../contexts/global-context'
@@ -37,20 +28,33 @@ import { useDispatch, useSelector, useStore } from 'react-redux'
  * @returns category id for request to server
  */
 const getCategoryId = (
-    props: RouteComponentProps,
-    context: SelectedProductContextTypes,
+    props: RouteComponentProps
 ): number => {
     if (props.location.state !== undefined)
         return props.location.state['category_id']
-
-    if (context.state.selectedCategoryId !== 0)
-        return Number(context.state.selectedCategoryId)
 
     if (Number(sessionStorage.getItem(SELECTED_PRODUCT_CATEGORY_ID)) !== 0)
         return Number(sessionStorage.getItem(SELECTED_PRODUCT_CATEGORY_ID))
 
     const path = props.location.pathname
     return Number(path.slice(path.lastIndexOf('/') + 1, path.length))
+}
+
+/**
+ * Get product id for selected item
+ * @param props route component props
+ * @returns product id for selected
+ */
+const getProductId = (props: RouteComponentProps): number => {
+    const { state } = props.location
+
+    if(state === undefined || state === null)
+        return 0
+
+    if(state['product_id'] === undefined || state['product_id'] === null)
+        return 0
+
+    return state['product_id']
 }
 
 /**
@@ -62,15 +66,15 @@ const ProductsSelected: React.FunctionComponent<RouteComponentProps> = (props) =
     const dispatch = useDispatch()
     const asyncDataSelector: AsyncDataStatesTypes = useSelector(state => state['asyncDataReducer'])
     const selectedProduct: SelectedProductTypes = useSelector(state => state['productSelected'])
-    const productContext = useContext<SelectedProductContextTypes>(SelectedProductContext)
     const globalContext = useContext<GlobalContextTypes>(GlobalContext)
 
-    useEffect(() => {
-        const categoryId: number = getCategoryId(props, null)
+    useEffect(() => {        
+        const categoryId: number = getCategoryId(props)
+        const productId: number = getProductId(props)
         dispatch({
             type: UPDATE_PRODUCT, payload: {
                 categoryId: categoryId,
-                productId: 0
+                productId: productId
             }
         })
         dispatch({ type: LOADING, categoryId: categoryId })
@@ -108,6 +112,14 @@ const ProductsSelected: React.FunctionComponent<RouteComponentProps> = (props) =
                                 </React.Fragment>
                             </div>
                             <ProductSelectedSlider items={asyncDataSelector.data}/>
+                            {data !== null ?
+                                <ProductSelectedContent title={data.title}
+                                    descriptor={data.descriptor}
+                                    feature={data.feature}
+                                    image={data.main_image}
+                                    files={null}/>
+                                : <div className=""></div>
+                            }
                         </article>
                     }
                 </React.Fragment>

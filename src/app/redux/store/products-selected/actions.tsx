@@ -16,13 +16,17 @@ export const updateProductAction = (select: SelectedProductTypes): SelectedProdu
 export const updateProductCategoryIdAction = (index: number): SelectedProductActions => {
     return { 
         type: SET_PRODUCT_CATEGORY_ID,
-        payload: index
+        payload: {
+            selectedCategoryId: index
+        }
     }
 }
 
 export const updateProductItemIdAction = (index: number): SelectedProductActions => {
     return {
         type: SET_PRODUCT_ITEM_ID,
-        payload: index
+        payload: {
+            selectedItemId: index
+        }
     }
 }

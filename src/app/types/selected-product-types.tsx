@@ -1,3 +1,5 @@
+import { IImageTypes } from './api-types'
+
 interface IProductSelectedFileTypes {
     name: string,
     ext: string,
@@ -8,7 +10,7 @@ interface IProductSelectedContentTypes {
     title: string,
     descriptor: string,
     feature: string,
-    image_url: string | null,
+    image: IImageTypes | null,
     files: Array<IProductSelectedContentTypes> | null
 }
 

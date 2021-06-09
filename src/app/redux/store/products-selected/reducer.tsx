@@ -12,8 +12,8 @@ import {
 
 
 export const initialState: SelectedProductTypes = {
-    selectedItemId: parseInt(sessionStorage.getItem(SELECTED_PRODUCT_ITEM_ID)) | 0,
-    selectedCategoryId: parseInt(sessionStorage.getItem(SELECTED_PRODUCT_CATEGORY_ID)) | 0
+    selectedItemId: 0,
+    selectedCategoryId: 0
 }
 
 export const productSelectedReducer = (state = initialState, action: SelectedProductActions)
@@ -28,12 +28,12 @@ export const productSelectedReducer = (state = initialState, action: SelectedPro
         case SET_PRODUCT_ITEM_ID: {
             return {
                 selectedCategoryId: state.selectedCategoryId,
-                selectedItemId: action.payload
+                selectedItemId: action.payload.selectedItemId
             }
         }
-        case SET_PRODUCT_CATEGORY_ID: {
+        case SET_PRODUCT_CATEGORY_ID: {        
             return {
-                selectedCategoryId: action.payload,
+                selectedCategoryId: action.payload.selectedCategoryId,
                 selectedItemId: state.selectedItemId
             }
         }

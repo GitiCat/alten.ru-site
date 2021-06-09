@@ -45,12 +45,16 @@ function* setProduct(action: ISetProductTypes) {
 
 function* setCategoryProduct(action: ISetCategoryProductTypes) {
     const { categoryId } = action.payload
-    yield put({ type: SET_PRODUCT_CATEGORY_ID, categoryId })
+    yield put({ type: SET_PRODUCT_CATEGORY_ID, payload: {
+        selectedCategoryId: categoryId
+    } })
 }
 
 function* setProductItem(action: ISetProductItemTypes) {
     const { productId } = action.payload
-    yield put({ type: SET_PRODUCT_ITEM_ID, productId })
+    yield put({ type: SET_PRODUCT_ITEM_ID, payload: {
+        selectedItemId: productId
+    } })
 }
 
 export function* currentSelectedProductRoot() {

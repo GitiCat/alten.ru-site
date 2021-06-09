@@ -20,12 +20,16 @@ interface SetProductAction extends Action {
 
 interface SetProductCategoryIdAction extends Action {
     type: typeof SET_PRODUCT_CATEGORY_ID,
-    payload: number
+    payload: {
+        selectedCategoryId: number
+    }
 }
 
 interface SetProductItemIdAction extends Action {
     type: typeof SET_PRODUCT_ITEM_ID,
-    payload: number
+    payload: {
+        selectedItemId: number
+    }
 }
 
 export type SelectedProductActions = 
