@@ -22,8 +22,8 @@ class FooterBlock extends React.PureComponent<{}, any> {
                         <span>Предприятие</span>
                         <hr/>
                         <NavLink exact className='f-nav-link' activeClassName='active' to='/company/leaderships'>Руководство</NavLink>
-                        <NavLink exact className='f-nav-link' activeClassName='active' to='/company/publications'>Публикации</NavLink>
                         <NavLink exact className='f-nav-link' activeClassName='active' to='/company/licences'>Лицензии</NavLink>
+                        <NavLink exact className='f-nav-link' activeClassName='active' to='/company/documents'>Документы</NavLink>
                         <NavLink exact className='f-nav-link' activeClassName='active' to='/company/gallery'>Галерея</NavLink>
                     </div>
                     <div className="footer-block flex flex-dir-col">
@@ -31,10 +31,9 @@ class FooterBlock extends React.PureComponent<{}, any> {
                         <hr/>
                         <NavLink exact className='f-nav-link' activeClassName='active' to='/'>Главная</NavLink>
                         <NavLink exact className='f-nav-link' activeClassName='active' to='/history'>История</NavLink>
-                        <NavLink exact className='f-nav-link' activeClassName='active' to='/company/licences'>Лицензии</NavLink>
                         <NavLink exact className='f-nav-link' activeClassName='active' to='/activity'>Деятельность</NavLink>
                         <NavLink exact className='f-nav-link' activeClassName='active' to='/products'>Продукция</NavLink>
-                        <NavLink exact className='f-nav-link' activeClassName='active' to='/company/documents'>Документы</NavLink>
+                        <NavLink exact className='f-nav-link' activeClassName='active' to='/vacancies'>Вакансии</NavLink>
                         <NavLink exact className='f-nav-link' activeClassName='active' to='/news'>Новости</NavLink>
                     </div>
                     <div className="footer-block flex flex-dir-col">

@@ -20,6 +20,7 @@ import { IProductCategoryTypes, IProductTypes } from '../../../types/api-types'
 import { GlobalContextTypes } from '../../../types/global-context-types'
 import { GlobalContext } from '../../../contexts/global-context'
 import { useDispatch, useSelector, useStore } from 'react-redux'
+import { IAsyncDataRequestTypes } from '../../../redux/saga/async-data-request-saga'
 
 /**
  * Get category id for async get data method call from the server
@@ -48,10 +49,10 @@ const getCategoryId = (
 const getProductId = (props: RouteComponentProps): number => {
     const { state } = props.location
 
-    if(state === undefined || state === null)
+    if (state === undefined || state === null)
         return 0
 
-    if(state['product_id'] === undefined || state['product_id'] === null)
+    if (state['product_id'] === undefined || state['product_id'] === null)
         return 0
 
     return state['product_id']
@@ -68,7 +69,7 @@ const ProductsSelected: React.FunctionComponent<RouteComponentProps> = (props) =
     const selectedProduct: SelectedProductTypes = useSelector(state => state['productSelected'])
     const globalContext = useContext<GlobalContextTypes>(GlobalContext)
 
-    useEffect(() => {        
+    useEffect(() => {
         const categoryId: number = getCategoryId(props)
         const productId: number = getProductId(props)
         dispatch({
@@ -77,7 +78,14 @@ const ProductsSelected: React.FunctionComponent<RouteComponentProps> = (props) =
                 productId: productId
             }
         })
-        dispatch({ type: LOADING, categoryId: categoryId })
+        //  payload object to async request data
+        const payload: IAsyncDataRequestTypes = {
+            url: 'products',
+            params: {
+                'category': categoryId
+            }
+        }
+        dispatch({ type: LOADING, payload })
     }, [])
 
     const currentCategory: IProductCategoryTypes
@@ -85,7 +93,7 @@ const ProductsSelected: React.FunctionComponent<RouteComponentProps> = (props) =
             .filter((item: IProductCategoryTypes) => item.id === selectedProduct.selectedCategoryId)[0]
 
     let data: IProductTypes = null
-    if(asyncDataSelector.data !== null) {
+    if (asyncDataSelector.data !== null) {
         data = asyncDataSelector.data[selectedProduct.selectedItemId]
     }
 
@@ -111,13 +119,13 @@ const ProductsSelected: React.FunctionComponent<RouteComponentProps> = (props) =
                                     </div>
                                 </React.Fragment>
                             </div>
-                            <ProductSelectedSlider items={asyncDataSelector.data}/>
+                            <ProductSelectedSlider items={asyncDataSelector.data} />
                             {data !== null ?
                                 <ProductSelectedContent title={data.title}
                                     descriptor={data.descriptor}
                                     feature={data.feature}
                                     image={data.main_image}
-                                    files={null}/>
+                                    files={null} />
                                 : <div className=""></div>
                             }
                         </article>

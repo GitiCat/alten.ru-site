@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import NavLinkItem from '../navLinkItem';
 import { GlobalContext } from '../../../contexts/global-context'
 import { IProductCategoryTypes } from '../../../types/api-types';
+import AssignmentIcon from '@material-ui/icons/Assignment';
 
 const SideMenuItems: React.FunctionComponent = () => {
     const globalContext = useContext(GlobalContext)
@@ -35,12 +36,12 @@ const SideMenuItems: React.FunctionComponent = () => {
                 </div>
                 <div className="sub">
                     {
-                        (globalContext.productCategories as []).length > 0 && 
-                            (globalContext.productCategories as []).map((item: IProductCategoryTypes, index: number) => {
-                                return (
-                                    <NavLinkItem key={index} to={{pathname: `/products/${item.id}`, state: {'category_id': item.id, 'product_id': 0}}}>{item.name}</NavLinkItem>
-                                )
-                            })
+                        (globalContext.productCategories as []).length > 0 &&
+                        (globalContext.productCategories as []).map((item: IProductCategoryTypes, index: number) => {
+                            return (
+                                <NavLinkItem key={index} to={{ pathname: `/products/${item.id}`, state: { 'category_id': item.id, 'product_id': 0 } }}>{item.name}</NavLinkItem>
+                            )
+                        })
                     }
                 </div>
             </div>
@@ -53,11 +54,20 @@ const SideMenuItems: React.FunctionComponent = () => {
                 </div>
                 <div className="sub">
                     <NavLinkItem to='/company/leaderships'>Руководство</NavLinkItem>
-                    <NavLinkItem to='/company/publications'>Публикации</NavLinkItem>
                     <NavLinkItem to='/company/licences'>Лицензии</NavLinkItem>
                     <NavLinkItem to='/company/documents'>Документы</NavLinkItem>
                     <NavLinkItem to='/company/gallery'>Галерея</NavLinkItem>
                 </div>
+            </div>
+            <div className="link-icon flex">
+                <NavLinkItem to='/vacancies'>Вакансии</NavLinkItem>
+                <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 
+                        2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 
+                        0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 
+                        14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z">
+                    </path>
+                </svg>
             </div>
             <div className="link-icon flex">
                 <NavLinkItem to='/news'>Новости</NavLinkItem>

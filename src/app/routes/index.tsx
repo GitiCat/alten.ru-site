@@ -12,10 +12,10 @@ const AppRoutes: React.FunctionComponent = () => {
             <ProductsRoutes />
             <Route exact path='/company' component={Loadables.CompanyComponent} />
             <Route exact path='/company/leaderships' component={Loadables.LeadershipsComponent} />
-            <Route exact path='/company/publications' component={Loadables.PublicationsComponent} />
             <Route exact path='/company/licences' component={Loadables.LicencesComponent} />
             <Route exact path='/company/documents' component={Loadables.DocumentsComponent} />
             <Route exact path='/company/gallery' component={Loadables.GalleryComponent} />
+            <Route exact path='/vacancies' component={Loadables.VacanciesComponent} />
             <Route exact path='/news' component={Loadables.NewsComponent} />
             <Route path='/news/:news_id' component={Loadables.NewsSelectedComponent} />
         </React.Fragment>

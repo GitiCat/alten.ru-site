@@ -26,6 +26,17 @@ interface IProductTypes {
     createdAt: Date
 }
 
+interface IVacanciesType {
+    id: number,
+    title: string,
+    subtitle: string | null,
+    city: string,
+    employment: string | null,
+    requirements: string | null,
+    descriptor: string | null,
+    created_at: Date
+}
+
 interface IApiResponseStatus {
     isError: boolean,
     statusCode: number | null
@@ -43,6 +54,7 @@ interface IImageTypes {
 export {
     IProductCategoryTypes,
     IProductPreviewTypes,
+    IVacanciesType,
     IApiResponseStatus,
     IProductTypes,
     IImageTypes

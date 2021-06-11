@@ -37,8 +37,8 @@ const LeadershipsComponent = Loadable({
     loading: () => <SuspensLoader/>
 })
 
-const PublicationsComponent = Loadable({
-    loader: () => import('../components/pages/publications/index'),
+const VacanciesComponent = Loadable({
+    loader: () => import('../components/pages/vacancies/index'),
     loading: () => <SuspensLoader/>
 })
 
@@ -75,7 +75,7 @@ export default {
     ProductsSelected,
     CompanyComponent,
     LeadershipsComponent,
-    PublicationsComponent,
+    VacanciesComponent,
     LicencesComponent,
     DocumentsComponent,
     GalleryComponent,
