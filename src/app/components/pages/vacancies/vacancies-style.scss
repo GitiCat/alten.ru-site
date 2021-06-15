@@ -1,0 +1,40 @@
+.vacancies-text {
+    position: relative;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    input[type="checkbox"] {
+        display: none;
+    }
+
+    .wrapper {
+        position: relative;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        > .wrapper-list--item {
+            position: relative;
+            width: 365px;
+            margin: 0 0 42px;
+            padding: 14px 18px;
+            // background-color: rgba($color: $main-middle-color, $alpha: .95);
+            border-radius: 4px;
+
+            > label {
+                z-index: -1;
+                header {
+                    margin: 0;
+
+                    > h3 {
+                        font-family: "Roboto-Regular";
+                        font-size: 16px;
+                        font-weight: normal;
+                        letter-spacing: .03em;
+                        color: $light-title-color;
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }
+}

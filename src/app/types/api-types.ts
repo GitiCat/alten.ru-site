@@ -26,13 +26,12 @@ interface IProductTypes {
     createdAt: Date
 }
 
-interface IVacanciesType {
+interface IVacanciesTypes {
     id: number,
     title: string,
-    subtitle: string | null,
+    wage: string | null,
     city: string,
     employment: string | null,
-    requirements: string | null,
     descriptor: string | null,
     created_at: Date
 }
@@ -54,7 +53,7 @@ interface IImageTypes {
 export {
     IProductCategoryTypes,
     IProductPreviewTypes,
-    IVacanciesType,
+    IVacanciesTypes,
     IApiResponseStatus,
     IProductTypes,
     IImageTypes

@@ -5,36 +5,40 @@ import { AsyncDataStatesTypes, LOADING } from '../../../utils/async-data-states/
 import { IAsyncDataRequestTypes } from '../../../redux/saga/async-data-request-saga'
 import Header from '../../blocks/header/header'
 import DataPreloader from '../../blocks/data-preloader/index'
-import EntryContent from '../../blocks/entry-content/index'
+import { IVacanciesTypes } from '../../../types/api-types'
+import VacanciesWrapperComponent from './wrapper'
 
 const VacanciesComponent = () => {
     const dispatch: Dispatch<any> = useDispatch()
     const asyncDataSelector: AsyncDataStatesTypes = useSelector(state => state['asyncDataReducer'])
-    
+
     useEffect(() => {
         const payload: IAsyncDataRequestTypes = { url: 'vacancies' }
         dispatch({ type: LOADING, payload })
     }, [])
 
     const data = asyncDataSelector.data as Array<{}>
-    
+
     return (
         <div className="content">
-            <Header title='Вакансии' subtitle='Открытые вакансии на предприятии АО «НПК «АЛЬТЭН»'/>
+            <Header title='Вакансии' subtitle='Открытые вакансии на предприятии АО «НПК «АЛЬТЭН»' />
             {!asyncDataSelector.loading ?
-                <article className="text">
+                <article className="text vacancies-text">
                     {data !== null &&
-                        <div className="">
+                        <React.Fragment>
                             <header>
                                 <h2>Открытых вакансий: {data.length}</h2>
                                 {data.length === 0 &&
                                     <p>В данный момент на предприятии нет открытых вакансий...</p>
                                 }
                             </header>
-                        </div>
+                            {data.length !== 0 &&
+                                <VacanciesWrapperComponent data={data as Array<IVacanciesTypes>}/>
+                            }
+                        </React.Fragment>
                     }
                 </article>
-                : <DataPreloader/>
+                : <DataPreloader />
             }
         </div>
     )
