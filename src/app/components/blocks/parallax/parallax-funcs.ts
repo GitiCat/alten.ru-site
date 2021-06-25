@@ -1,45 +1,46 @@
 const initialParallax = (root: HTMLDivElement, classes: string, depth: number | number[]) => {
-    let cs: string | string[] = classes.split(' ').length > 1 ? classes.split(' ') : classes
-    let elements: Array<Object> = []
+	const cs: string | string[] = classes.split(' ').length > 1 ? classes.split(' ') : classes
+	const elements: Array<Object> = []
 
-    if(typeof cs === "string") {
-        root.querySelectorAll(cs).forEach(element => elements.push(element))
-    } else if(typeof cs === "object") {
-        if(cs.length > 1) {
-            for(let i = 0; i < cs.length; i++) {
-                let object: Array<Element> = []
-                root.querySelectorAll(cs[i]).forEach(element => object.push(element))
-                elements.push(object)
-            }
-        }
-        else {
-            root.querySelectorAll(String(cs)).forEach(element => elements.push(element))
-        }
-    }
+	if (typeof cs === 'string') {
+		root.querySelectorAll(cs).forEach(element => elements.push(element))
+	} else if (typeof cs === 'object') {
+		if (cs.length > 1) {
+			for (let i = 0; i < cs.length; i++) {
+				const object: Array<Element> = []
+				root.querySelectorAll(cs[i]).forEach(element => object.push(element))
+				elements.push(object)
+			}
+		} else {
+			root.querySelectorAll(String(cs)).forEach(element => elements.push(element))
+		}
+	}
 
-    if(elements.length == 0) throw new Error('Initial Parallax Error: missing elements...')
+	if (elements.length == 0) {
+		throw new Error('Initial Parallax Error: missing elements...')
+	}
 
-    parallaxScrolling(elements, depth)
-    window.onscroll = () => parallaxScrolling(elements, depth)
+	parallaxScrolling(elements, depth)
+	window.onscroll = () => parallaxScrolling(elements, depth)
 }
 
 const parallaxScrolling = (elems: Array<Object>, depth: number | number[]) => {
-    const isElement = elems[0] instanceof HTMLElement
-    let scrolled: number = window.scrollY
+	const isElement = elems[0] instanceof HTMLElement
+	const scrolled: number = window.scrollY
 
-    if(isElement) {
-        elems.map((elem: HTMLElement) => {
-            let posY: number = elem.offsetTop,
-                h: number = elem.getBoundingClientRect().height
+	if (isElement) {
+		elems.map((elem: HTMLElement) => {
+			const posY: number = elem.offsetTop,
+				h: number = elem.getBoundingClientRect().height
 
-            let diff = scrolled - posY
-            let ratio = Math.round((diff / h) * 100)
+			const diff = scrolled - posY
+			const ratio = Math.round(diff / h * 100)
 
-            elem.style.cssText = `transform: translateY(${((ratio * Number(depth)))}px)`
-        })
-    }
+			elem.style.cssText = `transform: translateY(${ratio * Number(depth)}px)`
+		})
+	}
 }
 
 export {
-    initialParallax
+	initialParallax,
 }

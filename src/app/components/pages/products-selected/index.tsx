@@ -6,15 +6,15 @@ import ProductSelectedSlider from './slider/index'
 import ProductSelectedContent from './content/index'
 import { RouteComponentProps } from 'react-router-dom'
 import {
-    SELECTED_PRODUCT_CATEGORY_ID,
+	SELECTED_PRODUCT_CATEGORY_ID,
 } from '../../../consts/product-selected-consts'
 import {
-    SelectedProductTypes,
-    UPDATE_PRODUCT,
+	SelectedProductTypes,
+	UPDATE_PRODUCT,
 } from '../../../redux/store/products-selected/types'
 import {
-    AsyncDataStatesTypes,
-    LOADING
+	AsyncDataStatesTypes,
+	LOADING,
 } from '../../../utils/async-data-states/types'
 import { IProductCategoryTypes, IProductTypes } from '../../../types/api-types'
 import { GlobalContextTypes } from '../../../types/global-context-types'
@@ -29,16 +29,18 @@ import { IAsyncDataRequestTypes } from '../../../redux/saga/async-data-request-s
  * @returns category id for request to server
  */
 const getCategoryId = (
-    props: RouteComponentProps
+	props: RouteComponentProps
 ): number => {
-    if (props.location.state !== undefined)
-        return props.location.state['category_id']
+	if (props.location.state !== undefined) {
+		return props.location.state['category_id']
+	}
 
-    if (Number(sessionStorage.getItem(SELECTED_PRODUCT_CATEGORY_ID)) !== 0)
-        return Number(sessionStorage.getItem(SELECTED_PRODUCT_CATEGORY_ID))
+	if (Number(sessionStorage.getItem(SELECTED_PRODUCT_CATEGORY_ID)) !== 0) {
+		return Number(sessionStorage.getItem(SELECTED_PRODUCT_CATEGORY_ID))
+	}
 
-    const path = props.location.pathname
-    return Number(path.slice(path.lastIndexOf('/') + 1, path.length))
+	const path = props.location.pathname
+	return Number(path.slice(path.lastIndexOf('/') + 1, path.length))
 }
 
 /**
@@ -47,15 +49,17 @@ const getCategoryId = (
  * @returns product id for selected
  */
 const getProductId = (props: RouteComponentProps): number => {
-    const { state } = props.location
+	const { state } = props.location
 
-    if (state === undefined || state === null)
-        return 0
+	if (state === undefined || state === null) {
+		return 0
+	}
 
-    if (state['product_id'] === undefined || state['product_id'] === null)
-        return 0
+	if (state['product_id'] === undefined || state['product_id'] === null) {
+		return 0
+	}
 
-    return state['product_id']
+	return state['product_id']
 }
 
 /**
@@ -63,78 +67,76 @@ const getProductId = (props: RouteComponentProps): number => {
  * @param props route component props
  * @returns render dom component
  */
-const ProductsSelected: React.FunctionComponent<RouteComponentProps> = (props) => {
-    const dispatch = useDispatch()
-    const asyncDataSelector: AsyncDataStatesTypes = useSelector(state => state['asyncDataReducer'])
-    const selectedProduct: SelectedProductTypes = useSelector(state => state['productSelected'])
-    const globalContext = useContext<GlobalContextTypes>(GlobalContext)
+const ProductsSelected: React.FunctionComponent<RouteComponentProps> = props => {
+	const dispatch = useDispatch()
+	const asyncDataSelector: AsyncDataStatesTypes = useSelector(state => state['asyncDataReducer'])
+	const selectedProduct: SelectedProductTypes = useSelector(state => state['productSelected'])
+	const globalContext = useContext<GlobalContextTypes>(GlobalContext)
 
-    useEffect(() => {
-        const categoryId: number = getCategoryId(props)
-        const productId: number = getProductId(props)
-        dispatch({
-            type: UPDATE_PRODUCT, payload: {
-                categoryId: categoryId,
-                productId: productId
-            }
-        })
-        //  payload object to async request data
-        const payload: IAsyncDataRequestTypes = {
-            url: 'products',
-            params: {
-                'category': categoryId
-            }
-        }
-        dispatch({ type: LOADING, payload })
-    }, [])
+	useEffect(() => {
+		const categoryId: number = getCategoryId(props)
+		const productId: number = getProductId(props)
+		dispatch({
+			type: UPDATE_PRODUCT, payload: {
+				categoryId,
+				productId,
+			},
+		})
+		//  payload object to async request data
+		const payload: IAsyncDataRequestTypes = {
+			url: 'products',
+			params: {
+				'category': categoryId,
+			},
+		}
+		dispatch({ type: LOADING, payload })
+	}, [])
 
-    const currentCategory: IProductCategoryTypes
+	const currentCategory: IProductCategoryTypes
         = (globalContext.productCategories as [])
-            .filter((item: IProductCategoryTypes) => item.id === selectedProduct.selectedCategoryId)[0]
+        	.filter((item: IProductCategoryTypes) => item.id === selectedProduct.selectedCategoryId)[0]
 
-    let data: IProductTypes = null
-    if (asyncDataSelector.data !== null) {
-        data = asyncDataSelector.data[selectedProduct.selectedItemId]
-    }
+	let data: IProductTypes = null
+	if (asyncDataSelector.data !== null) {
+		data = asyncDataSelector.data[selectedProduct.selectedItemId]
+	}
 
-    return (
-        <div className="content selected-product-content">
-            {!asyncDataSelector.loading ?
-                <React.Fragment>
-                    <Header title='Продукция' subtitle='' />
-                    {currentCategory !== null &&
+	return (
+		<div className="content selected-product-content">
+			{!asyncDataSelector.loading ?
+				<React.Fragment>
+					<Header title='Продукция' subtitle='' />
+					{currentCategory !== null &&
                         <article className='text'>
-                            <div className="title">
-                                <React.Fragment>
-                                    <h1>{currentCategory.title}</h1>
-                                    <div className="descriptor">
-                                        {currentCategory.descriptor !== null &&
+                        	<div className="title">
+                        		<h1>{currentCategory.title}</h1>
+                        			<div className="descriptor">
+                        				{currentCategory.descriptor !== null &&
                                             parse(currentCategory.descriptor, { trim: true })
-                                        }
-                                        <div className="sub">
-                                            {currentCategory.sub_descriptor !== null &&
+                        				}
+                        				<div className="sub">
+                        					{currentCategory.sub_descriptor !== null &&
                                                 parse(currentCategory.sub_descriptor, { trim: true })
-                                            }
-                                        </div>
-                                    </div>
-                                </React.Fragment>
-                            </div>
-                            <ProductSelectedSlider items={asyncDataSelector.data} />
-                            {data !== null ?
-                                <ProductSelectedContent title={data.title}
-                                    descriptor={data.descriptor}
-                                    feature={data.feature}
-                                    image={data.main_image}
-                                    files={null} />
-                                : <div className=""></div>
-                            }
+                        					}
+                        				</div>
+                        			</div>
+                        	</div>
+                        	<ProductSelectedSlider items={asyncDataSelector.data} />
+                        	{data !== null ?
+                        		<ProductSelectedContent title={data.title}
+                        			descriptor={data.descriptor}
+                        			feature={data.feature}
+                        			image={data.main_image}
+                        			files={null} />
+                        		: <div className=""></div>
+                        	}
                         </article>
-                    }
-                </React.Fragment>
-                : <DataPreloader />
-            }
-        </div>
-    )
+					}
+				</React.Fragment>
+				: <DataPreloader />
+			}
+		</div>
+	)
 }
 
 export default React.memo(ProductsSelected)

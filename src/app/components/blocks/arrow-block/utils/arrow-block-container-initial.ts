@@ -1,25 +1,25 @@
 import { ReversOrient } from './types'
 
 const DEFAULT_TRANSLATE_X = .25,
-      DEFAULT_TRANSLATE_Y = .15
+	DEFAULT_TRANSLATE_Y = .15
 
-export const initial = (root: HTMLElement, isRevers: boolean = false, orient: ReversOrient = ReversOrient.Even) => {
-    const childrens: NodeListOf<HTMLDivElement> = root.querySelectorAll('div.arrow-block'),
-        canvas: HTMLCanvasElement = root.querySelector('canvas')
+export const initial = (root: HTMLElement, isRevers = false, orient: ReversOrient = ReversOrient.Even) => {
+	const childrens: NodeListOf<HTMLDivElement> = root.querySelectorAll('div.arrow-block'),
+		canvas: HTMLCanvasElement = root.querySelector('canvas')
 
-    isRevers === true && setReversBlocks(orient, childrens)
+	isRevers === true && setReversBlocks(orient, childrens)
 
-    window.onresize = () => {
-        canvasResize(canvas, canvas.clientWidth, canvas.clientHeight)
-        canvasDrawWithArray(canvas, childrens)
-    }
-    canvasResize(canvas, root.clientWidth, root.clientHeight)
-    canvasDrawWithArray(canvas, childrens)
+	window.onresize = () => {
+		canvasResize(canvas, canvas.clientWidth, canvas.clientHeight)
+		canvasDrawWithArray(canvas, childrens)
+	}
+	canvasResize(canvas, root.clientWidth, root.clientHeight)
+	canvasDrawWithArray(canvas, childrens)
 }
 
 const canvasResize = (canvas: HTMLCanvasElement, width: number, height: number) => {
-    canvas.width = width
-    canvas.height = height
+	canvas.width = width
+	canvas.height = height
 }
 
 /**
@@ -28,18 +28,18 @@ const canvasResize = (canvas: HTMLCanvasElement, width: number, height: number) 
  * @param blocks Blocks collection for revers
  */
 const setReversBlocks = (orient: ReversOrient, blocks: NodeListOf<HTMLDivElement>) => {
-    switch (orient) {
-        case ReversOrient.Even:
-            Array.from(blocks).map((block, index) => index % 2 == 0 && block.classList.add('revers'))
-            break
+	switch (orient) {
+		case ReversOrient.Even:
+			Array.from(blocks).map((block, index) => index % 2 == 0 && block.classList.add('revers'))
+			break
 
-        case ReversOrient.Odd:
-            Array.from(blocks).map((block, index) => index % 2 != 0 && block.classList.add('revers'))
-            break
+		case ReversOrient.Odd:
+			Array.from(blocks).map((block, index) => index % 2 != 0 && block.classList.add('revers'))
+			break
 
-        default:
-            throw new Error('Set revers orient error: not type selected...')
-    }
+		default:
+			throw new Error('Set revers orient error: not type selected...')
+	}
 }
 
 /**
@@ -47,58 +47,58 @@ const setReversBlocks = (orient: ReversOrient, blocks: NodeListOf<HTMLDivElement
  * @param elems Blocks collection in root
  */
 const getElementsPosition = (elems: NodeListOf<HTMLDivElement>): Array<{}> => {
-    let positions: Array<{}> = []
+	const positions: Array<{}> = []
 
-    elems.forEach(elem => {
-        const content: HTMLDivElement = elem.querySelector('.content')
-        const isRevers: boolean = content.parentElement.classList.contains('revers')
-        
-        const t: number = content.offsetTop,
-              l: number = content.offsetLeft,
-              w: number = content.getBoundingClientRect().width,
-              h: number = content.getBoundingClientRect().height
+	elems.forEach(elem => {
+		const content: HTMLDivElement = elem.querySelector('.content')
+		const isRevers: boolean = content.parentElement.classList.contains('revers')
 
-        const fromY = t + h + (h - (h - (h * DEFAULT_TRANSLATE_Y))),
-              fromX = isRevers == false
-              ? l - (w - (w - (w * DEFAULT_TRANSLATE_X))) + (w / 2)
-              : l + (w - (w - (w * DEFAULT_TRANSLATE_X))) + (w / 2)
+		const t: number = content.offsetTop,
+			l: number = content.offsetLeft,
+			w: number = content.getBoundingClientRect().width,
+			h: number = content.getBoundingClientRect().height
 
-        const toY = t + (h / 2) + (h - (h - (h * DEFAULT_TRANSLATE_Y))),
-              toX = isRevers == false
-              ? l - (w - (w - (w * DEFAULT_TRANSLATE_X))) + w
-              : l + (w - (w - (w * DEFAULT_TRANSLATE_X))) 
+		const fromY = t + h + (h - (h - h * DEFAULT_TRANSLATE_Y)),
+			fromX = isRevers == false
+				? l - (w - (w - w * DEFAULT_TRANSLATE_X)) + w / 2
+				: l + (w - (w - w * DEFAULT_TRANSLATE_X)) + w / 2
 
-        positions.push({
-            fromX: fromX,
-            fromY: fromY,
-            toX: toX,
-            toY: toY
-        })
-    })
+		const toY = t + h / 2 + (h - (h - h * DEFAULT_TRANSLATE_Y)),
+			toX = isRevers == false
+				? l - (w - (w - w * DEFAULT_TRANSLATE_X)) + w
+				: l + (w - (w - w * DEFAULT_TRANSLATE_X))
 
-    return positions
+		positions.push({
+			fromX,
+			fromY,
+			toX,
+			toY,
+		})
+	})
+
+	return positions
 }
 
 const canvasDrawWithArray = (canvas: HTMLCanvasElement, childrens: NodeListOf<HTMLDivElement>) => {
-    Array.from(getElementsPosition(childrens)).reduce((prev, curr) => {
-        drawCanvasLine(canvas, prev, curr)
-        return curr
-    })
+	Array.from(getElementsPosition(childrens)).reduce((prev, curr) => {
+		drawCanvasLine(canvas, prev, curr)
+		return curr
+	})
 }
 
 const drawCanvasLine = (canvas: HTMLCanvasElement, from: {}, to: {}) => {
-    const context = canvas.getContext('2d');
+	const context = canvas.getContext('2d')
 
-    let startX = from['fromX'],
-        startY = from['fromY'],
-        endX = to['toX'],
-        endY = to['toY']
+	const startX = from['fromX'],
+		startY = from['fromY'],
+		endX = to['toX'],
+		endY = to['toY']
 
-    context.beginPath()
-    context.lineWidth = 4
-    context.strokeStyle = '#003fb2'
-    context.moveTo(startX, startY)
-    context.bezierCurveTo(startX, endY, startX, endY, endX, endY)
-    context.stroke()
-    context.closePath()
+	context.beginPath()
+	context.lineWidth = 4
+	context.strokeStyle = '#003fb2'
+	context.moveTo(startX, startY)
+	context.bezierCurveTo(startX, endY, startX, endY, endX, endY)
+	context.stroke()
+	context.closePath()
 }

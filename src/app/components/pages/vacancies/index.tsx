@@ -9,39 +9,39 @@ import { IVacanciesTypes } from '../../../types/api-types'
 import VacanciesWrapperComponent from './wrapper'
 
 const VacanciesComponent = () => {
-    const dispatch: Dispatch<any> = useDispatch()
-    const asyncDataSelector: AsyncDataStatesTypes = useSelector(state => state['asyncDataReducer'])
+	const dispatch: Dispatch<any> = useDispatch()
+	const asyncDataSelector: AsyncDataStatesTypes = useSelector(state => state['asyncDataReducer'])
 
-    useEffect(() => {
-        const payload: IAsyncDataRequestTypes = { url: 'vacancies' }
-        dispatch({ type: LOADING, payload })
-    }, [])
+	useEffect(() => {
+		const payload: IAsyncDataRequestTypes = { url: 'vacancies' }
+		dispatch({ type: LOADING, payload })
+	}, [])
 
-    const data = asyncDataSelector.data as Array<{}>
+	const data = asyncDataSelector.data as Array<{}>
 
-    return (
-        <div className="content">
-            <Header title='Вакансии' subtitle='Открытые вакансии на предприятии АО «НПК «АЛЬТЭН»' />
-            {!asyncDataSelector.loading ?
-                <article className="text vacancies-text">
-                    {data !== null &&
+	return (
+		<div className="content">
+			<Header title='Вакансии' subtitle='Открытые вакансии на предприятии АО «НПК «АЛЬТЭН»' />
+			{!asyncDataSelector.loading ?
+				<article className="text vacancies-text">
+					{data !== null &&
                         <React.Fragment>
-                            <header>
-                                <h2>Открытых вакансий: {data.length}</h2>
-                                {data.length === 0 &&
+                        	<header>
+                        		<h2>Открытых вакансий: {data.length}</h2>
+                        		{data.length === 0 &&
                                     <p>В данный момент на предприятии нет открытых вакансий...</p>
-                                }
-                            </header>
-                            {data.length !== 0 &&
+                        		}
+                        	</header>
+                        	{data.length !== 0 &&
                                 <VacanciesWrapperComponent data={data as Array<IVacanciesTypes>}/>
-                            }
+                        	}
                         </React.Fragment>
-                    }
-                </article>
-                : <DataPreloader />
-            }
-        </div>
-    )
+					}
+				</article>
+				: <DataPreloader />
+			}
+		</div>
+	)
 }
 
 export default VacanciesComponent

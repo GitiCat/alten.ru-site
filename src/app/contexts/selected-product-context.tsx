@@ -1,26 +1,26 @@
 import React from 'react'
 import {
-    SelectedProductTypes,
-    SelectedProductActions
+	SelectedProductActions,
+	SelectedProductTypes,
 } from '../redux/store/products-selected/types'
 import {
-    initialState
+	initialState,
 } from '../redux/store/products-selected/reducer'
 
 type SelectedProductContextTypes = {
-    state: SelectedProductTypes,
-    dispatch: React.Dispatch<SelectedProductActions>
+	state: SelectedProductTypes
+	dispatch: React.Dispatch<SelectedProductActions>
 }
 
-const initialContext: SelectedProductContextTypes ={
-    state: initialState,
-    dispatch: null
+const initialContext: SelectedProductContextTypes = {
+	state: initialState,
+	dispatch: null,
 }
 
-const SelectedProductContext: React.Context<SelectedProductContextTypes> 
+const SelectedProductContext: React.Context<SelectedProductContextTypes>
     = React.createContext(initialContext)
 
 export {
-    SelectedProductContextTypes,
-    SelectedProductContext
+	SelectedProductContextTypes,
+	SelectedProductContext,
 }
