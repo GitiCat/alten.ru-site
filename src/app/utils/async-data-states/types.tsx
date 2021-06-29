@@ -1,5 +1,5 @@
 export interface AsyncDataStatesTypes {
-	data?: Record<string, unknown>
+	data?: Array<any>
 	loading?: boolean
 	isError?: boolean
 	errorString?: string

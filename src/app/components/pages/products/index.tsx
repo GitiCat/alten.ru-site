@@ -30,7 +30,7 @@ const ProductsComponent: React.FunctionComponent = () => {
 					<Header title='Продукция' subtitle='Категории и продукция нашего предприятия'/>
 					<article className="text">
 						{
-							(state.data as []).map((item: {}, index: number) =>
+							state.data.map((item: {}, index: number) =>
 								<CategoryProductBlock key={index}
 									id={item['id']}
 									title={item['title']}

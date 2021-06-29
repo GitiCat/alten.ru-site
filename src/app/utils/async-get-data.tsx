@@ -1,7 +1,7 @@
 type PromiseMessageTypes = {
 	status: number
 	message: string
-	data: {}
+	data: Array<any>
 }
 
 const promiseMessage = ({ status, message, data }: PromiseMessageTypes): PromiseMessageTypes => ({
